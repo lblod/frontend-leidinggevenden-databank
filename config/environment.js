@@ -20,6 +20,11 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+    'vo-webuniversum': {
+      version: '2.8.3', //TODO copied from mandaten
+      header: '//widgets.vlaanderen.be/widget/live/536f9f3a7a7d4842aecd269a28a636d1',
+      footer: '//widgets.vlaanderen.be/widget/live/40cd2af0f2fb4ac0bd834c1b7562101f'
     }
   };
 
