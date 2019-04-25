@@ -1,10 +1,14 @@
 {{head-layout}}
 <div class="container">
   {{title "Leidinggevenden databank"}}
-	{{wu-widget src=header class="vo-header-widget"}}
+  {{wu-widget src=header class="vo-header-widget"}}
   {{#wu-content-header title="Leidinggevenden"}}
-    
+
   {{/wu-content-header}}
-	{{outlet}}
+
+  {{#with-rdfa-prefixes-and-vocab}}
+    {{outlet}}
+  {{/with-rdfa-prefixes-and-vocab}}
+
   {{wu-widget src=footer}}
 </div>
