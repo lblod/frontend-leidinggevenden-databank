@@ -10,6 +10,9 @@ Router.map(function() {
   this.route('route-not-found', {
     path: '/*wildcard'
   });
+  this.route('bestuursorgaan', function() {
+    this.route('functionarissen', {path: ":bestuursorgaan_id/functionarissen"});
+  });
 });
 
 export default Router;
