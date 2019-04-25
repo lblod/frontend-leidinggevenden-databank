@@ -1,13 +1,19 @@
-import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
+import Model from 'ember-data/model';
+import { collect } from '@ember/object/computed';
 
 export default Model.extend({
+  // A string representation of this model, based on its attributes.
+  // This is what mu-cl-resources uses to search on, and how the model will be presented while editing relationships.
+  stringRep: collect.apply(this,['id', 'label', 'scopeNote']),
+
+  uri: attr(),
   label: attr(),
   scopeNote: attr(),
-  uri: attr(),
-  rdfaBindings: { // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
-    class: "http://www.w3.org/2004/02/skos/core#Concept",
-    label: "http://www.w3.org/2004/02/skos/core#prefLabel",
-    scopeNote: "http://www.w3.org/2004/02/skos/core#scopeNote"
-  }
+
+  rdfaBindings: Object.freeze({
+    class: "ext:BestuurseenheidClassificatieCode",
+    label: "skos:prefLabel",
+    scopeNote: "skos:scopeNote"
+  })
 });

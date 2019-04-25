@@ -1,7 +1,7 @@
 import attr from 'ember-data/attr';
 import Model from 'ember-data/model';
 import { collect } from '@ember/object/computed';
-import { belongsTo, hasMany } from 'ember-data/relationships';
+import { belongsTo } from 'ember-data/relationships';
 
 export default Model.extend({
   // A string representation of this model, based on its attributes.
@@ -9,13 +9,13 @@ export default Model.extend({
   stringRep: collect.apply(this,['id']),
 
   uri: attr(),
-  rol: belongsTo('bestuursfunctie-code', { inverse: null }),
-  contactinfo: belongsTo('contact-punt', { inverse: null }),
-  bevatIn: hasMany('bestuurorgaan', { inverse: null }),
+  binnenFractie: belongsTo('fractie', { inverse: null }),
+  lid: belongsTo('mandataris', { inverse: null }),
+  lidGedurende: belongsTo('tijdsinterval', { inverse: null }),
 
   rdfaBindings: Object.freeze({
-    class: "lblodlg:Bestuursfunctie",
-    rol: "org:role",
-    contactinfo: "schema:contactPoint"
+    class: "org:Membership",
+    binnenFractie: "org:organisation",
+    lidGedurende: "org:memberDuring"
   })
 });

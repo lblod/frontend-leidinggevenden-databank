@@ -1,21 +1,21 @@
 import attr from 'ember-data/attr';
 import Model from 'ember-data/model';
 import { collect } from '@ember/object/computed';
-import { belongsTo, hasMany } from 'ember-data/relationships';
 
 export default Model.extend({
   // A string representation of this model, based on its attributes.
   // This is what mu-cl-resources uses to search on, and how the model will be presented while editing relationships.
-  stringRep: collect.apply(this,['id']),
+  stringRep: collect.apply(this,['id', 'buitenwerkingtreding', 'inwekingtreding', 'typeDocument']),
 
   uri: attr(),
-  rol: belongsTo('bestuursfunctie-code', { inverse: null }),
-  contactinfo: belongsTo('contact-punt', { inverse: null }),
-  bevatIn: hasMany('bestuurorgaan', { inverse: null }),
+  buitenwerkingtreding: attr('date'),
+  inwekingtreding: attr('date'),
+  typeDocument: attr('uri-set'),
 
   rdfaBindings: Object.freeze({
-    class: "lblodlg:Bestuursfunctie",
-    rol: "org:role",
-    contactinfo: "schema:contactPoint"
+    class: "eli:LegalResource",
+    buitenwerkingtreding: "eli:date_no_longer_in_force",
+    inwekingtreding: "eli:first_date_entry_in_force",
+    typeDocument: "eli:type_document"
   })
 });
