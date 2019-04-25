@@ -12,14 +12,14 @@ module.exports = function(deployTarget) {
       username: 'root',
       host: 'rpio-dev.s.redpencil.io',
       port: 22,
-      remoteDir: '/data/app-leidinggevenden-dev/leidinggevenden-app',
+      remoteDir: '/data/app-leidinggevenden-databank-dev/leidinggevendendatabank-app',
       allowOverwrite: true,
       agent: process.env.SSH_AUTH_SOCK
     },
     'rsync': { // copy assets
       host: 'root@rpio-dev.s.redpencil.io',
       port: 22,
-      dest: '/data/app-leidinggevenden-dev/leidinggevenden-app',
+      dest: '/data/app-leidinggevenden-databank-dev/leidinggevendenbank-app',
       delete: false,
       arg:['--verbose']
     }
