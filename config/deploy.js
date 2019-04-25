@@ -19,7 +19,7 @@ module.exports = function(deployTarget) {
     'rsync': { // copy assets
       host: 'root@rpio-dev.s.redpencil.io',
       port: 22,
-      dest: '/data/app-leidinggevenden-databank-dev/leidinggevendenbank-app',
+      dest: '/data/app-leidinggevenden-databank-dev/leidinggevendendatabank-app',
       delete: false,
       arg:['--verbose']
     }
