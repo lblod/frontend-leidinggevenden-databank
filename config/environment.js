@@ -17,7 +17,11 @@ module.exports = function(environment) {
       }
     },
     fastboot: {
-      hostWhitelist: [/^localhost:\d+$/, /^.*$/] // 'example.com', 'subdomain.example.com' // TODO: these regexpses with actual allowed domains, this is a major flaw.
+      hostWhitelist: [ "leidinggevenden.lblod.info",
+                       "dev.leidinggevenden.lblod.info",
+                       /^localhost:\d+$/,
+                       /^.*$/
+                     ] // 'example.com', 'subdomain.example.com' // TODO: these regexpses with actual allowed domains, this is a major flaw.
     },
     APP: {
       // Here you can pass flags/options to your application instance
