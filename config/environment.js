@@ -29,8 +29,8 @@ module.exports = function(environment) {
     },
     'vo-webuniversum': {
       version: '2.8.3', //TODO copied from mandaten
-      header: '//widgets.vlaanderen.be/widget/live/536f9f3a7a7d4842aecd269a28a636d1',
-      footer: '//widgets.vlaanderen.be/widget/live/40cd2af0f2fb4ac0bd834c1b7562101f'
+      header: '//widgets.vlaanderen.be/widget/live/8cb0e2dd9fb843a88da86211c9ade78c',
+      footer: '//widgets.vlaanderen.be/widget/live/278abfe4c19f49daa667c00815f6ab12'
     }
   };
 
