@@ -1,4 +1,212 @@
-{{!-- filter/wizard landing page here --}}
-<h1>wizard/filter/landing</h1>
-{{#link-to "bestuursorgaan.functionarissen" "dummy_id"}} ga naar overizicht functionarissen{{/link-to}}
-{{outlet}}
+{{#wu-content-header title="Leidinggevendendatabank"}}
+  <img sizes="50vw" src="/assets/images/banner-leidinggevenden.jpg" srcset="/assets/images/banner-leidinggevenden-320.jpg 320w, /assets/images/banner-leidinggevenden-1024.jpg 1024w, /assets/images/banner-leidinggevenden-1600.jpg 1600w" alt="" title="">
+{{/wu-content-header}}
+<div class="region">
+  <div class="layout layout--wide u-spacer--bottom--large" id="main">
+    <h2 class="h3 u-spacer">Bekijk de leidinggevenden in een bestuur</h2>
+    <ul class="steps steps--has-line">
+      <li class="step step--no-box">
+        <div class="step__icon">1</div>
+        <div class="step__wrapper">
+          <div class="step__header">
+            <h3 class="step__title">Stap 1: Kies een type bestuur</h3>
+          </div>
+          <div class="step__content-wrapper">
+            <div class="step__content">
+              <div class="grid grid--is-stacked">
+
+                <div class="col--4-12 col--6-12--m col--1-1--s col--1-1--xs">
+                  <div class="info-tile info-tile--badge--bottom info-tile--s">
+                    <header class="info-tile__header">
+                      <div class="info-tile__badge__wrapper">
+                        <div class="badge badge--m badge--icon badge--accent">
+                          <i class="badge__icon fa fa-building" aria-hidden="true"></i>
+                          <span class="u-visually-hidden">Type: bestuur</span>
+                        </div>
+                      </div>
+                      <div class="info-tile__header__wrapper">
+                        <h3 class="info-tile__header__title">Gemeente-<br>bestuur</h3>
+                        <p class="info-tile__header__subtitle u-spacer--tiny">Korte omschrijving</p>
+                        <a href="#bestuursorgaan" class="link--icon link--icon--caret">
+                          <i class="vi vi-arrow button__icon"></i>
+                          Selecteer bestuursorgaan
+                        </a>
+                      </div>
+                    </header>
+                  </div>
+                </div>
+
+                <div class="col--4-12 col--6-12--m col--1-1--s col--1-1--xs">
+                  <div class="info-tile info-tile--badge--bottom info-tile--s">
+                    <header class="info-tile__header">
+                      <div class="info-tile__badge__wrapper">
+                        <div class="badge badge--m badge--icon badge--accent">
+                          <i class="badge__icon fa fa-building" aria-hidden="true"></i>
+                          <span class="u-visually-hidden">Type: bestuur</span>
+                        </div>
+                      </div>
+                      <div class="info-tile__header__wrapper">
+                        <h3 class="info-tile__header__title">Autonoom<br>gemeentebedrijf</h3>
+                        <p class="info-tile__header__subtitle u-spacer--tiny">Korte omschrijving</p>
+                        <a href="#bestuursorgaan" class="link--icon link--icon--caret">
+                          <i class="vi vi-arrow button__icon"></i>
+                          Selecteer bestuursorgaan
+                        </a>
+                      </div>
+                    </header>
+                  </div>
+                </div>
+
+                <div class="col--4-12 col--6-12--m col--1-1--s col--1-1--xs">
+                  <div class="info-tile info-tile--badge--bottom info-tile--s">
+                    <header class="info-tile__header">
+                      <div class="info-tile__badge__wrapper">
+                        <div class="badge badge--m badge--icon badge--accent">
+                          <i class="badge__icon fa fa-building" aria-hidden="true"></i>
+                          <span class="u-visually-hidden">Type: bestuur</span>
+                        </div>
+                      </div>
+                      <div class="info-tile__header__wrapper">
+                        <h3 class="info-tile__header__title">OCMW-<br>vereniging</h3>
+                        <p class="info-tile__header__subtitle u-spacer--tiny">Korte omschrijving</p>
+                        <a href="#bestuursorgaan" class="link--icon link--icon--caret">
+                          <i class="vi vi-arrow button__icon"></i>
+                          Selecteer bestuursorgaan
+                        </a>
+                      </div>
+                    </header>
+                  </div>
+                </div>
+
+                <div class="col--4-12 col--6-12--m col--1-1--s col--1-1--xs">
+                  <div class="info-tile info-tile--badge--bottom info-tile--s">
+                    <header class="info-tile__header">
+                      <div class="info-tile__badge__wrapper">
+                        <div class="badge badge--m badge--icon badge--accent">
+                          <i class="badge__icon fa fa-building" aria-hidden="true"></i>
+                          <span class="u-visually-hidden">Type: bestuur</span>
+                        </div>
+                      </div>
+                      <div class="info-tile__header__wrapper">
+                        <h3 class="info-tile__header__title">Intergemeentelijk<br>samenwerkingsverband</h3>
+                        <p class="info-tile__header__subtitle u-spacer--tiny">Korte omschrijving</p>
+                        <a href="#bestuursorgaan" class="link--icon link--icon--caret">
+                          <i class="vi vi-arrow button__icon"></i>
+                          Selecteer bestuursorgaan
+                        </a>
+                      </div>
+                    </header>
+                  </div>
+                </div>
+
+                <div class="col--4-12 col--6-12--m col--1-1--s col--1-1--xs">
+                  <div class="info-tile info-tile--badge--bottom info-tile--s">
+                    <header class="info-tile__header">
+                      <div class="info-tile__badge__wrapper">
+                        <div class="badge badge--m badge--icon badge--accent">
+                          <i class="badge__icon fa fa-building" aria-hidden="true"></i>
+                          <span class="u-visually-hidden">Type: bestuur</span>
+                        </div>
+                      </div>
+                      <div class="info-tile__header__wrapper">
+                        <h3 class="info-tile__header__title">Provincie-<br>bestuur</h3>
+                        <p class="info-tile__header__subtitle u-spacer--tiny">Korte omschrijving</p>
+                        <a href="#bestuursorgaan" class="link--icon link--icon--caret">
+                          <i class="vi vi-arrow button__icon"></i>
+                          Selecteer bestuursorgaan
+                        </a>
+                      </div>
+                    </header>
+                  </div>
+                </div>
+
+                <div class="col--4-12 col--6-12--m col--1-1--s col--1-1--xs">
+                  <div class="info-tile info-tile--badge--bottom info-tile--s">
+                    <header class="info-tile__header">
+                      <div class="info-tile__badge__wrapper">
+                        <div class="badge badge--m badge--icon badge--accent">
+                          <i class="badge__icon fa fa-building" aria-hidden="true"></i>
+                          <span class="u-visually-hidden">Type: bestuur</span>
+                        </div>
+                      </div>
+                      <div class="info-tile__header__wrapper">
+                        <h3 class="info-tile__header__title">Autonoom<br>Provinciebedrijf (APB)</h3>
+                        <p class="info-tile__header__subtitle u-spacer--tiny">Korte omschrijving</p>
+                        <a href="#bestuursorgaan" class="link--icon link--icon--caret">
+                          <i class="vi vi-arrow button__icon"></i>
+                          Selecteer bestuursorgaan
+                        </a>
+                      </div>
+                    </header>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="step step--no-box" id="bestuurorgaan">
+        {{!-- {{unless werkingsgebied "step--disabled"}} --}}
+        <div class="step__icon">1</div>
+        <div class="step__wrapper">
+          <div class="step__header">
+            <h3 class="step__title">Stap 1: Kies een type bestuur</h3>
+          </div>
+          <div class="step__content-wrapper">
+            <div class="step__content">
+              <div class="u-spacer--tiny">
+                <div aria-owns="ember-basic-dropdown-content-ember10" tabindex="0" role="button" class="ember-power-select-trigger ember-basic-dropdown-trigger">
+                  <span class="ember-power-select-placeholder">Oost-Vlaanderen, Berchem, Hasselt, ...</span>
+                  <span class="ember-power-select-status-icon"></span>
+                </div>
+              </div>
+              {{#link-to "bestuursorgaan.functionarissen" "dummy_id" class="button button--large"}}
+                Kies bestuur
+              {{/link-to}}
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="u-hr u-hr--label u-hr--label--centered u-spacer--tb--large"><span>of</span></div>
+
+    <div class="grid u-spacer--tb--large">
+      <div class="col--8-12 col--12-12--s">
+        <h2 class="h3 u-spacer--tiny">Download leidinggevendendatabank</h2>
+        <p>Overzicht van alle besturen in de huidige bestuursperiode.</p>
+      </div>
+      <div class="col--4-12 col--12-12--s u-align-right--medium-up">
+        {{!-- bestuursperiode select here --}}
+      </div>
+    </div>
+    <div class="grid">
+      <div class="col--4-12 col--12-12--s">
+        <div class="u-spacer--bottom document-miniature">
+          <div class="document-miniature__type">
+            <span class="document-miniature__type__text">CSV</span>
+          </div>
+          <div class="document-miniature__content">
+            <a class="document-miniature__title">CSV: voor spreadsheet editors zoals Excel of Numbers.</a>
+            <div class="document-miniature__metadata">CSV - 57.1MB - 30/04/2019 08:43</div>
+          </div>
+        </div>
+      </div>
+      <div class="col--4-12 col--12-12--s">
+        <div class="u-spacer--bottom document-miniature">
+          <div class="document-miniature__type">
+            <span class="document-miniature__type__text">Turtle</span>
+          </div>
+          <div class="document-miniature__content">
+            <a class="document-miniature__title">Turtle: gestructureerde data voor dataverwerking en analyse.</a>
+            <div class="document-miniature__metadata">Turtle - 35.1MB - 30/04/2019 10:19</div>
+          </div>
+        </div>
+      </div>
+      <p>Mail naar <a href="mailto:LoketLokaalBestuur@vlaanderen.be">LoketLokaalBestuur@vlaanderen.be</a> voor meer informatie.</p>
+    </div>
+
+    {{outlet}}
+  </div>
+</div>
