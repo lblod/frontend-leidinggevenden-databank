@@ -6,10 +6,6 @@
 
   {{#unless isFastBoot}} {{wu-widget src=header class="vo-header-widget"}} {{/unless}}
 
-  {{#wu-content-header title="Leidinggevendendatabank"}}
-    <img sizes="50vw" src="/assets/images/banner-leidinggevenden.jpg" srcset="/assets/images/banner-leidinggevenden-320.jpg 320w, /assets/images/banner-leidinggevenden-1024.jpg 1024w, /assets/images/banner-leidinggevenden-1600.jpg 1600w" alt="" title="">
-  {{/wu-content-header}}
-
   {{#with-rdfa-prefixes-and-vocab}}
     {{outlet}}
   {{/with-rdfa-prefixes-and-vocab}}
