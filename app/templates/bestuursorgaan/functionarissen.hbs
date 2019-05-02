@@ -3,7 +3,7 @@
     <div class="grid">
       <div class="col--6-12">
         <a class="link--icon">
-          <small><i  class="vi-arrow vi-u-180deg vi "></i> Terug naar zoeken</small>
+          <small><i  class="vi-arrow vi-u-180deg vi"></i> Terug naar zoeken</small>
         </a>
       </div>
     </div>
@@ -51,7 +51,7 @@
 
           <th class="u-visible--tablet-portrait-up sortable">
             <a class="data-table__header-title--sortable">
-              Start
+              Start {{!-- Discussie starten of dit relevant is voor de burgers --}}
               <span class="u-visually-hidden">Aflopend sorteren</span>
               <i class="data-table__header-title__sort-icon vi-u-link-after vi-u-180deg vi-long-arrow vi"></i>
             </a>
@@ -59,7 +59,7 @@
 
           <th class="u-visible--tablet-portrait-up sortable">
             <a class="data-table__header-title--sortable">
-              Einde
+              Einde {{!-- Discussie starten of dit relevant is voor de burgers --}}
               <span class="u-visually-hidden">Aflopend sorteren</span>
               <i class="data-table__header-title__sort-icon vi-u-link-after vi-u-180deg vi-long-arrow vi"></i>
             </a>
@@ -107,6 +107,82 @@
       </tbody>
 
     </table>
+
+    <div class="u-hr u-hr--label u-hr--label--centered u-spacer--tb--large"><span>of</span></div>
+
+    <div>
+      {{#contact-card as |c|}}
+        {{#c.header}}Algemeen Directeur{{/c.header}}
+        {{#c.content contactInfo=contactInfo as |content|}}
+          {{#content.row label="Aangesteld"}}
+            <strong>Voornaam (of Roepnaam?) Familienaam</strong>
+          {{/content.row}}
+          {{#content.row label="Waarnemend"}}
+            <strong>Voornaam (of Roepnaam?) Familienaam</strong>
+          {{/content.row}}
+          {{!-- Discussie {{#content.row label="Contactpersoon"}}
+            <strong>Voornaam (of Roepnaam?) Familienaam</strong>
+          {{/content.row}} --}}
+          {{content.telephone}}
+          {{content.email}}
+          {{content.address}}
+        {{/c.content}}
+      {{/contact-card}}
+    </div>
+
+		<div class="contact-card">
+			<header>
+				<h1 class="contact-card__title">Algemeen Directeur</h1>
+			</header>
+			<div class="contact-card__content-wrapper">
+				<div class="contact-card__content grid">
+					<div class="col--6-12 col--1-1--s"> {{!-- contact-card__data --}}
+						<dl>
+							<dt class="contact-card__data__title">Aangesteld</dt>
+							<dd class="contact-card__data__content"><strong>Maria Proesmans</strong></dd>
+							<dt class="contact-card__data__title">Waarnemend</dt>
+							<dd class="contact-card__data__content"><strong>Jos Bynens</strong></dd>
+							<dt class="contact-card__data__title">Adres</dt>
+							<dd class="contact-card__data__content">
+								<div data-lat="50.8626661" data-lng="4.3591373">
+									<div><span>Koning Albert II-laan 35 bus 12</span></div>
+									<div><span>1030</span> <span>Brussel</span></div>
+									<div><span>België</span></div>
+								</div>
+							</dd>
+							<dt class="contact-card__data__title">Telefoon</dt>
+							<dd class="contact-card__data__content"><a href="tel:+32 800 20 555">
+									0800
+									20 555</a></dd>
+							{{!-- <dt class="contact-card__data__title">Fax</dt> --}}
+							{{!-- <dd class="contact-card__data__content">02 553 38 69</dd> --}}
+							<dt class="contact-card__data__title">E-mail</dt>
+							<dd class="contact-card__data__content">
+								<ul>
+									<li><a href="mailto:info@agentschapondernemen.be">algemeendirecteur@aartselaar.be</a></li>
+								</ul>
+							</dd>
+{{!-- 							<dt class="contact-card__data__title">Website</dt>
+							<dd class="contact-card__data__content">
+								<ul>
+									<li><a href="http://www.agentschapondernemen.be">http://www.agentschapondernemen.be</a></li>
+								</ul>
+							</dd> --}}
+						</dl>
+					</div>
+					<div class="col--6-12 col--1-1--s u-background--gray-lightest">Map {{!-- contact-card__map  --}}
+
+						{{!-- <div class="map">
+							<noscript>
+								<div class="map__static-card"><a href="https://maps.google.com?q=Koning%20Albert%20II-laan%2035%2C1030%20Brussel" target="_blank"><img target="_blank" src="https://maps.google.com/maps/api/staticmap?center=50.8626661%2C4.3591373&amp;zoom=15&amp;sensor=false&amp;markers=50.8626661%2C4.3591373&amp;scale=1&amp;key=AIzaSyB6bIbIEjYopAx44fVXA0SCun8FR3HvJkA&amp;size=399x226&amp;style=feature%3Aadministrative%7Celement%3Aall%7Cvisbility%3Aoff&amp;style=feature%3Aadministrative%7Celement%3Alabels.text.fill%7Cvisibility%3Aon%7Ccolor%3A%23444444&amp;style=feature%3Alandscape%7Celement%3Aall%7Cvisibility%3Aon%7Ccolor%3A%23ebecef&amp;style=feature%3Apoi%7Celement%3Aall%7Cvisibility%3Aoff&amp;style=feature%3Apoi.park%7Celement%3Aall%7Cvisibility%3Aon%7Ccolor%3A%23c4da7b&amp;style=feature%3Aroad%7Celement%3Aall%7Csaturation%3A-100%7Clightness%3A50%7Cvisibility%3Asimplified%7Cgamma%3A1&amp;style=feature%3Aroad%7Celement%3Ageometry%7Cvisibility%3Aoff&amp;style=feature%3Aroad%7Celement%3Alabels%7Cvisibility%3Aoff&amp;style=feature%3Aroad%7Celement%3Alabels.text%7Cgamma%3A0.54&amp;style=feature%3Aroad.highway%7Celement%3Aall%7Cvisibility%3Asimplified&amp;style=feature%3Aroad.highway%7Celement%3Ageometry%7Cvisibility%3Asimplified%7Ccolor%3A%23cbd2da&amp;style=feature%3Aroad.highway.controlled_access%7Celement%3Aall%7Cvisibility%3Asimplified&amp;style=feature%3Aroad.highway.controlled_access%7Celement%3Alabels.icon%7Cgamma%3A0.58&amp;style=feature%3Aroad.arterial%7Celement%3Aall%7Cvisibility%3Asimplified&amp;style=feature%3Aroad.arterial%7Celement%3Ageometry.fill%7Cvisibility%3Aon&amp;style=feature%3Aroad.arterial%7Celement%3Ageometry.stroke%7Cvisibility%3Aon%7Ccolor%3A%23cbd2da&amp;style=feature%3Aroad.arterial%7Celement%3Alabels.text.stroke%7Cvisibility%3Asimplified&amp;style=feature%3Aroad.arterial%7Celement%3Alabels.icon%7Cvisibility%3Aoff&amp;style=feature%3Aroad.local%7Celement%3Aall%7Cvisibility%3Asimplified&amp;style=feature%3Aroad.local%7Celement%3Ageometry.fill%7Cvisibility%3Aon&amp;style=feature%3Aroad.local%7Celement%3Ageometry.stroke%7Cvisibility%3Aon%7Cgamma%3A7.17%7Ccolor%3A%23cbd2da&amp;style=feature%3Atransit%7Celement%3Aall%7Cvisibility%3Aoff&amp;style=feature%3Awater%7Celement%3Aall%7Ccolor%3A%23bfdfe9%7Cvisibility%3Asimplified" alt="" /></a></div>
+							</noscript>
+							<div class="map__interactive-card js-interactive-card" data-lat="50.8626661" data-lng="4.3591373"></div><a class="map__enlarge" href="https://maps.google.com?q=Koning%20Albert%20II-laan%2035%2C1030%20Brussel" target="_blank"><span class="u-hidden-text">View in google maps</span></a>
+						</div> --}}
+					</div>
+				</div>
+			</div>
+		</div>
+
   </div>
 </div>
 
