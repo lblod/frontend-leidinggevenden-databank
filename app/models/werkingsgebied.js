@@ -1,21 +1,22 @@
 import attr from 'ember-data/attr';
 import Model from 'ember-data/model';
-import { collect } from '@ember/object/computed';
+import { computed }  from '@ember/object';
 import { hasMany } from 'ember-data/relationships';
 
 export default Model.extend({
-  // A string representation of this model, based on its attributes.
-  // This is what mu-cl-resources uses to search on, and how the model will be presented while editing relationships.
-  stringRep: collect.apply(this,['id', 'naam', 'niveau']),
+  longName: computed('niveau', 'naam', function(){
+    let niveau = this.niveau;
+    let naam = this.naam;
+    return `${naam} (${niveau})`;
+  }),
 
   uri: attr(),
   naam: attr(),
   niveau: attr(),
-  bestuurseenheid: hasMany('bestuurseenheid', { inverse: null }),
+  bestuurseenheid: hasMany('bestuurseenheid', { inverse: 'werkingsgebied' }),
 
-  rdfaBindings: Object.freeze({
+  rdfaBindings: { // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
     class: "prov:Location",
-    naam: "rdfs:label",
-    niveau: "ext:werkingsgebiedNiveau"
-  })
+    naam: "rdfs:label"
+  }
 });

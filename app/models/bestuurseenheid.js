@@ -10,24 +10,19 @@ export default Model.extend({
 
   uri: attr(),
   naam: attr(),
-  wilMailOntvangen: attr(),
-  mailAdres: attr(),
-  werkingsgebied: belongsTo('werkingsgebied', { inverse: null }),
-  classificatie: belongsTo('bestuurseenheid-classificatie-code', { inverse: null }),
-  primaireSite: belongsTo('vestiging', { inverse: null }),
-  contactinfo: hasMany('contact-punt', { inverse: null }),
-  posities: hasMany('positie', { inverse: null }),
-  bestuursorganen: hasMany('bestuursorgaan', { inverse: null }),
+  mailAdres: attr('string'),
+  wilMailOntvangen: attr('boolean'),
 
-  rdfaBindings: Object.freeze({
-    class: "besluit:Bestuurseenheid",
-    naam: "skos:prefLabel",
-    wilMailOntvangen: "ext:wilMailOntvangen",
-    mailAdres: "ext:mailAdresVoorNotificaties",
-    werkingsgebied: "besluit:werkingsgebied",
-    classificatie: "besluit:classificatie",
-    primaireSite: "org:hasPrimarySite",
-    contactinfo: "schema:contactPoint",
-    posities: "org:hasPost"
-  })
+  werkingsgebied: belongsTo('werkingsgebied', { inverse: 'bestuurseenheid' }),
+  classificatie: belongsTo('bestuurseenheid-classificatie-code', { inverse: null }),
+  contactinfo: hasMany('contact-punt', { inverse: null }),
+  bestuursorganen: hasMany('bestuursorgaan', { inverse: 'bestuurseenheid' }),
+
+  rdfaBindings: { // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
+    naam: "http://www.w3.org/2004/02/skos/core#prefLabel",
+    class: "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
+    werkingsgebied: "http://data.vlaanderen.be/ns/besluit#werkingsgebied",
+    bestuursorgaan: "http://data.vlaanderen.be/ns/besluit#bestuurt",
+    classificatie: "http://data.vlaanderen.be/ns/besluit#classificatie"
+  }
 });
