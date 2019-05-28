@@ -11,7 +11,7 @@ Router.map(function() {
     path: '/*wildcard'
   });
   this.route('bestuursorgaan', function() {
-    this.route('functionarissen', {path: ":bestuursorgaan_id/functionarissen"});
+    this.route('functionarissen', {path: ":bestuureenheid_id/functionarissen"});
   });
 });
 
