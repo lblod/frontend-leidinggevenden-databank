@@ -11,7 +11,7 @@ export default Model.extend({
   uri: attr(),
   label: attr(),
   scopeNote: attr(),
-  mandatarissen: hasMany('mandatari', { inverse: null }),
+  mandatarissen: hasMany('mandataris', { inverse: null }),
 
   rdfaBindings: Object.freeze({
     class: "ext:BeleidsdomeinCode",

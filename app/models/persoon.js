@@ -15,7 +15,7 @@ export default Model.extend({
   geboorte: belongsTo('geboorte', { inverse: null }),
   identificator: belongsTo('identificator', { inverse: null }),
   geslacht: belongsTo('geslacht-code', { inverse: null }),
-  isAangesteldAls: hasMany('mandatari', { inverse: null }),
+  isAangesteldAls: hasMany('mandataris', { inverse: null }),
   isKandidaatVoor: hasMany('kandidatenlijst', { inverse: null }),
   verkiezingsresultaten: hasMany('verkiezingsresultaat', { inverse: null }),
 
