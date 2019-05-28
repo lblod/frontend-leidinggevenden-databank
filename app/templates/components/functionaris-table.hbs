@@ -11,12 +11,12 @@
   {{#t.content as |c|}}
 
     {{#c.header}}
-      {{th-sortable label='Functie'         field='bekleedt.rol.label'                        currentSorting=sort}}
-      {{th-sortable label='Voornaam'        field='is-bestuurlijke-alias-van.gebruikte-voornaam'  currentSorting=sort}}
-      {{th-sortable label='Familienaam'     field='is-bestuurlijke-alias-van.achternaam'         currentSorting=sort}}
-      {{th-sortable label='Status'          field='status.label'                              currentSorting=sort}}
-      {{th-sortable label='Contactgegevens' field='bekleedt.contactinfo.email'                currentSorting=sort}}
-      {{th-sortable label='Adres'           field='bekleedt.contactinfo.adres'                currentSorting=sort}}
+      {{th-sortable label='Functie' field='bekleedt.rol.label' currentSorting=sort}}
+      {{th-sortable label='Voornaam' field='is-bestuurlijke-alias-van.gebruikte-voornaam' currentSorting=sort}}
+      {{th-sortable label='Familienaam' field='is-bestuurlijke-alias-van.achternaam' currentSorting=sort}}
+      {{th-sortable label='Status' field='status.label' currentSorting=sort}}
+      {{th-sortable label='Contactgegevens' field='bekleedt.contactinfo.email' currentSorting=sort}}
+      {{th-sortable label='Adres' field='bekleedt.contactinfo.adres' currentSorting=sort}}
     {{/c.header}}
 
     {{#if (eq content.length 0)}}
