@@ -11,11 +11,5 @@ export default Model.extend({
   uri: attr(),
   rol: belongsTo('bestuursfunctie-code', { inverse: null }),
   contactinfo: belongsTo('contact-punt', { inverse: null }),
-  bevatIn: hasMany('bestuurorgaan', { inverse: null }),
-
-  rdfaBindings: Object.freeze({
-    class: "lblodlg:Bestuursfunctie",
-    rol: "org:role",
-    contactinfo: "schema:contactPoint"
-  })
+  bevatIn: hasMany('bestuursorgaan', { inverse: null })
 });
