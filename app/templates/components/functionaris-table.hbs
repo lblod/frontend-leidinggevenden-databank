@@ -1,0 +1,48 @@
+{{#data-table
+  content=content
+  isLoading=isLoadingModel
+  noDataMessage=""
+  sort=sort
+  page=page
+  size=size
+  class="container-flex--contain data-table data-table--tight data-table--nowrap"
+
+  as |t|}}
+  {{#t.content as |c|}}
+
+    {{#c.header}}
+      {{th-sortable label='Functie'         field='bekleedt.rol.label'                        currentSorting=sort}}
+      {{th-sortable label='Voornaam'        field='is-bestuurlijke-alias-van.gebruikte-voornaam'  currentSorting=sort}}
+      {{th-sortable label='Familienaam'     field='is-bestuurlijke-alias-van.achternaam'         currentSorting=sort}}
+      {{th-sortable label='Status'          field='status.label'                              currentSorting=sort}}
+      {{th-sortable label='Contactgegevens' field='bekleedt.contactinfo.email'                currentSorting=sort}}
+      {{th-sortable label='Adres'           field='bekleedt.contactinfo.adres'                currentSorting=sort}}
+    {{/c.header}}
+
+    {{#if (eq content.length 0)}}
+      {{yield}}
+    {{else}}
+      {{#c.body as |row|}}
+        <td>{{row.bekleedt.rol.label}}</td>
+        <td>{{row.isBestuurlijkeAliasVan.gebruikteVoornaam}}</td>
+        <td>{{row.isBestuurlijkeAliasVan.achternaam}}</td>
+        <td>{{row.status.label}}</td>
+        <td class="u-hidden-mobile word-break--break-word">
+          {{#if row.bekleedt.contactinfo.email}}
+            {{row.bekleedt.contactinfo.email}}
+          {{else}}
+            <span class="text-fade">Onbepaald</span>
+          {{/if}}
+        </td>
+        <td class="u-hidden-mobile word-break--break-word">
+          {{#if row.bekleedt.contactinfo.adres}}
+            {{row.bekleedt.contactinfo.adres}}
+          {{else}}
+            <span class="text-fade">Onbepaald</span>
+          {{/if}}
+        </td>
+      {{/c.body}}
+    {{/if}}
+
+  {{/t.content}}
+{{/data-table}}

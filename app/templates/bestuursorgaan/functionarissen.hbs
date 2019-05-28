@@ -14,80 +14,35 @@
   <div class="u-padding--tb" id="main">
 
     <div typeof="http://data.vlaanderen.be/ns/besluit#Bestuursorgaan" resource="http://data.lblod.info/id/bestuursorganen/521b3f49b206a4c1269cd754cb8159f0e121e5fe6d333431ecdd78e183f71226">
-      <h1 class="h2 text-light u-spacer--bottom--tiny">Leidinggevenden van de <span property="http://www.w3.org/2004/02/skos/core#prefLabel">Gemeentebestuur Aartselaar</span></h1>
+      <h1 class="h2 text-light u-spacer--bottom--tiny">Leidinggevenden van de <span property="http://www.w3.org/2004/02/skos/core#prefLabel">{{bestuurseenheid.naam}}</span></h1>
     </div>
   </div>
 </div>
 
 <div class="u-padding--rl--small u-spacer--tb">
   <div class="container-flex--scroll">
-    <table class="data-table">
-      <thead>
-        <tr class="data-table__header">
-          <th class="sortable">
-            <a class="data-table__header-title--sortable">
-              Functie
-              <span class="u-visually-hidden">Aflopend sorteren</span>
-              <i class="data-table__header-title__sort-icon vi-u-link-after vi-u-180deg vi-long-arrow vi"></i>
-            </a>
-          </th>
-
-          <th class="sortable">
-            <a class="data-table__header-title--sortable">
-              Voornaam
-              <span class="u-visually-hidden">Aflopend sorteren</span>
-              <i class="data-table__header-title__sort-icon vi-u-link-after vi-u-180deg vi-long-arrow vi"></i>
-            </a>
-          </th>
-          <th class="sortable sorted">
-            <a class="data-table__header-title--sortable  data-table__header-title--sortable-active">Familienaam <span class="u-visually-hidden">Aflopend sorteren</span> <i class="data-table__header-title__sort-icon vi-u-link-after vi-u-180deg vi-long-arrow vi"></i></a>
-          </th>
-
-          <th class="u-visible--tablet-portrait-up sortable">
-            <a class="data-table__header-title--sortable">
-              Status
-              <span class="u-visually-hidden">Aflopend sorteren</span>
-              <i class="data-table__header-title__sort-icon vi-u-link-after vi-u-180deg vi-long-arrow vi"></i>
-            </a>
-          </th>
-
-          <th class="u-visible--tablet-landscape-up">
-            Contactgegevens
-          </th>
-
-          <th class="u-visible--tablet-landscape-up">
-            Adres
-          </th>
-        </tr>
-      </thead>
+    {{#functionaris-table
+      class="container-flex--contain"
+      content=model
+      sort=sort
+      page=page
+      size=size
+      displaySubset=hasActiveChildRoute
+      filter=filter
+      renderSmallTable=hasActiveChildRoute
+      data-test-loket="leidinggevendenbeheer-table"
+    }}
       <tbody>
-
         <tr>
-          <td>
-            <strong>Algemeen directeur</strong>
-          </td>
-          <td>
-            Glenn
-          </td>
-          <td>
-            Anné
-          </td>
-          <td class="u-visible--tablet-portrait-up">
-            Waarnemend
-          </td>
-          <td class="u-visible--tablet-portrait-up">
-            <p><a class="link--dark" href="mailto:mailadres.be">mailadres.be</a></p>
-            <p>011 21 14 30</p>
-            <br>
-          </td>
-          <td class="u-visible--tablet-portrait-up">
-            <p>Nepstraat 7B<br>3500 Hasselt</p>
+          <td class="u-align-center u-padding--round--small" colspan="6">
+            <p class="u-spacer--tiny">Geen aanstellingsperiode voor de functie {{bestuursfunctie.rol.label}} toegevoegd.</p>
+            {{wu-button label=(concat "Voeg aanstellingsperiode " bestuursfunctie.rol.label " toe")
+              onClick=(action "handleVoegNieuweAanstellingsperiodeClick")
+              isNarrow=true}}
           </td>
         </tr>
       </tbody>
-
-    </table>
-
+    {{/functionaris-table}}
   </div>
 </div>
 
