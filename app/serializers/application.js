@@ -5,8 +5,8 @@ export default DS.JSONAPISerializer.extend({
 
    /*********************************************************************************
     * Temporary workaround fastboot and ember-data-table/addon/mixins/serializer.js
-    * We keep these here, as we want to expement on how to tackle fastboot issues.
-    * Effective code changes will be precedet by //--- FASTBOOT WORKAROUND ---//
+    * We keep these here, as we want to experiment on how to tackle fastboot issues.
+    * Effective code changes will be preceded by //--- FASTBOOT WORKAROUND ---//
     *********************************************************************************/
 
   /**
