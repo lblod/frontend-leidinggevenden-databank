@@ -17,10 +17,7 @@ export default Component.extend({
   async didReceiveAttrs() {
     this._super(...arguments);
     if (this.value && !this.selected) {
-      const bestuurseenheids = this.store.query('bestuurseenheid', {
-        filter: { id: this.value },
-        page: { size: this.value.split(",").length}
-      });
+      const bestuurseenheids = await this.store.findRecord('bestuurseenheid', this.value);
       this.set('selected', bestuurseenheids);
     } else if (!this.value) {
       this.set('selected', null);
