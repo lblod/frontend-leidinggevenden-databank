@@ -20,8 +20,8 @@ export default Route.extend(DataTableRouteMixin, {
 
   /*********************************************************************************
    * Temporary workaround fastboot and ember-data-table/addon/mixins/route.js
-   * We keep these here, as we want to expement on how to tackle fastboot issues.
-   * Effective code changes will be precedet by //--- FASTBOOT WORKAROUND ---//
+   * We keep these here, as we want to experiment on how to tackle fastboot issues.
+   * Effective code changes will be preceded by //--- FASTBOOT WORKAROUND ---//
    *********************************************************************************/
   model(params) {
     const options = {
