@@ -8,6 +8,7 @@ export default Route.extend(DataTableRouteMixin, {
   mergeQueryOptions(params) {
     this.set('bestuurseenheidId', params.bestuureenheid_id);
     return {
+      'filter[bekleedt][bevat-in][is-tijdsspecialisatie-van][bestuurseenheid][:id:]': params.bestuureenheid_id
     };
   },
   
