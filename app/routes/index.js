@@ -4,4 +4,10 @@ export default Route.extend({
   queryParams: {
     bestuurseenheidId: { refreshModel: true }
   },
+
+  async model(params) {
+    return {
+      id: params.bestuurseenheidId ? params.bestuurseenheidId : ''
+    }
+  },
 });
