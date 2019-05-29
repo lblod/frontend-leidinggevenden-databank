@@ -3,16 +3,16 @@ import DataTableRouteMixin from 'ember-data-table/mixins/route';
 
 export default Route.extend(DataTableRouteMixin, {
   modelName: 'functionaris',
-  bestuurseenheid: null,
+  bestuurseenheidId: null,
 
-  async mergeQueryOptions(params) {
-    this.set('bestuurseenheid', await this.store.findRecord('bestuurseenheid', params.bestuureenheid_id));
+  mergeQueryOptions(params) {
+    this.set('bestuurseenheidId', params.bestuureenheid_id);
     return {
     };
   },
-
+  
   async setupController(controller, model) {
     this._super(controller, model);
-    controller.set('bestuurseenheid', this.bestuurseenheid);
+    controller.set('bestuurseenheid', await this.store.findRecord('bestuurseenheid', this.bestuurseenheidId));
   }
 });
