@@ -1,5 +1,6 @@
 import Route from '@ember/routing/route';
 import DataTableRouteMixin from 'ember-data-table/mixins/route';
+import _ from 'lodash';
 
 export default Route.extend(DataTableRouteMixin, {
   modelName: 'functionaris',
@@ -11,9 +12,43 @@ export default Route.extend(DataTableRouteMixin, {
       'filter[bekleedt][bevat-in][is-tijdsspecialisatie-van][bestuurseenheid][:id:]': params.bestuureenheid_id
     };
   },
-  
+
   async setupController(controller, model) {
     this._super(controller, model);
     controller.set('bestuurseenheid', await this.store.findRecord('bestuurseenheid', this.bestuurseenheidId));
+  },
+
+  /*********************************************************************************
+   * Temporary workaround fastboot and ember-data-table/addon/mixins/route.js
+   * We keep these here, as we want to expement on how to tackle fastboot issues.
+   * Effective code changes will be precedet by //--- FASTBOOT WORKAROUND ---//
+   *********************************************************************************/
+  model(params) {
+    const options = {
+        sort: params.sort,
+        page: {
+          number: params.page,
+          size: params.size
+        }
+    };
+    // TODO: sending an empty filter param to backend returns []
+    if (params.filter) { options['filter'] = params.filter; }
+
+
+    //--- FASTBOOT WORKAROUND ---//
+
+    //previous code
+
+    // $.extend(options, this.mergeQueryOptions(params));
+
+    // $.extend is complex, so opted to use lodash
+    _.merge(options, this.mergeQueryOptions(params));
+
+
+    return this.get('store').query(this.get('modelName'), options);
   }
+
+  /*********************************************************************************
+   * end workaround
+  *********************************************************************************/
 });
