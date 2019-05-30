@@ -9,7 +9,7 @@ export default Component.extend({
     this._super(...arguments);
     const options = this.store.query('bestuurseenheid', {
       sort: 'naam',
-      include: ['classificatie']
+      include: 'classificatie'
     });
     this.set('options', options);
   },
@@ -32,7 +32,7 @@ export default Component.extend({
     yield timeout(600);
     return this.store.query('bestuurseenheid', {
       sort: 'naam',
-      include: ['classificatie'],
+      include: 'classificatie',
       filter: term
     });
   }),
