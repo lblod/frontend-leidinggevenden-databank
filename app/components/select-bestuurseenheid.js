@@ -17,8 +17,8 @@ export default Component.extend({
   async didReceiveAttrs() {
     this._super(...arguments);
     if (this.value && !this.selected) {
-      const bestuurseenheids = await this.store.findRecord('bestuurseenheid', this.value);
-      this.set('selected', bestuurseenheids);
+      const bestuurseenheid = await this.store.findRecord('bestuurseenheid', this.value);
+      this.set('selected', bestuurseenheid);
     } else if (!this.value) {
       this.set('selected', null);
     }
