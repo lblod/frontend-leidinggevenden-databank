@@ -23,12 +23,7 @@
       {{yield}}
     {{else}}
       {{#c.body as |row|}}
-        {{!-- <td>{{row.bekleedt.rol.label}}</td> --}}
-        {{#with-rdfa-context tagName="td" model=row as |ctx|}}
-          {{debugger}}
-          {{ctx.get prop="einde"}}
-        {{/with-rdfa-context}}
-
+        <td>{{row.bekleedt.rol.label}}</td>
         <td>{{row.isBestuurlijkeAliasVan.gebruikteVoornaam}}</td>
         <td>{{row.isBestuurlijkeAliasVan.achternaam}}</td>
         <td>{{row.status.label}}</td>
