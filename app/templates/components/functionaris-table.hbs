@@ -15,12 +15,8 @@
       {{th-sortable label="Voornaam" field="is-bestuurlijke-alias-van.gebruikte-voornaam" currentSorting=sort}}
       {{th-sortable label="Familienaam" field="is-bestuurlijke-alias-van.achternaam" currentSorting=sort}}
       {{th-sortable label="Status" field="status.label" currentSorting=sort}}
-      {{th-sortable label="Contactgegevens" field="bekleedt.contactinfo.email" currentSorting=sort}}
+      <th>Contactgegevens</th>
       {{th-sortable label="Adres" field="bekleedt.contactinfo.adres" currentSorting=sort}}
-      {{th-sortable label="Email" field="bekleedt.contactinfo.email" currentSorting=sort}}
-      {{th-sortable label="Telephone" field="bekleedt.contactinfo.telephone" currentSorting=sort}}
-      {{th-sortable label="Website" field="bekleedt.contactinfo.website" currentSorting=sort}}
-      {{th-sortable label="Fax" field="bekleedt.contactinfo.fax" currentSorting=sort}}
     {{/c.header}}
 
     {{#if (eq content.length 0)}}
@@ -32,43 +28,14 @@
         <td>{{row.isBestuurlijkeAliasVan.achternaam}}</td>
         <td>{{row.status.label}}</td>
         <td class="u-hidden-mobile word-break--break-word">
-          {{#if row.bekleedt.contactinfo.email}}
-            {{row.bekleedt.contactinfo.email}}
-          {{else}}
-            <span class="text-fade">Onbepaald</span>
-          {{/if}}
+          <p>email: {{{if row.bekleedt.contactinfo.email row.bekleedt.contactinfo.email onbepaald}}}</p>
+          <p>website: {{{if row.bekleedt.contactinfo.website row.bekleedt.contactinfo.website onbepaald}}}</p>
+          <p>telephone: {{{if row.bekleedt.contactinfo.telephone row.bekleedt.contactinfo.telephone onbepaald}}}</p>
+          <p>fax: {{{if row.bekleedt.contactinfo.fax row.bekleedt.contactinfo.fax onbepaald}}}</p>
         </td>
         <td class="u-hidden-mobile word-break--break-word">
           {{#if row.bekleedt.contactinfo.adres}}
             {{row.bekleedt.contactinfo.adres}}
-          {{else}}
-            <span class="text-fade">Onbepaald</span>
-          {{/if}}
-        </td>
-        <td class="u-hidden-mobile word-break--break-word">
-          {{#if row.bekleedt.contactinfo.email}}
-            {{row.bekleedt.contactinfo.email}}
-          {{else}}
-            <span class="text-fade">Onbepaald</span>
-          {{/if}}
-        </td>
-        <td class="u-hidden-mobile word-break--break-word">
-          {{#if row.bekleedt.contactinfo.telephone}}
-            {{row.bekleedt.contactinfo.telephone}}
-          {{else}}
-            <span class="text-fade">Onbepaald</span>
-          {{/if}}
-        </td>
-        <td class="u-hidden-mobile word-break--break-word">
-          {{#if row.bekleedt.contactinfo.website}}
-            {{row.bekleedt.contactinfo.website}}
-          {{else}}
-            <span class="text-fade">Onbepaald</span>
-          {{/if}}
-        </td>
-        <td class="u-hidden-mobile word-break--break-word">
-          {{#if row.bekleedt.contactinfo.fax}}
-            {{row.bekleedt.contactinfo.fax}}
           {{else}}
             <span class="text-fade">Onbepaald</span>
           {{/if}}
