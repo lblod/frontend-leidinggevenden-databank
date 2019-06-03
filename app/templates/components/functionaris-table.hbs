@@ -23,28 +23,74 @@
       {{yield}}
     {{else}}
       {{#c.body as |row|}}
-        {{!-- <td>{{row.bekleedt.rol.label}}</td> --}}
-        {{#with-rdfa-context tagName="td" model=row as |ctx|}}
-          {{debugger}}
-          {{ctx.get prop="einde"}}
+        {{#with-rdfa-context tagName="td" model=row as |ctx1|}}
+          {{#ctx1.get prop="bekleedt" as |ctx2| }}
+            {{#ctx2.get prop="rol" as |ctx3|}}
+              {{#ctx3.get prop="label" as |label|}}
+                {{label}}
+              {{/ctx3.get}}
+            {{/ctx2.get}}
+          {{/ctx1.get}}
         {{/with-rdfa-context}}
 
-        <td>{{row.isBestuurlijkeAliasVan.gebruikteVoornaam}}</td>
-        <td>{{row.isBestuurlijkeAliasVan.achternaam}}</td>
-        <td>{{row.status.label}}</td>
-        <td class="u-hidden-mobile word-break--break-word">
-          <p>email: {{{if row.bekleedt.contactinfo.email row.bekleedt.contactinfo.email onbepaald}}}</p>
-          <p>website: {{{if row.bekleedt.contactinfo.website row.bekleedt.contactinfo.website onbepaald}}}</p>
-          <p>telephone: {{{if row.bekleedt.contactinfo.telephone row.bekleedt.contactinfo.telephone onbepaald}}}</p>
-          <p>fax: {{{if row.bekleedt.contactinfo.fax row.bekleedt.contactinfo.fax onbepaald}}}</p>
-        </td>
-        <td class="u-hidden-mobile word-break--break-word">
-          {{#if row.bekleedt.contactinfo.adres}}
-            {{row.bekleedt.contactinfo.adres}}
-          {{else}}
-            <span class="text-fade">Onbepaald</span>
-          {{/if}}
-        </td>
+        {{#with-rdfa-context tagName="td" model=row as |ctx1|}}
+          {{#ctx1.get prop="isBestuurlijkeAliasVan" as |ctx2| }}
+            {{#ctx2.get prop="gebruikteVoornaam" as |voornaam|}}
+              {{voornaam}}
+            {{/ctx2.get}}
+          {{/ctx1.get}}
+        {{/with-rdfa-context}}
+
+        {{#with-rdfa-context tagName="td" model=row as |ctx1|}}
+          {{#ctx1.get prop="isBestuurlijkeAliasVan" as |ctx2| }}
+            {{#ctx2.get prop="achternaam" as |achternaam|}}
+              {{achternaam}}
+            {{/ctx2.get}}
+          {{/ctx1.get}}
+        {{/with-rdfa-context}}
+
+        {{#with-rdfa-context tagName="td" model=row as |ctx1|}}
+          {{#ctx1.get prop="status" as |ctx2| }}
+            {{#ctx2.get prop="label" as |label|}}
+              {{label}}
+            {{/ctx2.get}}
+          {{/ctx1.get}}
+        {{/with-rdfa-context}}
+
+        {{#with-rdfa-context
+          tagName="td"
+          class="u-hidden-mobile word-break--break-word"
+          model=row as |functionaris|}}
+          {{#functionaris.get prop="bekleedt" as |bekleedt| }}
+            {{#bekleedt.get prop="contactinfo" as |contactinfo|}}
+              {{#contactinfo.get prop="email" as |email|}}
+                email: {{{if email email onbepaald}}}
+              {{/contactinfo.get}}
+              {{#contactinfo.get prop="website" as |website|}}
+                website: {{{if website website onbepaald}}}
+              {{/contactinfo.get}}
+              {{#contactinfo.get prop="telephone" as |telephone|}}
+                telephone: {{{if telephone telephone onbepaald}}}
+              {{/contactinfo.get}}
+              {{#contactinfo.get prop="fax" as |fax|}}
+                fax: {{{if fax fx onbepaald}}}
+              {{/contactinfo.get}}
+            {{/bekleedt.get}}
+          {{/functionaris.get}}
+        {{/with-rdfa-context}}
+
+        {{#with-rdfa-context
+          tagName="td"
+          class="u-hidden-mobile word-break--break-word"
+          model=row as |functionaris|}}
+          {{#functionaris.get prop="bekleedt" as |bekleedt| }}
+            {{#bekleedt.get prop="contactinfo" as |contactinfo|}}
+              {{#contactinfo.get prop="adres" as |adres|}}
+                {{{if adres adres onbepaald}}}
+              {{/contactinfo.get}}
+            {{/bekleedt.get}}
+          {{/functionaris.get}}
+        {{/with-rdfa-context}}
       {{/c.body}}
     {{/if}}
 
