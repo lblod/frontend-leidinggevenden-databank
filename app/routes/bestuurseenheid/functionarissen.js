@@ -11,13 +11,13 @@ export default Route.extend(DataTableRouteMixin, {
     return {
       'include': 'bekleedt.rol,is-bestuurlijke-alias-van,status,bekleedt.contactinfo',
       'filter[bekleedt][bevat-in][is-tijdsspecialisatie-van][bestuurseenheid][:id:]': params.bestuureenheid_id
-      //'filter[:gte:einde]': new Date().toISOString() //@MEHRAN: this needs other filter probably more logic in setupController
     };
   },
 
   async setupController(controller, model) {
     this._super(controller, model);
     controller.set('bestuurseenheid', await this.store.findRecord('bestuurseenheid', this.bestuurseenheidId));
+    controller.set('model', model.filter(functionaris => functionaris.isOngoing));
   },
 
   /*********************************************************************************
