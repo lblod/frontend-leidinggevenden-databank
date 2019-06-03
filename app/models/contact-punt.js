@@ -15,5 +15,17 @@ export default Model.extend({
   email: attr(),
   telephone: attr(),
   fax: attr(),
-  website: attr()
+  website: attr(),
+
+  rdfaBindings: Object.freeze({
+    class: "schema:PostalAddress",
+    land: "schema:addressCountry",
+    gemeente: "schema:addressLocality",
+    adres: "schema:streetAddress",
+    postcode: "schema:postalCode",
+    email: "schema:email",
+    telephone: "schema:telephone",
+    fax: "schema:faxNumber",
+    website: "schema:url"
+  })
 });
