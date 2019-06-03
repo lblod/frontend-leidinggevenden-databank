@@ -5,9 +5,9 @@ export default Route.extend({
     bestuurseenheidId: { refreshModel: true }
   },
 
-  async model(params) {
+  model(params) {
     return {
       id: params.bestuurseenheidId ? params.bestuurseenheidId : ''
-    }
-  },
+    };
+  }
 });
