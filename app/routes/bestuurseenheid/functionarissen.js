@@ -9,8 +9,9 @@ export default Route.extend(DataTableRouteMixin, {
   mergeQueryOptions(params) {
     this.set('bestuurseenheidId', params.bestuureenheid_id);
     return {
-      'filter[bekleedt][bevat-in][is-tijdsspecialisatie-van][bestuurseenheid][:id:]': params.bestuureenheid_id,
-      'filter[:gte:einde]': new Date().toISOString()
+      'include': 'bekleedt.rol,is-bestuurlijke-alias-van,status,bekleedt.contactinfo',
+      'filter[bekleedt][bevat-in][is-tijdsspecialisatie-van][bestuurseenheid][:id:]': params.bestuureenheid_id
+      //'filter[:gte:einde]': new Date().toISOString() //@MEHRAN: this needs other filter probably more logic in setupController
     };
   },
 
