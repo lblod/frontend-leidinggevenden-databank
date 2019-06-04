@@ -1,8 +1,10 @@
 import Route from '@ember/routing/route';
 import DataTableRouteMixin from 'ember-data-table/mixins/route';
 import _ from 'lodash';
+import { inject as service } from '@ember/service';
 
 export default Route.extend(DataTableRouteMixin, {
+  fastboot: service(),
   modelName: 'functionaris',
   bestuurseenheidId: null,
 
@@ -18,6 +20,12 @@ export default Route.extend(DataTableRouteMixin, {
     this._super(controller, model);
     controller.set('bestuurseenheid', await this.store.findRecord('bestuurseenheid', this.bestuurseenheidId));
     
+  },
+  
+  async afterModel(model, transition) {
+    if (this.fastboot.isFastBoot) {
+      this.set('bestuurseenheid', await this.store.findRecord('bestuurseenheid', this.bestuurseenheidId));
+    }
   },
 
   /*********************************************************************************
