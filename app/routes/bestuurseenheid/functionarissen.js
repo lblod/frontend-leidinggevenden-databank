@@ -17,7 +17,7 @@ export default Route.extend(DataTableRouteMixin, {
   async setupController(controller, model) {
     this._super(controller, model);
     controller.set('bestuurseenheid', await this.store.findRecord('bestuurseenheid', this.bestuurseenheidId));
-    controller.set('model', model.filter(functionaris => functionaris.isOngoing));
+    
   },
 
   /*********************************************************************************
