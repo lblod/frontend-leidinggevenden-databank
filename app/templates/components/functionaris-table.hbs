@@ -47,35 +47,35 @@
             {{#functionaris.get prop="bekleedt" as |bekleedt| }}
               {{#bekleedt.get prop="rol" as |rol|}}
                 {{#rol.get prop="label" as |label|}}
-                {{label}}
+                  {{label}}
                 {{/rol.get}}
               {{/bekleedt.get}}
             {{/functionaris.get}}
-        {{/with-rdfa-context}}
+          {{/with-rdfa-context}}
         </td>
 
-        {{#with-rdfa-context tagName="td" model=row as |ctx1|}}
-          {{#ctx1.get prop="isBestuurlijkeAliasVan" as |ctx2| }}
-            {{#ctx2.get prop="gebruikteVoornaam" as |voornaam|}}
+        {{#with-rdfa-context tagName="td" model=row as |functionaris|}}
+          {{#functionaris.get prop="isBestuurlijkeAliasVan" as |persoon| }}
+            {{#persoon.get prop="gebruikteVoornaam" as |voornaam|}}
               {{voornaam}}
-            {{/ctx2.get}}
-          {{/ctx1.get}}
+            {{/persoon.get}}
+          {{/functionaris.get}}
         {{/with-rdfa-context}}
 
-        {{#with-rdfa-context tagName="td" model=row as |ctx1|}}
-          {{#ctx1.get prop="isBestuurlijkeAliasVan" as |ctx2| }}
-            {{#ctx2.get prop="achternaam" as |achternaam|}}
+        {{#with-rdfa-context tagName="td" model=row as |functionaris|}}
+          {{#functionaris.get prop="isBestuurlijkeAliasVan" as |persoon| }}
+            {{#persoon.get prop="achternaam" as |achternaam|}}
               {{achternaam}}
-            {{/ctx2.get}}
-          {{/ctx1.get}}
+            {{/persoon.get}}
+          {{/functionaris.get}}
         {{/with-rdfa-context}}
 
-        {{#with-rdfa-context tagName="td" model=row as |ctx1|}}
-          {{#ctx1.get prop="status" as |ctx2| }}
-            {{#ctx2.get prop="label" as |label|}}
+        {{#with-rdfa-context tagName="td" model=row as |functionaris|}}
+          {{#functionaris.get prop="status" as |status| }}
+            {{#status.get prop="label" as |label|}}
               {{label}}
-            {{/ctx2.get}}
-          {{/ctx1.get}}
+            {{/status.get}}
+          {{/functionaris.get}}
         {{/with-rdfa-context}}
 
         {{#with-rdfa-context
