@@ -23,15 +23,36 @@
       {{yield}}
     {{else}}
       {{#c.body as |row|}}
-        {{#with-rdfa-context tagName="td" model=row as |ctx1|}}
-          {{#ctx1.get prop="bekleedt" as |ctx2| }}
-            {{#ctx2.get prop="rol" as |ctx3|}}
-              {{#ctx3.get prop="label" as |label|}}
+        <td>
+          <div
+            typeof="{{row.bekleedt.bevatIn.firstObject.rdfaBindings.class}}"
+            resource="{{row.bekleedt.bevatIn.firstObject.uri}}">
+            <div
+              property="{{row.bekleedt.bevatIn.firstObject.rdfaBindings.isTijdsspecialisatieVan}}"
+              typeof="{{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.rdfaBindings.class}}"
+              resource="{{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.uri}}">
+              <div
+                property="{{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.rdfaBindings.bestuurseenheid}}"
+                typeof="{{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.bestuurseenheid.rdfaBindings.class}}"
+                resource="{{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.bestuurseenheid.uri}}">
+                <div
+                  property="{{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.bestuurseenheid.rdfaBindings.naam}}"
+                  content="{{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.bestuurseenheid.naam}}">
+                    {{!-- {{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.bestuurseenheid.naam}} --}}
+                </div>
+              </div>
+            </div>
+          </div>
+          {{#with-rdfa-context tagName="div" model=row as |functionaris|}}
+            {{#functionaris.get prop="bekleedt" as |bekleedt| }}
+              {{#bekleedt.get prop="rol" as |rol|}}
+                {{#rol.get prop="label" as |label|}}
                 {{label}}
-              {{/ctx3.get}}
-            {{/ctx2.get}}
-          {{/ctx1.get}}
+                {{/rol.get}}
+              {{/bekleedt.get}}
+            {{/functionaris.get}}
         {{/with-rdfa-context}}
+        </td>
 
         {{#with-rdfa-context tagName="td" model=row as |ctx1|}}
           {{#ctx1.get prop="isBestuurlijkeAliasVan" as |ctx2| }}

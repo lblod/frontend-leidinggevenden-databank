@@ -21,11 +21,8 @@
   </div>
 </div>
 
-<!-- TODO: To make the RDFA annotations independent for a crawler. IT would best to include in RDFA annotation
-     1. Bestuurseenheid -> bestuursorgaan -> bestuursorgaan  in tijd -> bestuursfuncties-->
-
 <div class="u-padding--rl--small u-spacer--tb">
-  <div class="container-flex--scroll">
+  <div class="container-flex--scroll" typeof="{{bestuurseenheid.rdfaBindings.class}}">
     {{#functionaris-table
       class="container-flex--contain"
       content=filteredModel
@@ -47,5 +44,4 @@
     {{/functionaris-table}}
   </div>
 </div>
-
 {{outlet}}
