@@ -7,7 +7,7 @@ export default Route.extend({
 
   model(params) {
     return {
-      id: params.bestuurseenheidId ? params.bestuurseenheidId : ''
+      id: params.bestuurseenheidId || ''
     };
   }
 });
