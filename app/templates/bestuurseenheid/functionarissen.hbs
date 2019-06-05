@@ -14,9 +14,15 @@
   <div class="u-padding--tb" id="main">
     <h1 class="h2 text-light u-spacer--bottom--tiny">
       Leidinggevenden van
-      {{#with-rdfa-context tagName="span" model=bestuurseenheid as |ctx|}}
-        <span property={{bestuurseenheid.rdfaBindings.naam}}>{{bestuurseenheid.naam}}</span>
-      {{/with-rdfa-context}}
+      <span
+        typeof={{bestuurseenheid.rdfaBindings.class}}
+        resource={{bestuurseenheid.uri}}>
+        <span
+          property={{bestuurseenheid.rdfaBindings.naam}}
+          content={{bestuurseenheid.naam}}>
+          {{bestuurseenheid.naam}}
+        </span>
+      </span>
     </h1>
   </div>
 </div>

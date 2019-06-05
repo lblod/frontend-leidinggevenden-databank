@@ -25,20 +25,20 @@
       {{#c.body as |row|}}
         <td>
           <div
-            typeof="{{row.bekleedt.bevatIn.firstObject.rdfaBindings.class}}"
-            resource="{{row.bekleedt.bevatIn.firstObject.uri}}">
+            typeof={{row.bekleedt.bevatIn.firstObject.rdfaBindings.class}}
+            resource={{row.bekleedt.bevatIn.firstObject.uri}}>
             <div
-              property="{{row.bekleedt.bevatIn.firstObject.rdfaBindings.isTijdsspecialisatieVan}}"
-              typeof="{{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.rdfaBindings.class}}"
-              resource="{{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.uri}}">
+              property={{row.bekleedt.bevatIn.firstObject.rdfaBindings.isTijdsspecialisatieVan}}
+              typeof={{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.rdfaBindings.class}}
+              resource={{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.uri}}>
               <div
-                property="{{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.rdfaBindings.bestuurseenheid}}"
-                typeof="{{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.bestuurseenheid.rdfaBindings.class}}"
-                resource="{{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.bestuurseenheid.uri}}">
+                property={{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.rdfaBindings.bestuurseenheid}}
+                typeof={{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.bestuurseenheid.rdfaBindings.class}}
+                resource={{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.bestuurseenheid.uri}}>
                 <div
-                  property="{{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.bestuurseenheid.rdfaBindings.naam}}"
-                  content="{{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.bestuurseenheid.naam}}">
-                    {{!-- {{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.bestuurseenheid.naam}} --}}
+                  property={{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.bestuurseenheid.rdfaBindings.naam}}
+                  content={{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.bestuurseenheid.naam}}>
+                  {{!-- {{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.bestuurseenheid.naam}} --}}
                 </div>
               </div>
             </div>
@@ -85,16 +85,36 @@
           {{#functionaris.get prop="bekleedt" as |bekleedt| }}
             {{#bekleedt.get prop="contactinfo" as |contactinfo|}}
               {{#contactinfo.get prop="email" as |email|}}
-                email: {{{if email email onbepaald}}}
+                email:
+                {{#if email}}
+                  {{email}}
+                {{else}}
+                  <span class="text-fade">Onbepaald</span>
+                {{/if}}
               {{/contactinfo.get}}
               {{#contactinfo.get prop="website" as |website|}}
-                website: {{{if website website onbepaald}}}
+                website:
+                {{#if website}}
+                  {{website}}
+                {{else}}
+                  <span class="text-fade">Onbepaald</span>
+                {{/if}}
               {{/contactinfo.get}}
               {{#contactinfo.get prop="telephone" as |telephone|}}
-                telephone: {{{if telephone telephone onbepaald}}}
+                telephone:
+                {{#if telephone}}
+                  {{telephone}}
+                {{else}}
+                  <span class="text-fade">Onbepaald</span>
+                {{/if}}
               {{/contactinfo.get}}
               {{#contactinfo.get prop="fax" as |fax|}}
-                fax: {{{if fax fax onbepaald}}}
+                fax:
+                {{#if fax}}
+                  {{fax}}
+                {{else}}
+                  <span class="text-fade">Onbepaald</span>
+                {{/if}}
               {{/contactinfo.get}}
             {{/bekleedt.get}}
           {{/functionaris.get}}
@@ -107,7 +127,11 @@
           {{#functionaris.get prop="bekleedt" as |bekleedt| }}
             {{#bekleedt.get prop="contactinfo" as |contactinfo|}}
               {{#contactinfo.get prop="adres" as |adres|}}
-                {{{if adres adres onbepaald}}}
+                {{#if adres}}
+                  {{adres}}
+                {{else}}
+                  <span class="text-fade">Onbepaald</span>
+                {{/if}}
               {{/contactinfo.get}}
             {{/bekleedt.get}}
           {{/functionaris.get}}
