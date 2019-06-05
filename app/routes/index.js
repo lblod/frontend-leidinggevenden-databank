@@ -9,7 +9,7 @@ export default Route.extend({
     this.set('id', params.bestuurseenheidId || '');
   },
 
-  async setupController(controller, model) {
+  async setupController(controller) {
     if (this.id != '') {
       controller.set('bestuurseenheid', await this.store.findRecord('bestuurseenheid', this.id));
     }

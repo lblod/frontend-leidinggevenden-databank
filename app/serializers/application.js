@@ -42,22 +42,14 @@ export default DS.JSONAPISerializer.extend({
      }
    */
   createPageMeta(data) {
-    let meta = {};
+   let meta = {};
 
     Object.keys(data).forEach(type => {
       const link = data[type];
       meta[type] = {};
 
-
-      //--- FASTBOOT WORKAROUND ---//
-      //extracts from '/path?foo=bar?baz=foo' to foo=bar?baz=foo
-      //I hope this covers all previously supported cases
-      const [ path, query ] = link.split(/\?(.+)/);
-      if(!query) return meta;
-
-      // let a = document.createElement('a');
-      // a.href = link;
-      // let query = a.search.slice(1);
+      //extracts from '/path?foo=bar?baz=foo' the string: foo=bar?baz=foo
+      const query = link.split(/\?(.+)/)[1] || '';
 
       query.split('&').forEach(pairs => {
         const [param, value] = pairs.split('=');

@@ -22,7 +22,7 @@ export default Route.extend(DataTableRouteMixin, {
 
   },
 
-  async afterModel(model, transition) {
+  async afterModel(model) {
     if (this.fastboot.isFastBoot) {
       this.set('bestuurseenheid', await this.store.findRecord('bestuurseenheid', this.bestuurseenheidId));
     }
