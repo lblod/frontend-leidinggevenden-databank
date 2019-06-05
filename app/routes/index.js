@@ -6,8 +6,12 @@ export default Route.extend({
   },
 
   model(params) {
-    return {
-      id: params.bestuurseenheidId ? params.bestuurseenheidId : ''
-    };
+    this.set('id', params.bestuurseenheidId || '');
+  },
+
+  async setupController(controller, model) {
+    if (this.id != '') {
+      controller.set('bestuurseenheid', await this.store.findRecord('bestuurseenheid', this.id));
+    }
   }
 });
