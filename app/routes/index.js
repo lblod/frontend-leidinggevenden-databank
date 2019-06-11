@@ -2,7 +2,7 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
   queryParams: {
-    bestuurseenheidId: { refreshModel: true }
+    bestuurseenheidId: { refreshModel: false }
   },
 
   model(params) {
