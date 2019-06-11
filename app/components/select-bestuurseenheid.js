@@ -7,7 +7,7 @@ export default Component.extend({
 
   async init() {
     this._super(...arguments);
-    const options = this.store.query('bestuurseenheid', {
+    const options = await this.store.query('bestuurseenheid', {
       sort: 'naam',
       include: 'classificatie'
     });
