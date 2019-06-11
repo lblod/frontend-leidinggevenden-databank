@@ -2,10 +2,13 @@
   "name": "frontend-leidinggevenden-databank",
   "version": "0.0.0",
   "private": true,
-  "description": "Small description for frontend-leidinggevenden-databank goes here",
-  "repository": "",
+  "description": "The public portal to leidinggevenden roles at the flemish government",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lblod/frontend-leidinggevenden-databank"
+  },
   "license": "MIT",
-  "author": "",
+  "author": "redpencil.io",
   "directories": {
     "doc": "doc",
     "test": "tests"
