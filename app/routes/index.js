@@ -5,7 +5,7 @@ export default Route.extend({
     bestuurseenheidId: { refreshModel: false }
   },
 
-  model(params) {
+  async model(params) {
     this.set('id', params.bestuurseenheidId);
     if (this.id) {
       controller.set('bestuurseenheid', await this.store.findRecord('bestuurseenheid', this.id));
