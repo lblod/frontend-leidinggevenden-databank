@@ -10,8 +10,8 @@ Router.map(function() {
   this.route('route-not-found', {
     path: '/*wildcard'
   });
-  this.route('bestuurseenheid', function() {
-    this.route('functionarissen', {path: ":bestuureenheid_id/functionarissen"});
+  this.route('bestuurseenheid', { path: ":bestuurseenheid_id" }, function() {
+    this.route('functionarissen');
   });
 });
 

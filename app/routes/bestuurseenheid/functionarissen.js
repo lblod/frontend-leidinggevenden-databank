@@ -16,16 +16,9 @@ export default Route.extend(DataTableRouteMixin, {
     };
   },
 
-  async setupController(controller, model) {
+  setupController(controller, model) {
     this._super(controller, model);
-    controller.set('bestuurseenheid', await this.store.findRecord('bestuurseenheid', this.bestuurseenheidId));
-
-  },
-
-  async afterModel(model) {
-    if (this.fastboot.isFastBoot) {
-      this.set('bestuurseenheid', await this.store.findRecord('bestuurseenheid', this.bestuurseenheidId));
-    }
+    controller.set('bestuurseenheid', this.modelFor('bestuurseenheid'));
   },
 
   /*********************************************************************************
