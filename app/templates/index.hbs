@@ -10,13 +10,13 @@
         <h3 class="h5 u-spacer--tiny">Kies een bestuurseenheid</h3>
         <p class="small u-spacer--tiny">Zoals een gemeentebestuur, autonoom gemeentebedrijf, OCMW-vereniging, intergemeentelijk samenwerkingsverband (IGS), provinciebestuur of autonoom provinciebedrijf (APB)</p>
         {{select-bestuurseenheid
-          value=bestuurseenheid.id
-          onSelectionChange=(action "setBestuurseenheid")
+          value=bestuurseenheidId
+          onSelectionChange=(action "setBestuurseenheidId")
           class="u-spacer--tiny ember-power-select--large"
         }}
       </div>
     </div>
-    {{#link-to "bestuurseenheid.functionarissen" bestuurseenheid.id class="button button--narrow button--large"}}
+    {{#link-to "bestuurseenheid.functionarissen" bestuurseenheidId class="button button--narrow button--large" classBinding="bestuurseenheidId::button--disabled"}}
       <i class="vi vi-arrow"></i>
       Bekijk leidinggevenden van bestuurseenheid
     {{/link-to}}

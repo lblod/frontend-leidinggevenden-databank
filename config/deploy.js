@@ -26,7 +26,9 @@ module.exports = function(deployTarget) {
   };
 
   if (deployTarget === 'production') {
-
+    /**
+     * 
+     */
   }
 
   // Note: if you need to build some configuration asynchronously, you can return

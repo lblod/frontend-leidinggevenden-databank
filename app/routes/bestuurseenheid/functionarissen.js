@@ -6,26 +6,18 @@ import { inject as service } from '@ember/service';
 export default Route.extend(DataTableRouteMixin, {
   fastboot: service(),
   modelName: 'functionaris',
-  bestuurseenheidId: null,
 
-  mergeQueryOptions(params) {
-    this.set('bestuurseenheidId', params.bestuureenheid_id);
+  mergeQueryOptions() {
+    const bestuurseenheid = this.modelFor('bestuurseenheid');
     return {
       'include': 'bekleedt.rol,is-bestuurlijke-alias-van,status,bekleedt.contactinfo',
-      'filter[bekleedt][bevat-in][is-tijdsspecialisatie-van][bestuurseenheid][:id:]': params.bestuureenheid_id
+      'filter[bekleedt][bevat-in][is-tijdsspecialisatie-van][bestuurseenheid][:id:]': bestuurseenheid.id
     };
   },
 
-  async setupController(controller, model) {
+  setupController(controller, model) {
     this._super(controller, model);
-    controller.set('bestuurseenheid', await this.store.findRecord('bestuurseenheid', this.bestuurseenheidId));
-
-  },
-
-  async afterModel(model) {
-    if (this.fastboot.isFastBoot) {
-      this.set('bestuurseenheid', await this.store.findRecord('bestuurseenheid', this.bestuurseenheidId));
-    }
+    controller.set('bestuurseenheid', this.modelFor('bestuurseenheid'));
   },
 
   /*********************************************************************************

@@ -2,9 +2,9 @@
   <div class="u-padding--top--tiny">
     <div class="grid">
       <div class="col--6-12">
-        <a class="link--icon" href="/?bestuurseenheidId={{bestuurseenheid.id}}">
-          <small><i  class="vi-arrow vi-u-180deg vi"></i> Terug naar zoeken</small>
-        </a>
+        {{#link-to "index" (query-params bestuurseenheidId=bestuurseenheid.id) class="link--icon"}}
+          <small><i  class="vi-arrow vi-u-180deg vi"></i>Terug naar zoeken</small>
+        {{/link-to}}
       </div>
     </div>
   </div>
@@ -27,25 +27,11 @@
 
 <div class="u-padding--rl--small u-spacer--tb">
   <div class="container-flex--scroll">
-    {{#functionaris-table
+    {{functionaris-table
       class="container-flex--contain"
       content=filteredModel
       sort=sort
-      page=page
-      size=size
-      displaySubset=hasActiveChildRoute
-      filter=filter
-      renderSmallTable=hasActiveChildRoute
-      data-test-loket="leidinggevendenbeheer-table"
     }}
-      <tbody>
-        <tr>
-          <td class="u-align-center u-padding--round--small" colspan="6">
-            <p class="u-spacer--tiny">Geen functionaris gevonden.</p>
-          </td>
-        </tr>
-      </tbody>
-    {{/functionaris-table}}
   </div>
 </div>
 {{outlet}}

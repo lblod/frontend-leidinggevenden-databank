@@ -1,10 +1,11 @@
 import Controller from '@ember/controller';
 
 export default Controller.extend({
+  queryParams: ['bestuurseenheidId'],
+
   actions: {
-    setBestuurseenheid(value) {
-      this.set('bestuurseenheid', value);
-      this.set('bestuurseenheidId', (value && value.id) || '');
+    setBestuurseenheidId(value) {
+      this.set('bestuurseenheidId', (value && value.id));
     }
   }
 });
