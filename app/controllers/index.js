@@ -4,6 +4,8 @@ import { inject as service } from '@ember/service';
 export default Controller.extend({
   router: service(),
 
+  queryParams: ['bestuurseenheidId'],
+
   actions: {
     setBestuurseenheid(value) {
       this.set('bestuurseenheid', value);
