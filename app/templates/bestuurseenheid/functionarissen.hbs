@@ -2,9 +2,9 @@
   <div class="u-padding--top--tiny">
     <div class="grid">
       <div class="col--6-12">
-        <a class="link--icon" href="/?bestuurseenheidId={{bestuurseenheid.id}}">
+        {{#link-to "index" (query-params bestuurseenheidId=bestuurseenheid.id) class="link--icon"}}
           <small><i  class="vi-arrow vi-u-180deg vi"></i>Terug naar zoeken</small>
-        </a>
+        {{/link-to}}
       </div>
     </div>
   </div>
