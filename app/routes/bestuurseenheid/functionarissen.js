@@ -7,7 +7,7 @@ export default Route.extend(DataTableRouteMixin, {
   fastboot: service(),
   modelName: 'functionaris',
 
-  mergeQueryOptions(params) {
+  mergeQueryOptions() {
     const bestuurseenheid = this.modelFor('bestuurseenheid');
     return {
       'include': 'bekleedt.rol,is-bestuurlijke-alias-van,status,bekleedt.contactinfo',
