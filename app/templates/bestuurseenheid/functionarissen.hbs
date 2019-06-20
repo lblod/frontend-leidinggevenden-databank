@@ -27,20 +27,12 @@
 
 <div class="u-padding--rl--small u-spacer--tb">
   <div class="container-flex--scroll">
-    {{#functionaris-table
+    {{functionaris-table
       class="container-flex--contain"
       content=filteredModel
       sort=sort
       data-test-loket="leidinggevendenbeheer-table"
     }}
-      <tbody>
-        <tr>
-          <td class="u-align-center u-padding--round--small" colspan="6">
-            <p class="u-spacer--tiny">Geen functionaris gevonden.</p>
-          </td>
-        </tr>
-      </tbody>
-    {{/functionaris-table}}
   </div>
 </div>
 {{outlet}}
