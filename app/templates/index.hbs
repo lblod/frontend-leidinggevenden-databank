@@ -16,12 +16,10 @@
         }}
       </div>
     </div>
-    {{wu-button
-      label="Bekijk leidinggevenden van bestuurseenheid"
-      onClick=(action "displayLeidinggevenden")
-      size="large"
-      disabled=(not bestuurseenheidId)
-    }}
+    {{#link-to "bestuurseenheid.functionarissen" bestuurseenheidId class="button button--narrow button--large" classBinding="bestuurseenheidId::button--disabled"}}
+      <i class="vi vi-arrow"></i>
+      Bekijk leidinggevenden van bestuurseenheid
+    {{/link-to}}
 
     <div class="u-hr u-hr--label u-hr--label--centered u-spacer--tb--large"><span>of</span></div>
 
