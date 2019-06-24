@@ -13,6 +13,9 @@ Router.map(function() {
   this.route('bestuurseenheid', { path: ":bestuurseenheid_id" }, function() {
     this.route('functionarissen');
   });
+  this.route('legaal', function() {
+    this.route('disclaimer');
+  });
 });
 
 export default Router;
