@@ -47,7 +47,7 @@ export default Route.extend(DataTableRouteMixin, {
     _.merge(options, this.mergeQueryOptions(params));
 
 
-    return this.get('store').query(this.get('modelName'), options);
+    return this.store.query(this.modelName, options);
   }
 
   /*********************************************************************************
