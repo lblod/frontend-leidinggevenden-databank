@@ -7,11 +7,11 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route('bestuurseenheid', { path: "/bestuurseenheden/:bestuurseenheid_id" }, function() {
+    this.route('functionarissen');
+  });
   this.route('route-not-found', {
     path: '/*wildcard'
-  });
-  this.route('bestuurseenheid', { path: ":bestuurseenheid_id" }, function() {
-    this.route('functionarissen');
   });
 });
 
