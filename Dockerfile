@@ -11,6 +11,4 @@ RUN ember build -prod
 
 FROM cecemel/ember-fastboot-proxy-service:0.3.0
 
-ENV ASSETS "^/(assets/|font/|files/|sitemap.xml)"
-
 COPY --from=builder /app/dist /app
