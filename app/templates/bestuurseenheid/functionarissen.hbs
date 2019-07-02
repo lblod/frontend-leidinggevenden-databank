@@ -12,15 +12,11 @@
   <div class="u-padding--tb" id="main">
     <h1 class="h2 text-light u-spacer--bottom--tiny">
       Leidinggevenden van
-      <span
-        typeof={{bestuurseenheid.rdfaBindings.class}}
-        resource={{bestuurseenheid.uri}}>
-        <span
-          property={{bestuurseenheid.rdfaBindings.naam}}
-          content={{bestuurseenheid.naam}}>
-          {{bestuurseenheid.naam}}
-        </span>
-      </span>
+      {{#with-rdfa-context model=bestuurseenheid tagName="span" as |bestuurseenheid|}}
+        {{#bestuurseenheid.get prop="naam" as |attrs value|}}
+          <span {{rdfa attrs}}>{{value}}</span>
+        {{/bestuurseenheid.get}}
+      {{/with-rdfa-context}}
     </h1>
   </div>
 </div>
