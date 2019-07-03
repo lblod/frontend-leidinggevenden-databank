@@ -30,57 +30,71 @@
     {{else}}
       {{#c.body as |row|}}
         <td>
-          <div
-            typeof={{row.bekleedt.bevatIn.firstObject.rdfaBindings.class}}
-            resource={{row.bekleedt.bevatIn.firstObject.uri}}>
-            <div
-              property={{row.bekleedt.bevatIn.firstObject.rdfaBindings.isTijdsspecialisatieVan}}
-              typeof={{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.rdfaBindings.class}}
-              resource={{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.uri}}>
-              <div
-                property={{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.rdfaBindings.bestuurseenheid}}
-                typeof={{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.bestuurseenheid.rdfaBindings.class}}
-                resource={{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.bestuurseenheid.uri}}>
-                <div
-                  property={{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.bestuurseenheid.rdfaBindings.naam}}
-                  content={{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.bestuurseenheid.naam}}>
-                  {{!-- {{row.bekleedt.bevatIn.firstObject.isTijdsspecialisatieVan.bestuurseenheid.naam}} --}}
-                </div>
-              </div>
-            </div>
-          </div>
           {{#with-rdfa-context tagName="div" model=row as |functionaris|}}
-            {{#functionaris.get prop="bekleedt" as |bekleedt| }}
-              {{#bekleedt.get prop="rol" as |rol|}}
-                {{#rol.get prop="label" as |label|}}
-                  {{label}}
-                {{/rol.get}}
-              {{/bekleedt.get}}
+            {{#functionaris.get prop="bekleedt" as |attributes value bestuursfunctie|}}
+              <div {{rdfa attributes}}>
+                {{#bestuursfunctie.each prop="bevatIn" as |attributes value bestuursorgaanInTijd|}}
+                  <div {{rdfa attributes}}>
+                    {{#bestuursorgaanInTijd.get prop="isTijdsspecialisatieVan" as |attributes value bestuursorgaan|}}
+                      <div {{rdfa attributes}}>
+                        {{#bestuursorgaan.get prop="bestuurseenheid" as |attributes value bestuurseenheid|}}
+                          <div {{rdfa attributes}}>
+                            {{#bestuurseenheid.get prop="naam" as |attributes value|}}
+                              <div {{rdfa attributes}} class="u-hidden">{{value}}</div>
+                            {{/bestuurseenheid.get}}
+                          </div>
+                        {{/bestuursorgaan.get}}
+                      </div>
+                    {{/bestuursorgaanInTijd.get}}
+                  </div>
+                {{/bestuursfunctie.each}}
+              </div>
             {{/functionaris.get}}
           {{/with-rdfa-context}}
+
+          {{#with-rdfa-context tagName="div" model=row as |functionaris|}}
+            {{#functionaris.get prop="bekleedt" as |attributes value bekleedt|}}
+              <div {{rdfa attributes}}>
+                {{#bekleedt.get prop="rol" as |attributes value rol|}}
+                  <div {{rdfa attributes}}>
+                    {{#rol.get prop="label" as |attributes value|}}
+                      <span {{rdfa attributes}}>{{value}}</span>
+                    {{/rol.get}}
+                  </div>
+                {{/bekleedt.get}}
+              </div>
+            {{/functionaris.get}}
+          {{/with-rdfa-context}}
+
         </td>
 
         {{#with-rdfa-context tagName="td" model=row as |functionaris|}}
-          {{#functionaris.get prop="isBestuurlijkeAliasVan" as |persoon| }}
-            {{#persoon.get prop="gebruikteVoornaam" as |voornaam|}}
-              {{voornaam}}
-            {{/persoon.get}}
+          {{#functionaris.get prop="isBestuurlijkeAliasVan" as |attributes value persoon|}}
+            <div {{rdfa attributes}}>
+              {{#persoon.get prop="gebruikteVoornaam" as |attributes value|}}
+                <span {{rdfa attributes}}>{{value}}</span>
+              {{/persoon.get}}
+            </div>
           {{/functionaris.get}}
         {{/with-rdfa-context}}
 
         {{#with-rdfa-context tagName="td" model=row as |functionaris|}}
-          {{#functionaris.get prop="isBestuurlijkeAliasVan" as |persoon| }}
-            {{#persoon.get prop="achternaam" as |achternaam|}}
-              {{achternaam}}
-            {{/persoon.get}}
+          {{#functionaris.get prop="isBestuurlijkeAliasVan" as |attributes value persoon|}}
+            <div {{rdfa attributes}}>
+              {{#persoon.get prop="achternaam" as |attributes value|}}
+                <span {{rdfa attributes}}>{{value}}</span>
+              {{/persoon.get}}
+            </div>
           {{/functionaris.get}}
         {{/with-rdfa-context}}
 
         {{#with-rdfa-context tagName="td" model=row as |functionaris|}}
-          {{#functionaris.get prop="status" as |status| }}
-            {{#status.get prop="label" as |label|}}
-              {{label}}
-            {{/status.get}}
+          {{#functionaris.get prop="status" as |attributes value status|}}
+            <div {{rdfa attributes}}>
+              {{#status.get prop="label" as |attributes value|}}
+                <span {{rdfa attributes}}>{{value}}</span>
+              {{/status.get}}
+            </div>
           {{/functionaris.get}}
         {{/with-rdfa-context}}
 
@@ -88,41 +102,51 @@
           tagName="td"
           class="u-hidden-mobile word-break--break-word"
           model=row as |functionaris|}}
-          {{#functionaris.get prop="bekleedt" as |bekleedt| }}
-            {{#bekleedt.get prop="contactinfo" as |contactinfo|}}
-              {{#contactinfo.get prop="email" as |email|}}
-                email:
-                {{#if email}}
-                  {{email}}
-                {{else}}
-                  <span class="text-fade">Onbepaald</span>
-                {{/if}}
-              {{/contactinfo.get}}
-              {{#contactinfo.get prop="website" as |website|}}
-                website:
-                {{#if website}}
-                  {{website}}
-                {{else}}
-                  <span class="text-fade">Onbepaald</span>
-                {{/if}}
-              {{/contactinfo.get}}
-              {{#contactinfo.get prop="telephone" as |telephone|}}
-                telephone:
-                {{#if telephone}}
-                  {{telephone}}
-                {{else}}
-                  <span class="text-fade">Onbepaald</span>
-                {{/if}}
-              {{/contactinfo.get}}
-              {{#contactinfo.get prop="fax" as |fax|}}
-                fax:
-                {{#if fax}}
-                  {{fax}}
-                {{else}}
-                  <span class="text-fade">Onbepaald</span>
-                {{/if}}
-              {{/contactinfo.get}}
-            {{/bekleedt.get}}
+          {{#functionaris.get prop="bekleedt" as |attributes value bekleedt|}}
+            <div {{rdfa attributes}}>
+              {{#bekleedt.get prop="contactinfo" as |attributes value contactinfo|}}
+                <div {{rdfa attributes}}>
+                  {{#contactinfo.get prop="email" as |attributes email|}}
+                    email:
+                    {{#if email}}
+                      <span {{rdfa attributes}}>{{email}}</span>
+                    {{else}}
+                      <span class="text-fade">Onbepaald</span>
+                    {{/if}}
+                  {{/contactinfo.get}}
+                </div>
+                <div {{rdfa attributes}}>
+                  {{#contactinfo.get prop="website" as |attributes website|}}
+                    website:
+                    {{#if website}}
+                      <span {{rdfa attributes}}>{{website}}</span>
+                    {{else}}
+                      <span class="text-fade">Onbepaald</span>
+                    {{/if}}
+                  {{/contactinfo.get}}
+                </div>
+                <div {{rdfa attributes}}>
+                  {{#contactinfo.get prop="telephone" as |attributes telephone|}}
+                    telephone:
+                    {{#if telephone}}
+                      <span {{rdfa attributes}}>{{telephone}}</span>
+                    {{else}}
+                      <span class="text-fade">Onbepaald</span>
+                    {{/if}}
+                  {{/contactinfo.get}}
+                </div>
+                <div {{rdfa attributes}}>
+                  {{#contactinfo.get prop="fax" as |attributes fax|}}
+                    fax:
+                    {{#if fax}}
+                      <span {{rdfa attributes}}>{{fax}}</span>
+                    {{else}}
+                      <span class="text-fade">Onbepaald</span>
+                    {{/if}}
+                  {{/contactinfo.get}}
+                </div>
+              {{/bekleedt.get}}
+            </div>
           {{/functionaris.get}}
         {{/with-rdfa-context}}
 
@@ -130,16 +154,20 @@
           tagName="td"
           class="u-hidden-mobile word-break--break-word"
           model=row as |functionaris|}}
-          {{#functionaris.get prop="bekleedt" as |bekleedt| }}
-            {{#bekleedt.get prop="contactinfo" as |contactinfo|}}
-              {{#contactinfo.get prop="adres" as |adres|}}
-                {{#if adres}}
-                  {{adres}}
-                {{else}}
-                  <span class="text-fade">Onbepaald</span>
-                {{/if}}
-              {{/contactinfo.get}}
-            {{/bekleedt.get}}
+          {{#functionaris.get prop="bekleedt" as |attributes value bekleedt|}}
+            <div {{rdfa attributes}}>
+              {{#bekleedt.get prop="contactinfo" as |attributes value contactinfo|}}
+                <div {{rdfa attributes}}>
+                  {{#contactinfo.get prop="adres" as |attributes adres|}}
+                    {{#if adres}}
+                      <span {{rdfa attributes}}>{{adres}}</span>
+                    {{else}}
+                      <span class="text-fade">Onbepaald</span>
+                    {{/if}}
+                  {{/contactinfo.get}}
+                </div>
+              {{/bekleedt.get}}
+            </div>
           {{/functionaris.get}}
         {{/with-rdfa-context}}
       {{/c.body}}

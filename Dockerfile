@@ -9,8 +9,6 @@ COPY . .
 RUN ember build -prod
 
 
-FROM semtech/ember-proxy-service:1.3.0
-
-ENV STATIC_FOLDERS_REGEX "^/(assets|font|files)/"
+FROM cecemel/ember-fastboot-proxy-service:0.3.0
 
 COPY --from=builder /app/dist /app
