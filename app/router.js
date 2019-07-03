@@ -10,6 +10,11 @@ Router.map(function() {
   this.route('bestuurseenheid', { path: "/bestuurseenheden/:bestuurseenheid_id" }, function() {
     this.route('functionarissen');
   });
+  this.route('legaal', function() {
+    this.route('disclaimer');
+    this.route('cookieverklaring');
+  });
+  this.route('contact');
   this.route('route-not-found', {
     path: '/*wildcard'
   });
