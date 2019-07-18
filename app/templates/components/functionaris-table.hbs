@@ -103,9 +103,6 @@
           class="u-hidden-mobile word-break--break-word"
           model=row as |functionaris|}}
           {{#functionaris.get prop="bekleedt" as |attributes value bekleedt|}}
-          {{log '1' attributes}}
-          {{log '2' (get value)}}
-          {{log '3' bekleedt}}
             <div {{rdfa attributes}}>
               {{#bekleedt.get prop="contactinfo" as |attributes value contactinfo|}}
                 <div {{rdfa attributes}}>
@@ -163,7 +160,7 @@
                 <div {{rdfa attributes}}>
                   {{#contactinfo.get prop="adres" as |attributes value adres|}}
                     <div {{rdfa attributes}}>
-                      {{#adres.get prop="adres" as |attributes volledigAdres|}}
+                      {{#adres.get prop="volledigAdres" as |attributes volledigAdres|}}
                         {{#if volledigAdres}}
                           <span {{rdfa attributes}}>{{volledigAdres}}</span>
                         {{else}}
