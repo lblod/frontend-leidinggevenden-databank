@@ -103,6 +103,9 @@
           class="u-hidden-mobile word-break--break-word"
           model=row as |functionaris|}}
           {{#functionaris.get prop="bekleedt" as |attributes value bekleedt|}}
+          {{log '1' attributes}}
+          {{log '2' (get value)}}
+          {{log '3' bekleedt}}
             <div {{rdfa attributes}}>
               {{#bekleedt.get prop="contactinfo" as |attributes value contactinfo|}}
                 <div {{rdfa attributes}}>
@@ -126,10 +129,10 @@
                   {{/contactinfo.get}}
                 </div>
                 <div {{rdfa attributes}}>
-                  {{#contactinfo.get prop="telephone" as |attributes telephone|}}
-                    telephone:
-                    {{#if telephone}}
-                      <span {{rdfa attributes}}>{{telephone}}</span>
+                  {{#contactinfo.get prop="telefoon" as |attributes telefoon|}}
+                    telefoon:
+                    {{#if telefoon}}
+                      <span {{rdfa attributes}}>{{telefoon}}</span>
                     {{else}}
                       <span class="text-fade">Onbepaald</span>
                     {{/if}}
@@ -158,12 +161,16 @@
             <div {{rdfa attributes}}>
               {{#bekleedt.get prop="contactinfo" as |attributes value contactinfo|}}
                 <div {{rdfa attributes}}>
-                  {{#contactinfo.get prop="adres" as |attributes adres|}}
-                    {{#if adres}}
-                      <span {{rdfa attributes}}>{{adres}}</span>
-                    {{else}}
-                      <span class="text-fade">Onbepaald</span>
-                    {{/if}}
+                  {{#contactinfo.get prop="adres" as |attributes value adres|}}
+                    <div {{rdfa attributes}}>
+                      {{#adres.get prop="adres" as |attributes volledigAdres|}}
+                        {{#if volledigAdres}}
+                          <span {{rdfa attributes}}>{{volledigAdres}}</span>
+                        {{else}}
+                          <span class="text-fade">Onbepaald</span>
+                        {{/if}}
+                      {{/adres.get}}
+                    </div>
                   {{/contactinfo.get}}
                 </div>
               {{/bekleedt.get}}

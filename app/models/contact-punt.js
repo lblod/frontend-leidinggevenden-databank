@@ -1,31 +1,30 @@
 import attr from 'ember-data/attr';
 import Model from 'ember-data/model';
 import { collect } from '@ember/object/computed';
+import { belongsTo } from 'ember-data/relationships';
 
 export default Model.extend({
   // A string representation of this model, based on its attributes.
   // This is what mu-cl-resources uses to search on, and how the model will be presented while editing relationships.
-  stringRep: collect.apply(this,['id', 'land', 'gemeente', 'adres', 'postcode', 'email', 'telephone', 'fax', 'website']),
+  stringRep: collect.apply(this,['id', 'aanschrijfprefix', 'email', 'telefoon', 'fax', 'naam', 'website']),
 
   uri: attr(),
-  land: attr(),
-  gemeente: attr(),
-  adres: attr(),
-  postcode: attr(),
+  aanschrijfprefix: attr(),
   email: attr(),
-  telephone: attr(),
   fax: attr(),
+  naam: attr(),
   website: attr(),
+  telefoon: attr(),
+  adres: belongsTo('adres', { inverse: null }),
 
   rdfaBindings: Object.freeze({
-    class: "schema:PostalAddress",
-    land: "schema:addressCountry",
-    gemeente: "schema:addressLocality",
-    adres: "schema:streetAddress",
-    postcode: "schema:postalCode",
+    class: "schema:ContactPoint",
+    aanschrijfprefix: "vcard:honorific-prefix",
     email: "schema:email",
-    telephone: "schema:telephone",
     fax: "schema:faxNumber",
-    website: "schema:url"
+    naam: "foaf:name",
+    website: "foaf:page",
+    telefoon: "schema:telephone",
+    adres: "locn:address"
   })
 });
