@@ -17,18 +17,19 @@ module.exports = function(environment) {
       }
     },
     fastboot: {
-      hostWhitelist: [ "leidinggevenden.lblod.info",
+      hostWhitelist: [ "leidinggevenden.lokaalbestuur.vlaanderen.be",
+                       "leidinggevenden.lblod.info",
                        "dev.leidinggevenden.lblod.info",
                        /^localhost:\d+$/,
                        /^.*$/
-                     ] // 'example.com', 'subdomain.example.com' // TODO: these regexpses with actual allowed domains, this is a major flaw.
+                     ] // TODO: these regexpses with actual allowed domains, this is a major flaw.
     },
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
     'vo-webuniversum': {
-      version: '2.8.3', //TODO copied from mandaten
+      version: '2.8.3',
       header: '//widgets.vlaanderen.be/widget/live/8cb0e2dd9fb843a88da86211c9ade78c',
       footer: '//widgets.vlaanderen.be/widget/live/278abfe4c19f49daa667c00815f6ab12'
     }
@@ -55,7 +56,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    // here you can enable a production-specific feature
+
   }
 
   return ENV;
