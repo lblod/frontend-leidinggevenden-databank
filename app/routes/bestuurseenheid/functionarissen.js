@@ -1,18 +1,27 @@
 import Route from '@ember/routing/route';
 import DataTableRouteMixin from 'ember-data-table/mixins/route';
 import _ from 'lodash';
+import { reads } from '@ember/object/computed';
 import { inject as service } from '@ember/service';
 
 export default Route.extend(DataTableRouteMixin, {
   fastboot: service(),
+  isFastBoot: reads('fastboot.isFastBoot'),
   modelName: 'functionaris',
 
   mergeQueryOptions() {
     const bestuurseenheid = this.modelFor('bestuurseenheid');
-    return {
-      'include': 'bekleedt.rol,is-bestuurlijke-alias-van,status,bekleedt.contactinfo',
-      'filter[bekleedt][bevat-in][is-tijdsspecialisatie-van][bestuurseenheid][:id:]': bestuurseenheid.id
-    };
+    if (this.isFastBoot) {
+      return {
+        'include': 'bekleedt.rol,is-bestuurlijke-alias-van,status,bekleedt.contactinfo.adres,bekleedt.bevat-in.is-tijdsspecialisatie-van.bestuurseenheid',
+        'filter[bekleedt][bevat-in][is-tijdsspecialisatie-van][bestuurseenheid][:id:]': bestuurseenheid.id
+      };
+    } else {
+      return {
+        'include': 'bekleedt.rol,is-bestuurlijke-alias-van,status,bekleedt.contactinfo',
+        'filter[bekleedt][bevat-in][is-tijdsspecialisatie-van][bestuurseenheid][:id:]': bestuurseenheid.id
+      };
+    }
   },
 
   setupController(controller, model) {
