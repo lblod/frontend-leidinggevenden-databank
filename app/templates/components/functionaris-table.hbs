@@ -135,16 +135,6 @@
                     {{/if}}
                   {{/contactinfo.get}}
                 </div>
-                <div {{rdfa attributes}}>
-                  {{#contactinfo.get prop="fax" as |attributes fax|}}
-                    fax:
-                    {{#if fax}}
-                      <span {{rdfa attributes}}>{{fax}}</span>
-                    {{else}}
-                      <span class="text-fade">Onbepaald</span>
-                    {{/if}}
-                  {{/contactinfo.get}}
-                </div>
               {{/bekleedt.get}}
             </div>
           {{/functionaris.get}}
@@ -160,13 +150,13 @@
                 <div {{rdfa attributes}}>
                   {{#contactinfo.get prop="adres" as |attributes value adres|}}
                     <div {{rdfa attributes}}>
-                      {{#adres.get prop="volledigAdres" as |attributes volledigAdres|}}
-                        {{#if volledigAdres}}
+                      {{#if adres}}
+                        {{#adres.get prop="volledigAdres" as |attributes volledigAdres|}}
                           <span {{rdfa attributes}}>{{volledigAdres}}</span>
-                        {{else}}
-                          <span class="text-fade">Onbepaald</span>
-                        {{/if}}
-                      {{/adres.get}}
+                        {{/adres.get}}
+                      {{else}}
+                        <span class="text-fade">Onbepaald</span>
+                      {{/if}}
                     </div>
                   {{/contactinfo.get}}
                 </div>
