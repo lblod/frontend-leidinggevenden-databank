@@ -116,16 +116,6 @@
                   {{/contactinfo.get}}
                 </div>
                 <div {{rdfa attributes}}>
-                  {{#contactinfo.get prop="website" as |attributes website|}}
-                    website:
-                    {{#if website}}
-                      <span {{rdfa attributes}}>{{website}}</span>
-                    {{else}}
-                      <span class="text-fade">Onbepaald</span>
-                    {{/if}}
-                  {{/contactinfo.get}}
-                </div>
-                <div {{rdfa attributes}}>
                   {{#contactinfo.get prop="telefoon" as |attributes telefoon|}}
                     telefoon:
                     {{#if telefoon}}

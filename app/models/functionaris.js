@@ -16,8 +16,9 @@ export default Model.extend({
   status: belongsTo('functionaris-status-code', { inverse: null }),
   isBestuurlijkeAliasVan: belongsTo('persoon', { inverse: null }),
 
-  isOngoing: computed('einde', function() {
-    return this.einde === undefined || this.einde >= new Date();
+  isOngoing: computed('start', 'einde', function() {
+    const now = new Date();
+    return this.start <= now && (this.einde === undefined || this.einde >= now);
   }),
 
   rdfaBindings: Object.freeze({

@@ -11,15 +11,31 @@ export default Route.extend(DataTableRouteMixin, {
 
   mergeQueryOptions() {
     const bestuurseenheid = this.modelFor('bestuurseenheid');
+    const midnight = `${new Date().toISOString().substr(0, 11)}00:00:00.000Z`;
+    // We cannot filter on end date since end date must be in the future or undefined.
+    // Hence, we filter on end date in the controller at the client-side
     if (this.isFastBoot) {
       return {
-        'include': 'bekleedt.rol,is-bestuurlijke-alias-van,status,bekleedt.contactinfo.adres,bekleedt.bevat-in.is-tijdsspecialisatie-van.bestuurseenheid',
-        'filter[bekleedt][bevat-in][is-tijdsspecialisatie-van][bestuurseenheid][:id:]': bestuurseenheid.id
+        include: [
+          'bekleedt.rol',
+          'is-bestuurlijke-alias-van',
+          'status',
+          'bekleedt.contactinfo.adres',
+          'bekleedt.bevat-in.is-tijdsspecialisatie-van.bestuurseenheid'
+        ].join(','),
+        'filter[bekleedt][bevat-in][is-tijdsspecialisatie-van][bestuurseenheid][:id:]': bestuurseenheid.id,
+        'filter[:lte:start]': midnight
       };
     } else {
       return {
-        'include': 'bekleedt.rol,is-bestuurlijke-alias-van,status,bekleedt.contactinfo',
-        'filter[bekleedt][bevat-in][is-tijdsspecialisatie-van][bestuurseenheid][:id:]': bestuurseenheid.id
+        include: [
+          'bekleedt.rol',
+          'is-bestuurlijke-alias-van',
+          'status',
+          'bekleedt.contactinfo'
+        ].join(','),
+        'filter[bekleedt][bevat-in][is-tijdsspecialisatie-van][bestuurseenheid][:id:]': bestuurseenheid.id,
+        'filter[:lte:start]': midnight
       };
     }
   },
