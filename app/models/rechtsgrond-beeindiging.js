@@ -12,7 +12,7 @@ export default Model.extend({
   buitenwerkingtreding: attr('date'),
   inwekingtreding: attr('date'),
   typeDocument: attr('uri-set'),
-  bekrachtigtOntslagenVan: hasMany('mandatari', { inverse: null }),
+  bekrachtigtOntslagenVan: hasMany('mandataris', { inverse: null }),
 
   rdfaBindings: Object.freeze({
     class: "mandaat:RechtsgrondBeeindiging",

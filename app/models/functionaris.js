@@ -2,6 +2,7 @@ import attr from 'ember-data/attr';
 import Model from 'ember-data/model';
 import { collect } from '@ember/object/computed';
 import { belongsTo } from 'ember-data/relationships';
+import { computed }  from '@ember/object';
 
 export default Model.extend({
   // A string representation of this model, based on its attributes.
@@ -14,6 +15,10 @@ export default Model.extend({
   bekleedt: belongsTo('bestuursfunctie', { inverse: null }),
   status: belongsTo('functionaris-status-code', { inverse: null }),
   isBestuurlijkeAliasVan: belongsTo('persoon', { inverse: null }),
+
+  isOngoing: computed('einde', function() {
+    return this.einde === undefined || this.einde >= new Date();
+  }),
 
   rdfaBindings: Object.freeze({
     class: "lblodlg:Functionaris",

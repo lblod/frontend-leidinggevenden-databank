@@ -18,7 +18,7 @@ export default Model.extend({
   secretaris: belongsTo('mandataris', { inverse: null }),
   voorzitter: belongsTo('mandataris', { inverse: null }),
   besluiten: hasMany('besluit', { inverse: null }),
-  aanwezigen: hasMany('mandatari', { inverse: null }),
+  aanwezigen: hasMany('mandataris', { inverse: null }),
   stemmingen: hasMany('stemming', { inverse: null }),
 
   rdfaBindings: Object.freeze({

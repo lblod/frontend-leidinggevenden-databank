@@ -18,7 +18,7 @@ export default Model.extend({
   voorzitter: belongsTo('mandataris', { inverse: null }),
   notulen: belongsTo('notulen', { inverse: null }),
   besluitenlijst: belongsTo('besluitenlijst', { inverse: null }),
-  aanwezigenBijStart: hasMany('mandatari', { inverse: null }),
+  aanwezigenBijStart: hasMany('mandataris', { inverse: null }),
   agendapunten: hasMany('agendapunt', { inverse: null }),
   uittreksels: hasMany('uittreksel', { inverse: null }),
   agendas: hasMany('agenda', { inverse: null }),

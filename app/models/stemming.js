@@ -16,11 +16,11 @@ export default Model.extend({
   title: attr(),
   gevolg: attr('language-string'),
   onderwerp: attr('language-string'),
-  aanwezigen: hasMany('mandatari', { inverse: null }),
-  onthouders: hasMany('mandatari', { inverse: null }),
-  stemmers: hasMany('mandatari', { inverse: null }),
-  tegenstanders: hasMany('mandatari', { inverse: null }),
-  voorstanders: hasMany('mandatari', { inverse: null }),
+  aanwezigen: hasMany('mandataris', { inverse: null }),
+  onthouders: hasMany('mandataris', { inverse: null }),
+  stemmers: hasMany('mandataris', { inverse: null }),
+  tegenstanders: hasMany('mandataris', { inverse: null }),
+  voorstanders: hasMany('mandataris', { inverse: null }),
 
   rdfaBindings: Object.freeze({
     class: "besluit:Stemming",

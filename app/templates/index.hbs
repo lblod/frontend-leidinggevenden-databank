@@ -1,4 +1,37 @@
-{{!-- filter/wizard landing page here --}}
-<h1>wizard/filter/landing</h1>
-{{#link-to "bestuursorgaan.functionarissen" "dummy_id"}} ga naar overizicht functionarissen{{/link-to}}
-{{outlet}}
+{{#wu-content-header title="Leidinggevendendatabank"}}
+  <img sizes="50vw" src="/assets/images/banner-leidinggevenden.jpg" srcset="/assets/images/banner-leidinggevenden-320.jpg 320w, /assets/images/banner-leidinggevenden-1024.jpg 1024w, /assets/images/banner-leidinggevenden-1600.jpg 1600w" alt="" title="">
+{{/wu-content-header}}
+<div class="region">
+  <div class="layout layout--wide u-spacer--bottom--large" id="main">
+
+    <h2 class="h3 u-spacer">Bekijk de leidinggevenden in een bestuur</h2>
+    <div class="grid">
+      <div class="col--6-12">
+        <h3 class="h5 u-spacer--tiny">Kies een bestuurseenheid</h3>
+        <p class="small u-spacer--tiny">Zoals een gemeentebestuur, autonoom gemeentebedrijf, OCMW-vereniging, intergemeentelijk samenwerkingsverband (IGS), provinciebestuur of autonoom provinciebedrijf (APB)</p>
+        {{select-bestuurseenheid
+          value=bestuurseenheidId
+          onSelectionChange=(action "setBestuurseenheidId")
+          class="u-spacer--tiny ember-power-select--large"
+        }}
+      </div>
+    </div>
+    {{#link-to "bestuurseenheid.functionarissen" bestuurseenheidId class="button button--narrow button--large" classBinding="bestuurseenheidId::button--disabled"}}
+      <i class="vi vi-arrow"></i>
+      Bekijk leidinggevenden van bestuurseenheid
+    {{/link-to}}
+
+    <div class="u-hr u-hr--label u-hr--label--centered u-spacer--tb--large"><span>of</span></div>
+
+    <div class="grid u-spacer--tb--large">
+      <div class="col--8-12 col--12-12--s">
+        <h2 class="h3 u-spacer--tiny">Download leidinggevendendatabank</h2>
+        <p>Overzicht van alle besturen in de huidige bestuursperiode.</p>
+      </div>
+      <div class="col--4-12 col--12-12--s u-align-right--medium-up">
+        {{!-- bestuursperiode select here --}}
+      </div>
+    </div>
+    {{download-miniatures}}
+  </div>
+</div>

@@ -21,7 +21,7 @@ export default Model.extend({
   status: belongsTo('mandataris-status-code', { inverse: null }),
   rechtsgrondenAanstelling: hasMany('rechtsgrond-aanstelling', { inverse: null }),
   rechtsgrondenBeeindiging: hasMany('rechtsgrond-beeindiging', { inverse: null }),
-  tijdelijkeVervangingen: hasMany('mandatari', { inverse: null }),
+  tijdelijkeVervangingen: hasMany('mandataris', { inverse: null }),
   beleidsdomein: hasMany('beleidsdomein-code', { inverse: null }),
 
   rdfaBindings: Object.freeze({
