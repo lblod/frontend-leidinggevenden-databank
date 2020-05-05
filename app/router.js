@@ -1,10 +1,10 @@
 import EmberRouter from '@ember/routing/router';
 import config from './config/environment';
 
-const Router = EmberRouter.extend({
-  location: config.locationType,
-  rootURL: config.rootURL
-});
+export default class Router extends EmberRouter {
+  location = config.locationType;
+  rootURL = config.rootURL;
+}
 
 Router.map(function() {
   this.route('bestuurseenheid', { path: "/bestuurseenheden/:bestuurseenheid_id" }, function() {
@@ -19,5 +19,3 @@ Router.map(function() {
     path: '/*wildcard'
   });
 });
-
-export default Router;
