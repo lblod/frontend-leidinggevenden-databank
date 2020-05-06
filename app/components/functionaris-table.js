@@ -1,4 +1,8 @@
 import Component from '@ember/component';
 
-export default Component.extend({
-});
+
+export class FunctionarisTable extends Component {
+
+}
+
+export default FunctionarisTable
