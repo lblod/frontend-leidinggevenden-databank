@@ -1,6 +1,6 @@
-{{#wu-content-header title="Leidinggevendendatabank"}}
+<WuContentHeader @title="Leidinggevendendatabank">
   <img sizes="50vw" src="/assets/images/banner-leidinggevenden.jpg" srcset="/assets/images/banner-leidinggevenden-320.jpg 320w, /assets/images/banner-leidinggevenden-1024.jpg 1024w, /assets/images/banner-leidinggevenden-1600.jpg 1600w" alt="" title="">
-{{/wu-content-header}}
+</WuContentHeader>
 <div class="region">
   <div class="layout layout--wide u-spacer--bottom--large" id="main">
 
@@ -9,17 +9,13 @@
       <div class="col--6-12">
         <h3 class="h5 u-spacer--tiny">Kies een bestuurseenheid</h3>
         <p class="small u-spacer--tiny">Zoals een gemeentebestuur, autonoom gemeentebedrijf, OCMW-vereniging, intergemeentelijk samenwerkingsverband (IGS), provinciebestuur of autonoom provinciebedrijf (APB)</p>
-        {{select-bestuurseenheid
-          value=bestuurseenheidId
-          onSelectionChange=(action "setBestuurseenheidId")
-          class="u-spacer--tiny ember-power-select--large"
-        }}
+        <SelectBestuurseenheid @value={{bestuurseenheidId}} @onSelectionChange={{action "setBestuurseenheidId"}} @class="u-spacer--tiny ember-power-select--large" />
       </div>
     </div>
-    {{#link-to "bestuurseenheid.functionarissen" bestuurseenheidId class="button button--narrow button--large" classBinding="bestuurseenheidId::button--disabled"}}
+    <LinkTo @route="bestuurseenheid.functionarissen" @model={{bestuurseenheidId}} @class="button button--narrow button--large" @classBinding="bestuurseenheidId::button--disabled">
       <i class="vi vi-arrow"></i>
       Bekijk leidinggevenden van bestuurseenheid
-    {{/link-to}}
+    </LinkTo>
 
     <div class="u-hr u-hr--label u-hr--label--centered u-spacer--tb--large"><span>of</span></div>
 
