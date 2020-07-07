@@ -10,6 +10,6 @@ export default class Application extends Controller {
     this.set('footer', ENV['vo-webuniversum']['footer']);
   }
   get isFastBoot() {
-    return fastboot.isFastBoot;
+    return this.fastboot.isFastBoot;
   }
 }
