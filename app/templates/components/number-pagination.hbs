@@ -7,7 +7,7 @@
       {{#unless isFirstPage}}
         <li class="pager__element">
           <a {{action "changePage" links.prev}} role="button">
-            {{wu-icon "vi-arrow" class="vi-u-180deg vi-u-s"}} vorige
+            <WuIcon @icon="vi-arrow" @class="vi-u-180deg vi-u-s" /> vorige
             <span class="u-visually-hidden"> {{pageSize}} rijen</span>
           </a>
         </li>
@@ -17,7 +17,7 @@
           <a {{action "changePage" links.next}} role="button">
             volgende
             <span class="u-visually-hidden"> {{pageSize}} rijen</span>
-            {{wu-icon "vi-arrow" class="vi-u-s"}}
+            <WuIcon @icon="vi-arrow" @class="vi-u-s" />
           </a>
         </li>
       {{/unless}}
