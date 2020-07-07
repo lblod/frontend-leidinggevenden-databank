@@ -1,12 +1,14 @@
-{{#power-select
-  searchEnabled=true
-  placeholder="Berchem, Hasselt, Gent, ..."
-  search=(perform search)
-  searchPlaceholder="Typ om te zoeken..."
-  options=options
-  selected=selected
-  onChange=(action "changeSelected")
-  allowClear=true
-  as |bestuurseenheid|}}
+<PowerSelect
+  @searchEnabled={{true}}
+  @placeholder="Berchem, Hasselt, Gent, ..."
+  @search={{perform search}}
+  @searchPlaceholder="Typ om te zoeken..."
+  @options={{options}}
+  @selected={{selected}}
+  @onChange={{action "changeSelected"}}
+  @allowClear={{true}}
+  as |bestuurseenheid|
+>
+
   {{bestuurseenheid.naam}} ({{bestuurseenheid.classificatie.label}})
-{{/power-select}}
+</PowerSelect>
