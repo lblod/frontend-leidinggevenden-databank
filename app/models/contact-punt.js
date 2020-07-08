@@ -1,6 +1,4 @@
-import attr from 'ember-data/attr';
-import Model from 'ember-data/model';
-import { belongsTo } from 'ember-data/relationships';
+import Model, { belongsTo, attr } from '@ember-data/model';
 
 export default class ContactPunt extends Model {
   @attr uri;

@@ -5,4 +5,4 @@ export class FunctionarisTable extends Component {
 
 }
 
-export default FunctionarisTable
+export default FunctionarisTable;
