@@ -1,27 +1,22 @@
-import attr from 'ember-data/attr';
-import Model from 'ember-data/model';
+import Model, { attr, belongsTo } from '@ember-data/model';
 import { collect } from '@ember/object/computed';
-import { belongsTo } from 'ember-data/relationships';
-import { computed }  from '@ember/object';
 
-export default Model.extend({
-  // A string representation of this model, based on its attributes.
-  // This is what mu-cl-resources uses to search on, and how the model will be presented while editing relationships.
-  stringRep: collect.apply(this,['id', 'start', 'einde']),
+export default class Functionaris extends Model {
+  @collect('id', 'start', 'einde') stringRep;
 
-  uri: attr(),
-  start: attr('datetime'),
-  einde: attr('datetime'),
-  bekleedt: belongsTo('bestuursfunctie', { inverse: null }),
-  status: belongsTo('functionaris-status-code', { inverse: null }),
-  isBestuurlijkeAliasVan: belongsTo('persoon', { inverse: null }),
+  @attr uri;
+  @attr('datetime') start;
+  @attr('datetime') einde;
+  @belongsTo('bestuursfunctie', { inverse: null }) bekleedt;
+  @belongsTo('functionaris-status-code', { inverse: null }) status;
+  @belongsTo('persoon', { inverse: null }) isBestuurlijkeAliasVan;
 
-  isOngoing: computed('start', 'einde', function() {
+  get isOngoing() {
     const now = new Date();
     return this.start <= now && (this.einde === undefined || this.einde >= now);
-  }),
+  }
 
-  rdfaBindings: Object.freeze({
+  rdfaBindings = Object.freeze({
     class: "lblodlg:Functionaris",
     start: "mandaat:start",
     einde: "mandaat:einde",
@@ -29,4 +24,5 @@ export default Model.extend({
     status: "mandaat:status",
     isBestuurlijkeAliasVan: "mandaat:isBestuurlijkeAliasVan"
   })
-});
+}
+

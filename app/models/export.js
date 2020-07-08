@@ -4,6 +4,8 @@ import { computed } from '@ember/object';
 import _moment from 'ember-moment/computeds/moment';
 import format from 'ember-moment/computeds/format';
 
+// Couldn't find a way to upgrade the _moment and format attributes
+
 export default DS.Model.extend({
   filename: attr(),
   format: attr(),
