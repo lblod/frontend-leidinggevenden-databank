@@ -80,5 +80,8 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "dependencies": {
+    "ember-concurrency-decorators": "^2.0.0"
   }
 }
