@@ -5,12 +5,11 @@ export default class Bestuurseenheid extends Model {
   // A string representation of this model, based on its attributes.
   // This is what mu-cl-resources uses to search on, and how the model will be presented while editing relationships.
   @collect('id', 'naam', 'wilMailOntvangen', 'mailAdres') stringRep;
-  
+
   @attr uri;
   @attr naam;
   @attr('string') mailAdres;
   @attr('boolean') wilMailOntvangen;
-  @belongsTo('werkingsgebied', { inverse: 'bestuurseenheid' }) werkingsgebied;
   @belongsTo('bestuurseenheid-classificatie-code', { inverse: null }) classificatie;
   @hasMany('contact-punt', { inverse: null }) contactinfo;
   @hasMany('bestuursorgaan', { inverse: 'bestuurseenheid' }) bestuursorganen;
