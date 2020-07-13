@@ -34,7 +34,6 @@ export default class DownloadMiniatures extends Component {
   }
 
   get ttlMetadata() {
-    console.log(this)
     return `Turtle - ${this.ttlFile.filesizeMb}MB - ${this.ttlFile.createdFormatted}`;
   }
 
