@@ -2,9 +2,9 @@
   <div class="u-padding--top--tiny">
     <div class="grid">
       <div class="col--6-12">
-        {{#link-to "index" (query-params bestuurseenheidId=bestuurseenheid.id) class="link--icon"}}
+        <LinkTo @route="index" @query={{hash bestuurseenheidId=bestuurseenheid.id}} class="link--icon">
           <small><i class="vi-arrow vi-u-180deg vi"></i>Terug naar zoeken</small>
-        {{/link-to}}
+        </LinkTo>
       </div>
     </div>
   </div>
@@ -12,24 +12,25 @@
   <div class="u-padding--tb" id="main">
     <h1 class="h2 text-light u-spacer--bottom--tiny">
       Leidinggevenden van
-      {{#with-rdfa-context model=bestuurseenheid tagName="span" as |bestuurseenheid|}}
-        {{#bestuurseenheid.get prop="naam" as |attributes value|}}
+
+      <WithRdfaContext @model={{bestuurseenheid}} tagName="span" as |bestuurseenheid|>
+        <bestuurseenheid.get @prop="naam" as |attributes value|>
           <span {{rdfa attributes}}>{{value}}</span>
-        {{/bestuurseenheid.get}}
-      {{/with-rdfa-context}}
+        </bestuurseenheid.get>
+      </WithRdfaContext>
     </h1>
   </div>
 </div>
 
 <div class="u-padding--rl--small u-spacer--tb">
   <div class="container-flex--scroll">
-    {{functionaris-table
-        class="container-flex--contain"
-        content=filteredModel
-        page=page
-        size=size
-        sort=sort
-    }}
+    <FunctionarisTable
+      class="container-flex--contain"
+      @content={{filteredModel}}
+      @page={{page}}
+      @size={{size}}
+      @sort={{sort}}
+    />
   </div>
 </div>
 {{outlet}}
