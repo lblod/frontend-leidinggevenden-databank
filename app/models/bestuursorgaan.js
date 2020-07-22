@@ -8,9 +8,7 @@ export default class Bestuurorgaan extends Model {
   @belongsTo('bestuurseenheid', { inverse: 'bestuursorganen' }) bestuurseenheid;
   @belongsTo('bestuursorgaan-classificatie-code', { inverse: null }) classificatie;
   @belongsTo('bestuursorgaan', { inverse: 'heeftTijdsspecialisaties' }) isTijdsspecialisatieVan;
-  @belongsTo('rechtstreekse-verkiezing', { inverse: 'steltSamen' }) wordtSamengesteldDoor;
   @hasMany('bestuursorgaan', { inverse: 'isTijdsspecialisatieVan' }) heeftTijdsspecialisaties;
-  @hasMany('mandaat', { inverse: null }) bevat;
 
   rdfaBindings = { // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
     naam: "http://www.w3.org/2004/02/skos/core#prefLabel",
