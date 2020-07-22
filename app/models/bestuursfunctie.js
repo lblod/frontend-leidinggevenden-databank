@@ -11,9 +11,11 @@ export default class Bestuursfunctie extends Model {
   @belongsTo('contact-punt', { inverse: null }) contactinfo;
   @hasMany('bestuursorgaan', { inverse: null }) bevatIn;
 
-  rdfaBindings = Object.freeze({
-    class: "lblodlg:Bestuursfunctie",
-    rol: "org:role",
-    contactinfo: "schema:contactPoint"
-  })
+  get rdfaBindings(){
+    return {
+      class: "lblodlg:Bestuursfunctie",
+      rol: "org:role",
+      contactinfo: "schema:contactPoint"
+    };
+  }
 }

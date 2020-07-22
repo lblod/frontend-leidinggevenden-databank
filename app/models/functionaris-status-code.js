@@ -10,9 +10,11 @@ export default class FunctionarisStatusCode extends Model {
   @attr label;
   @attr scopeNote;
 
-  rdfaBindings = Object.freeze({
-    class: "lblodlg:FunctionarisStatusCode",
-    label: "skos:prefLabel",
-    scopeNote: "skos:scopeNote"
-  })
+  get rdfaBindings(){
+    return {
+      class: "lblodlg:FunctionarisStatusCode",
+      label: "skos:prefLabel",
+      scopeNote: "skos:scopeNote"
+    };
+  }
 }

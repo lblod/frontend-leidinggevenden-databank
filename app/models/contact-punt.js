@@ -10,6 +10,19 @@ export default class ContactPunt extends Model {
   @attr telefoon;
   @belongsTo('adres', { inverse: null }) adres;
 
+  get rdfaBindings(){
+    return {
+      class: "schema:ContactPoint",
+      aanschrijfprefix: "vcard:honorific-prefix",
+      email: "schema:email",
+      fax: "schema:faxNumber",
+      naam: "foaf:name",
+      website: "foaf:page",
+      telefoon: "schema:telephone",
+      adres: "locn:address"
+    };
+  }
+
   rdfaBindings = Object.freeze({
     class: "schema:ContactPoint",
     aanschrijfprefix: "vcard:honorific-prefix",
