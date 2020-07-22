@@ -11,13 +11,15 @@ export default class Persoon extends Model {
   @attr alternatieveNaam;
   @attr gebruikteVoornaam;
 
-  rdfaBindings = Object.freeze({
-    class: "person:Person",
-    achternaam: "foaf:familyName",
-    alternatieveNaam: "foaf:name",
-    gebruikteVoornaam: "persoon:gebruikteVoornaam",
-    geboorte: "persoon:heeftGeboorte",
-    identificator: "adms:identifier",
-    geslacht: "persoon:geslacht"
-  })
+  get rdfaBindings(){
+    return {
+      class: "person:Person",
+      achternaam: "foaf:familyName",
+      alternatieveNaam: "foaf:name",
+      gebruikteVoornaam: "persoon:gebruikteVoornaam",
+      geboorte: "persoon:heeftGeboorte",
+      identificator: "adms:identifier",
+      geslacht: "persoon:geslacht"
+    };
+  }
 }

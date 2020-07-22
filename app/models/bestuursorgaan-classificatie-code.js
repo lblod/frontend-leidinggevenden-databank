@@ -11,10 +11,12 @@ export default class BestuursorgaanClassificatieCode  extends Model {
   @attr scopeNote;
   @hasMany('bestuursfunctie-code', { inverse: null }) standaardType;
 
-  rdfaBindings = Object.freeze({
-    class: "ext:BestuursorgaanClassificatieCode",
-    label: "skos:prefLabel",
-    scopeNote: "skos:scopeNote",
-    standaardType: "ext:hasDefaultType"
-  })
+  get rdfaBindings(){
+    return {
+      class: "ext:BestuursorgaanClassificatieCode",
+      label: "skos:prefLabel",
+      scopeNote: "skos:scopeNote",
+      standaardType: "ext:hasDefaultType"
+    };
+  }
 }

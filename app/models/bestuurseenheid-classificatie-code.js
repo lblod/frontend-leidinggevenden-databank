@@ -10,9 +10,11 @@ export default class BestuurseenheidClassificatieCode extends Model {
   @attr label;
   @attr scopeNote;
 
-  rdfaBindings = Object.freeze({
-    class: "ext:BestuurseenheidClassificatieCode",
-    label: "skos:prefLabel",
-    scopeNote: "skos:scopeNote"
-  })
+  get rdfaBindings(){
+    return {
+      class: "ext:BestuurseenheidClassificatieCode",
+      label: "skos:prefLabel",
+      scopeNote: "skos:scopeNote"
+    };
+  }
 }
