@@ -44,7 +44,7 @@ export default class DownloadMiniatures extends Component {
   @action
   download(file) {
     if (file)
-      window.location = `/files/${file.get('filename')}`;
+      window.location = `/files/${file.filename}`;
   }
 
 }
