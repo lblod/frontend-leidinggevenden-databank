@@ -1,14 +1,16 @@
-<PowerSelect
-  @searchEnabled={{true}}
-  @placeholder="Berchem, Hasselt, Gent, ..."
-  @search={{perform search}}
-  @searchPlaceholder="Typ om te zoeken..."
-  @options={{options}}
-  @selected={{selected}}
-  @onChange={{action "changeSelected"}}
-  @allowClear={{true}}
-  as |bestuurseenheid|
->
+<div {{did-update this.updateSelectedValue @value}}>
+  <PowerSelect
+    @searchEnabled={{true}}
+    @placeholder="Berchem, Hasselt, Gent, ..."
+    @search={{perform search}}
+    @searchPlaceholder="Typ om te zoeken..."
+    @options={{options}}
+    @selected={{selected}}
+    @onChange={{action "changeSelected"}}
+    @allowClear={{true}}
+    as |bestuurseenheid|
+  >
 
-  {{bestuurseenheid.naam}} ({{bestuurseenheid.classificatie.label}})
-</PowerSelect>
+    {{bestuurseenheid.naam}} ({{bestuurseenheid.classificatie.label}})
+  </PowerSelect>
+</div>
