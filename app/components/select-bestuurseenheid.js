@@ -33,7 +33,6 @@ export default class SelectBestuurseenheid extends Component {
 
   @task
   *search(term) {
-    console.log(term);
     yield timeout(600);
     return this.store.query('bestuurseenheid', {
       sort: 'naam',
