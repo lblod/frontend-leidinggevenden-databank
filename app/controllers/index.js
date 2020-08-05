@@ -1,11 +1,11 @@
 import Controller from '@ember/controller';
+import { action } from '@ember/object';
 
-export default Controller.extend({
-  queryParams: ['bestuurseenheidId'],
+export default class Index extends Controller {
+  queryParams = ['bestuurseenheidId']
 
-  actions: {
-    setBestuurseenheidId(value) {
-      this.set('bestuurseenheidId', (value && value.id));
-    }
+  @action
+  setBestuurseenheidId(value) {
+    this.set('bestuurseenheidId', (value && value.id));
   }
-});
+}

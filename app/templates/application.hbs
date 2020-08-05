@@ -1,14 +1,14 @@
 {{#unless isFastBoot}}
-  {{head-layout}}
+  <HeadLayout />
 {{/unless}}
 <div class="container">
   {{title "Leidinggevenden databank"}}
 
-  {{#unless isFastBoot}} {{wu-widget src=header class="vo-header-widget"}} {{/unless}}
+  {{#unless isFastBoot}} <WuWidget @src={{header}} @class="vo-header-widget" /> {{/unless}}
 
-  {{#with-rdfa-prefixes-and-vocab}}
+  <WithRdfaPrefixesAndVocab>
     {{outlet}}
-  {{/with-rdfa-prefixes-and-vocab}}
+  </WithRdfaPrefixesAndVocab>
 
-  {{#unless isFastBoot}} {{wu-widget src=footer}} {{/unless}}
+  {{#unless isFastBoot}} <WuWidget @src={{footer}}/> {{/unless}}
 </div>

@@ -1,18 +1,29 @@
-import attr from 'ember-data/attr';
-import Model from 'ember-data/model';
-import { belongsTo } from 'ember-data/relationships';
+import Model, { belongsTo, attr } from '@ember-data/model';
 
-export default Model.extend({
-  uri: attr(),
-  aanschrijfprefix: attr(),
-  email: attr(),
-  fax: attr(),
-  naam: attr(),
-  website: attr(),
-  telefoon: attr(),
-  adres: belongsTo('adres', { inverse: null }),
+export default class ContactPunt extends Model {
+  @attr uri;
+  @attr aanschrijfprefix;
+  @attr email;
+  @attr fax;
+  @attr naam;
+  @attr website;
+  @attr telefoon;
+  @belongsTo('adres', { inverse: null }) adres;
 
-  rdfaBindings: Object.freeze({
+  get rdfaBindings(){
+    return {
+      class: "schema:ContactPoint",
+      aanschrijfprefix: "vcard:honorific-prefix",
+      email: "schema:email",
+      fax: "schema:faxNumber",
+      naam: "foaf:name",
+      website: "foaf:page",
+      telefoon: "schema:telephone",
+      adres: "locn:address"
+    };
+  }
+
+  rdfaBindings = Object.freeze({
     class: "schema:ContactPoint",
     aanschrijfprefix: "vcard:honorific-prefix",
     email: "schema:email",
@@ -22,4 +33,4 @@ export default Model.extend({
     telefoon: "schema:telephone",
     adres: "locn:address"
   })
-});
+}
