@@ -1,14 +1,16 @@
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
 export default class DownloadMiniatures extends Component {
   @service store;
   @service fastboot
+  @tracked ttlFile = undefined;
+  @tracked csvFile = undefined
 
   constructor() {
     super(...arguments);
-    this.classNames = ['grid'];
     const promises = Promise.all([
       this.fetchMetadata('text/turtle', 'ttlFile'),
       this.fetchMetadata('text/csv', 'csvFile')
@@ -24,7 +26,7 @@ export default class DownloadMiniatures extends Component {
         filter: { format: mimeType },
         page: { size: 1 }
       });
-      this.set(field, files.firstObject);
+      this[field] = files.firstObject;
     }
     catch(e) {
       // not handling it at the moment
@@ -42,7 +44,7 @@ export default class DownloadMiniatures extends Component {
   @action
   download(file) {
     if (file)
-      window.location = `/files/${file.get('filename')}`;
+      window.location = `/files/${file.filename}`;
   }
 
 }

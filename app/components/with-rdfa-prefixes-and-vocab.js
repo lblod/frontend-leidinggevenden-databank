@@ -1,8 +1,6 @@
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
 export default class WithRdfaPrefixesAndVocab extends Component {
-  tagName = 'div';
-  attributeBindings = ["vocab", "prefixes"];
   get vocab() {
     const vocab=""; // generated
     return vocab != "" && vocab;
