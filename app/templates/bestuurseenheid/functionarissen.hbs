@@ -13,7 +13,7 @@
     <h1 class="h2 text-light u-spacer--bottom--tiny">
       Leidinggevenden van
 
-      <WithRdfaContext @model={{bestuurseenheid}} tagName="span" as |bestuurseenheid|>
+      <WithRdfaContext @model={{bestuurseenheid}} @tagName="span" as |bestuurseenheid|>
         <bestuurseenheid.get @prop="naam" as |attributes value|>
           <span {{rdfa attributes}}>{{value}}</span>
         </bestuurseenheid.get>
