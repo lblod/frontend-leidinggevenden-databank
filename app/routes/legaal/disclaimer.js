@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
 
-export class Disclaimer extends Route {
+export default class Disclaimer extends Route {
 
 }
