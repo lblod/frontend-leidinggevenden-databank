@@ -9,10 +9,10 @@
       <div class="col--6-12">
         <h3 class="h5 u-spacer--tiny">Kies een bestuurseenheid</h3>
         <p class="small u-spacer--tiny">Zoals een gemeentebestuur, autonoom gemeentebedrijf, OCMW-vereniging, intergemeentelijk samenwerkingsverband (IGS), provinciebestuur of autonoom provinciebedrijf (APB)</p>
-        <SelectBestuurseenheid @value={{bestuurseenheidId}} @onSelectionChange={{this.setBestuurseenheidId}} @class="u-spacer--tiny ember-power-select--large" />
+        <SelectBestuurseenheid @value={{this.bestuurseenheidId}} @onSelectionChange={{this.setBestuurseenheidId}} @class="u-spacer--tiny ember-power-select--large" />
       </div>
     </div>
-    <LinkTo @route="bestuurseenheid.functionarissen" @model={{bestuurseenheidId}} @class="button button--narrow button--large" @classBinding="bestuurseenheidId::button--disabled">
+    <LinkTo @route="bestuurseenheid.functionarissen" @model={{this.bestuurseenheidId}} class="{{if bestuurseenheidId 'button button--narrow button--large' 'button--disabled button button--narrow button--large'}}" >
       <i class="vi vi-arrow"></i>
       Bekijk leidinggevenden van bestuurseenheid
     </LinkTo>

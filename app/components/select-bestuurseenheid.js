@@ -22,7 +22,6 @@ export default class SelectBestuurseenheid extends Component {
       include: 'classificatie'
     });
     this.options = options;
-
     this.updateSelectedValue();
   }
 
@@ -43,7 +42,7 @@ export default class SelectBestuurseenheid extends Component {
   @action
   async updateSelectedValue() {
     if (this.args.value && !this.selected) {
-        this.selected = await this.store.query('bestuurseenheid', this.args.value);
+      this.selected = await this.store.findRecord('bestuurseenheid', this.args.value);
     } else if (!this.args.value) {
       this.selected = null;
     }
