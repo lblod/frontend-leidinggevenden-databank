@@ -3,10 +3,13 @@
     @searchEnabled={{true}}
     @placeholder="Berchem, Hasselt, Gent, ..."
     @search={{perform search}}
+    @searchField="naam"
     @searchPlaceholder="Typ om te zoeken..."
     @options={{this.options}}
     @selected={{this.selected}}
     @onChange={{action "changeSelected"}}
+    @noMatchesMessage="Geen resultaten"
+    @searchPlaceholder="Typ om te zoeken"
     @allowClear={{true}}
     as |bestuurseenheid|
   >
