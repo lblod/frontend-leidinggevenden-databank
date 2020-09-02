@@ -1,31 +1,32 @@
 <AuContentHeader @titlePartOne="Vlaanderen" @titlePartTwo="Leidinggevendendatabank" @pictureSize="large">
   <img sizes="50vw" src="/assets/images/loket-header-1600-85a5251e74ef6ac8491b2f228d2c90da.jpg" srcset="/assets/images/banner-leidinggevenden-320.jpg 320w, /assets/images/banner-leidinggevenden-1024.jpg 1024w, /assets/images/banner-leidinggevenden-1600.jpg 1600w" alt="Foto van een stad met een kanaal en huizen.">
 </AuContentHeader>
-<div class="region">
-  <div class="layout layout--wide u-spacer--bottom--large" id="main">
 
-    <h2 class="h3 u-spacer">Bekijk de leidinggevenden in een bestuur</h2>
-    <div class="grid">
-      <div class="col--6-12">
-        <h3 class="h5 u-spacer--tiny">Kies een bestuurseenheid</h3>
-        <p class="small u-spacer--tiny">Zoals een gemeentebestuur, autonoom gemeentebedrijf, OCMW-vereniging, intergemeentelijk samenwerkingsverband (IGS), provinciebestuur of autonoom provinciebedrijf (APB)</p>
-        <SelectBestuurseenheid @value={{this.bestuurseenheidId}} @onSelectionChange={{this.setBestuurseenheidId}} @class="u-spacer--tiny ember-power-select--large" />
+<div class="au-o-layout au-o-layout--large" id="main">
+  <div class="au-o-region">
+    <AuHeading @level="1" @skin="2" class="au-u-margin-bottom">
+      Bekijk de leidinggevenden in een bestuur
+    </AuHeading>
+    <div class="au-o-grid">
+      <div class="au-o-grid__item au-u-1-1 au-u-2-3@small au-u-1-2@medium au-u-1-3@large">
+        <AuLabel>
+          Kies een bestuurseenheid
+        </AuLabel>
+        <SelectBestuurseenheid @value={{this.bestuurseenheidId}} @onSelectionChange={{this.setBestuurseenheidId}} @class="au-u-margin-bottom" />
       </div>
     </div>
-    <LinkTo @route="bestuurseenheid.functionarissen" @model={{this.bestuurseenheidId}} class="{{if bestuurseenheidId 'button button--narrow button--large' 'button--disabled button button--narrow button--large'}}" >
-      <i class="vi vi-arrow"></i>
-      Bekijk leidinggevenden van bestuurseenheid
+    <LinkTo @route="bestuurseenheid.functionarissen" @model={{this.bestuurseenheidId}} class="au-c-button {{if bestuurseenheidId "" "is-disabled"}}">
+      Bekijk leidinggevenden in bestuur
     </LinkTo>
+  </div>
 
-    <div class="u-hr u-hr--label u-hr--label--centered u-spacer--tb--large"><span>of</span></div>
-
-    <div class="grid u-spacer--tb--large">
-      <div class="col--8-12 col--12-12--s">
-        <h2 class="h3 u-spacer--tiny">Download leidinggevendendatabank</h2>
+  <div class="au-o-region-large">
+    <div class="au-o-grid">
+      <div class="au-o-grid__item au-u-1-1 au-u-2-3@medium">
+        <AuHeading @level="1" @skin="2">
+          Download leidinggevendendatabank
+        </AuHeading>
         <p>Overzicht van alle besturen in de huidige bestuursperiode.</p>
-      </div>
-      <div class="col--4-12 col--12-12--s u-align-right--medium-up">
-        {{!-- bestuursperiode select here --}}
       </div>
     </div>
     <DownloadMiniatures />
