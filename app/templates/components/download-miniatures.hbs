@@ -1,29 +1,59 @@
-<div class='grid'>
+<div class='au-o-grid'>
   {{#if csvFile}}
-    <div class="col--4-12 col--12-12--s">
-      <WuDocumentMiniature @class="u-spacer--bottom" @type="CSV"
-        @label="CSV: voor spreadsheet editors zoals Excel of Numbers."
-        @metadata={{this.csvMetadata}} @onClick={{fn this.download csvFile}} />
+    <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium">
+      <AuCard @flex="true"
+              @divided="true"
+              @cardTitle="Download in CSV formaat"
+              @cardSubTitle="Voor spreadsheet editors zoals Excel of Numbers."
+              @badgeSkin="brand"
+              @badgeIcon="download">
+        <AuContent>
+          <AuButton onclick={{action "download" csvFile}} metadata={{csvMetadata}} type="CSV">Download in CSV formaat</AuButton>
+          <AuHelpText>{{csvMetadata}}</AuHelpText>
+        </AuContent>
+      </AuCard>
     </div>
   {{else}}
-    <div class="col--4-12 col--12-12--s">
-      <WuDocumentMiniature @class="u-spacer--bottom" @type="CSV"
-        @label="CSV: voor spreadsheet editors zoals Excel of Numbers."
-        @metadata="Niet beschikbaar" />
+    <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium">
+      <AuCard @flex="true"
+              @divided="true"
+              @cardTitle="Download in CSV formaat"
+              @cardSubTitle="Voor spreadsheet editors zoals Excel of Numbers."
+              @badgeSkin="brand"
+              @badgeIcon="download">
+        <AuContent>
+          <AuHelpText>Momenteel niet beschikbaar</AuHelpText>
+        </AuContent>
+      </AuCard>
     </div>
   {{/if}}
   {{#if ttlFile}}
-    <div class="col--4-12 col--12-12--s">
-      <WuDocumentMiniature @class="u-spacer--bottom" @type="Turtle"
-        @label="Turtle: gestructureerde data voor dataverwerking en analyse."
-        @metadata={{this.ttlMetadata}} @onClick={{fn this.download ttlFile}} />
+    <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium">
+      <AuCard @flex="true"
+              @divided="true"
+              @cardTitle="Download in Turtle formaat"
+              @cardSubTitle="Gestructureerde data voor dataverwerking en analyse."
+              @badgeSkin="brand"
+              @badgeIcon="download">
+        <AuContent>
+          <AuButton onclick={{action "download" ttlFile}} metadata={{ttlMetadata}} type="Turtle">Download in Turtle formaat</AuButton>
+          <AuHelpText>{{ttlMetadata}}</AuHelpText>
+        </AuContent>
+      </AuCard>
     </div>
   {{else}}
-    <div class="col--4-12 col--12-12--s">
-      <WuDocumentMiniature @class="u-spacer--bottom" @type="Turtle"
-        @label="Turtle: gestructureerde data voor dataverwerking en analyse."
-        @metadata="Niet beschikbaar" />
+    <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium">
+      <AuCard @flex="true"
+              @divided="true"
+              @cardTitle="Download in Turtle formaat"
+              @cardSubTitle="Gestructureerde data voor dataverwerking en analyse."
+              @badgeSkin="brand"
+              @badgeIcon="download">
+        <AuContent>
+          <AuHelpText>Momenteel niet beschikbaar</AuHelpText>
+        </AuContent>
+      </AuCard>
     </div>
   {{/if}}
-  <p>Mail naar <a href="mailto:LoketLokaalBestuur@vlaanderen.be">LoketLokaalBestuur@vlaanderen.be</a> voor meer informatie.</p>
 </div>
+<p class="au-u-margin-top">Mail naar <a href="mailto:LoketLokaalBestuur@vlaanderen.be" class="au-c-link">LoketLokaalBestuur@vlaanderen.be</a> voor meer informatie.</p>
