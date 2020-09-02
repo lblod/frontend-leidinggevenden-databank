@@ -1,154 +1,140 @@
-<DataTable
-  @content={{content}}
-  @isLoading={{isLoadingModel}}
-  @noDataMessage=""
-  @sort={{sort}}
-  @page={{page}}
-  @size={{size}}
-  @class="container-flex--contain data-table data-table--tight data-table--nowrap"
-  as |t|>
+<AuDataTable  @content={{content}}
+              @fields="Functionarissen"
+              @noDataMessage="Geen functionarissen gevonden."
+              @sort={{sort}}
+              @size={{size}}
+              @page={{page}}
+              @isLoading={{isLoadingModel}} as |t|>
   <t.content as |c|>
-
     <c.header>
-      <ThSortable @label="Functie" @field="bekleedt.rol.label" @currentSorting={{sort}} />
-      <ThSortable @label="Voornaam" @field="is-bestuurlijke-alias-van.gebruikte-voornaam" @currentSorting={{sort}} />
-      <ThSortable @label="Familienaam" @field="is-bestuurlijke-alias-van.achternaam" @currentSorting={{sort}} />
-      <ThSortable @label="Status" @field="status.label" @currentSorting={{sort}} />
+      <ThSortable @label="Functie" @field="bekleedt.rol.label" @currentSorting={{sort}} @class="data-table__header-title" />
+      <ThSortable @label="Voornaam" @field="is-bestuurlijke-alias-van.gebruikte-voornaam" @currentSorting={{sort}} @class="data-table__header-title" />
+      <ThSortable @label="Familienaam" @field="is-bestuurlijke-alias-van.achternaam" @currentSorting={{sort}} @class="data-table__header-title" />
+      <ThSortable @label="Status" @field="status.label" @currentSorting={{sort}} @class="data-table__header-title" />
       <th>Contactgegevens</th>
-      <ThSortable @label="Adres" @field="bekleedt.contactinfo.adres" @currentSorting={{sort}} />
+      <ThSortable @label="Adres" @field="bekleedt.contactinfo.adres" @currentSorting={{sort}} @class="data-table__header-title" />
     </c.header>
-
-    {{#if (eq content.length 0)}}
-      <tbody>
-        <tr>
-          <td class="u-align-center u-padding--round--small" colspan="6">
-            <p class="u-spacer--tiny">Geen functionaris gevonden.</p>
-          </td>
-        </tr>
-      </tbody>
-    {{else}}
-      <c.body as |row|>
-        <td>
-          <WithRdfaContext @tagName="div" @model={{row}} as |functionaris|>
-            <functionaris.get @prop="bekleedt" as |attributes value bestuursfunctie|>
-              <div {{rdfa attributes}}>
-                <bestuursfunctie.each @prop="bevatIn" as |attributes value bestuursorgaanInTijd|>
-                  <div {{rdfa attributes}}>
-                    <bestuursorgaanInTijd.get @prop="isTijdsspecialisatieVan" as |attributes value bestuursorgaan|>
-                      <div {{rdfa attributes}}>
-                        <bestuursorgaan.get @prop="bestuurseenheid" as |attributes value bestuurseenheid|>
-                          <div {{rdfa attributes}}>
-                            <bestuurseenheid.get @prop="naam" as |attributes value|>
-                              <div {{rdfa attributes}} class="u-hidden">{{value}}</div>
-                            </bestuurseenheid.get>
-                          </div>
-                        </bestuursorgaan.get>
-                      </div>
-                    </bestuursorgaanInTijd.get>
-                  </div>
-                </bestuursfunctie.each>
-              </div>
-            </functionaris.get>
-          </WithRdfaContext>
-
-          <WithRdfaContext @tagName="div" @model={{row}} as |functionaris|>
-            <functionaris.get @prop="bekleedt" as |attributes value bekleedt|>
-              <div {{rdfa attributes}}>
-                <bekleedt.get @prop="rol" as |attributes value rol|>
-                  <div {{rdfa attributes}}>
-                    <rol.get @prop="label" as |attributes value|>
-                      <span {{rdfa attributes}}>{{value}}</span>
-                    </rol.get>
-                  </div>
-                </bekleedt.get>
-              </div>
-            </functionaris.get>
-          </WithRdfaContext>
-
-        </td>
-
-        <WithRdfaContext @tagName="td" @model={{row}} as |functionaris|>
-          <functionaris.get @prop="isBestuurlijkeAliasVan" as |attributes value persoon|>
+    <c.body as |row|>
+      <td>
+        <WithRdfaContext @tagName="div" @model={{row}} as |functionaris|>
+          <functionaris.get @prop="bekleedt" as |attributes value bestuursfunctie|>
             <div {{rdfa attributes}}>
-              <persoon.get @prop="gebruikteVoornaam" as |attributes value|>
-                <span {{rdfa attributes}}>{{value}}</span>
-              </persoon.get>
-            </div>
-          </functionaris.get>
-        </WithRdfaContext>
-
-        <WithRdfaContext @tagName="td" @model={{row}} as |functionaris|>
-          <functionaris.get @prop="isBestuurlijkeAliasVan" as |attributes value persoon|>
-            <div {{rdfa attributes}}>
-              <persoon.get @prop="achternaam" as |attributes value|>
-                <span {{rdfa attributes}}>{{value}}</span>
-              </persoon.get>
-            </div>
-          </functionaris.get>
-        </WithRdfaContext>
-
-        <WithRdfaContext @tagName="td" @model={{row}} as |functionaris|>
-          <functionaris.get @prop="status" as |attributes value status|>
-            <div {{rdfa attributes}}>
-              <status.get @prop="label" as |attributes value|>
-                <span {{rdfa attributes}}>{{value}}</span>
-              </status.get>
-            </div>
-          </functionaris.get>
-        </WithRdfaContext>
-
-        <WithRdfaContext @tagName="td" @class="u-hidden-mobile word-break--break-word" @model={{row}} as |functionaris|>
-          <functionaris.get @prop="bekleedt" as |attributes value bekleedt|>
-            <div {{rdfa attributes}}>
-              <bekleedt.get @prop="contactinfo" as |attributes value contactinfo|>
+              <bestuursfunctie.each @prop="bevatIn" as |attributes value bestuursorgaanInTijd|>
                 <div {{rdfa attributes}}>
-                  <contactinfo.get @prop="email" as |attributes email|>
-                    email:
-                    {{#if email}}
-                      <span {{rdfa attributes}}>{{email}}</span>
-                    {{else}}
-                      <span class="text-fade">Onbepaald</span>
-                    {{/if}}
-                  </contactinfo.get>
-                </div>
-                <div {{rdfa attributes}}>
-                  <contactinfo.get @prop="telefoon" as |attributes telefoon|>
-                    telefoon:
-                    {{#if telefoon}}
-                      <span {{rdfa attributes}}>{{telefoon}}</span>
-                    {{else}}
-                      <span class="text-fade">Onbepaald</span>
-                    {{/if}}
-                  </contactinfo.get>
-                </div>
-              </bekleedt.get>
-            </div>
-          </functionaris.get>
-        </WithRdfaContext>
-
-        <WithRdfaContext @tagName="td" @class="u-hidden-mobile word-break--break-word" @model={{row}} as |functionaris|>
-          <functionaris.get @prop="bekleedt" as |attributes value bekleedt|>
-            <div {{rdfa attributes}}>
-              <bekleedt.get @prop="contactinfo" as |attributes value contactinfo|>
-                <div {{rdfa attributes}}>
-                  <contactinfo.get @prop="adres" as |attributes value adres|>
+                  <bestuursorgaanInTijd.get @prop="isTijdsspecialisatieVan" as |attributes value bestuursorgaan|>
                     <div {{rdfa attributes}}>
-                      {{#if adres}}
-                        <adres.get @prop="volledigAdres" as |attributes volledigAdres|>
-                          <span {{rdfa attributes}}>{{volledigAdres}}</span>
-                        </adres.get>
-                      {{else}}
-                        <span class="text-fade">Onbepaald</span>
-                      {{/if}}
+                      <bestuursorgaan.get @prop="bestuurseenheid" as |attributes value bestuurseenheid|>
+                        <div {{rdfa attributes}}>
+                          <bestuurseenheid.get @prop="naam" as |attributes value|>
+                            <div {{rdfa attributes}} class="u-hidden">{{value}}</div>
+                          </bestuurseenheid.get>
+                        </div>
+                      </bestuursorgaan.get>
                     </div>
-                  </contactinfo.get>
+                  </bestuursorgaanInTijd.get>
+                </div>
+              </bestuursfunctie.each>
+            </div>
+          </functionaris.get>
+        </WithRdfaContext>
+
+        <WithRdfaContext @tagName="div" @model={{row}} as |functionaris|>
+          <functionaris.get @prop="bekleedt" as |attributes value bekleedt|>
+            <div {{rdfa attributes}}>
+              <bekleedt.get @prop="rol" as |attributes value rol|>
+                <div {{rdfa attributes}}>
+                  <rol.get @prop="label" as |attributes value|>
+                    <span {{rdfa attributes}}>{{value}}</span>
+                  </rol.get>
                 </div>
               </bekleedt.get>
             </div>
           </functionaris.get>
         </WithRdfaContext>
-      </c.body>
-    {{/if}}
+
+      </td>
+
+      <WithRdfaContext @tagName="td" @model={{row}} as |functionaris|>
+        <functionaris.get @prop="isBestuurlijkeAliasVan" as |attributes value persoon|>
+          <div {{rdfa attributes}}>
+            <persoon.get @prop="gebruikteVoornaam" as |attributes value|>
+              <span {{rdfa attributes}}>{{value}}</span>
+            </persoon.get>
+          </div>
+        </functionaris.get>
+      </WithRdfaContext>
+
+      <WithRdfaContext @tagName="td" @model={{row}} as |functionaris|>
+        <functionaris.get @prop="isBestuurlijkeAliasVan" as |attributes value persoon|>
+          <div {{rdfa attributes}}>
+            <persoon.get @prop="achternaam" as |attributes value|>
+              <span {{rdfa attributes}}>{{value}}</span>
+            </persoon.get>
+          </div>
+        </functionaris.get>
+      </WithRdfaContext>
+
+      <WithRdfaContext @tagName="td" @model={{row}} as |functionaris|>
+        <functionaris.get @prop="status" as |attributes value status|>
+          <div {{rdfa attributes}}>
+            <status.get @prop="label" as |attributes value|>
+              <span {{rdfa attributes}}>{{value}}</span>
+            </status.get>
+          </div>
+        </functionaris.get>
+      </WithRdfaContext>
+
+      <WithRdfaContext @tagName="td" @class="word-break--break-word" @model={{row}} as |functionaris|>
+        <functionaris.get @prop="bekleedt" as |attributes value bekleedt|>
+          <div {{rdfa attributes}}>
+            <bekleedt.get @prop="contactinfo" as |attributes value contactinfo|>
+              <div {{rdfa attributes}}>
+                <contactinfo.get @prop="email" as |attributes email|>
+                  email:
+                  {{#if email}}
+                    <span {{rdfa attributes}}>{{email}}</span>
+                  {{else}}
+                    <span class="au-c-text-info">Onbepaald</span>
+                  {{/if}}
+                </contactinfo.get>
+              </div>
+              <div {{rdfa attributes}}>
+                <contactinfo.get @prop="telefoon" as |attributes telefoon|>
+                  telefoon:
+                  {{#if telefoon}}
+                    <span {{rdfa attributes}}>{{telefoon}}</span>
+                  {{else}}
+                    <span class="au-c-text-info">Onbepaald</span>
+                  {{/if}}
+                </contactinfo.get>
+              </div>
+            </bekleedt.get>
+          </div>
+        </functionaris.get>
+      </WithRdfaContext>
+
+      <WithRdfaContext @tagName="td" @class="word-break--break-word" @model={{row}} as |functionaris|>
+        <functionaris.get @prop="bekleedt" as |attributes value bekleedt|>
+          <div {{rdfa attributes}}>
+            <bekleedt.get @prop="contactinfo" as |attributes value contactinfo|>
+              <div {{rdfa attributes}}>
+                <contactinfo.get @prop="adres" as |attributes value adres|>
+                  <div {{rdfa attributes}}>
+                    {{#if adres}}
+                      <adres.get @prop="volledigAdres" as |attributes volledigAdres|>
+                        <span {{rdfa attributes}}>{{volledigAdres}}</span>
+                      </adres.get>
+                    {{else}}
+                      <span class="au-c-info-text">Onbepaald</span>
+                    {{/if}}
+                  </div>
+                </contactinfo.get>
+              </div>
+            </bekleedt.get>
+          </div>
+        </functionaris.get>
+      </WithRdfaContext>
+    </c.body>
 
   </t.content>
-</DataTable>
+</AuDataTable>
