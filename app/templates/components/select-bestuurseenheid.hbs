@@ -1,10 +1,12 @@
 <div class={{this.args.class}}>
-  <AuHelpText class="au-u-margin-bottom-small">
+  <AuHelpText class="au-u-margin-bottom-small" id="describe-search">
     <strong>Zoek naar een gemeente, disctrict of provincie</strong> (Berchem, Hasselt, Gent, ...),
     <br>
     <strong>of besuurseenheid</strong> zoals een gemeentebestuur, autonoom gemeentebedrijf, OCMW-vereniging, intergemeentelijk samenwerkingsverband (IGS), provinciebestuur of autonoom provinciebedrijf (APB)
     </AuHelpText>
   <PowerSelect
+    @ariaLabel="Zoekbalk"
+    @ariaDescribedBy="describe-search"
     @searchEnabled={{true}}
     @search={{perform search}}
     @searchField="naam"
