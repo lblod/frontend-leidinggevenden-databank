@@ -7,10 +7,11 @@
 
 <div class="au-c-main-container" itemprop="mainContentOfPage" id="main">
   <div class="au-c-main-container__content au-c-main-container__content--scroll">
-
-    <WithRdfaPrefixesAndVocab>
-      {{outlet}}
-    </WithRdfaPrefixesAndVocab>
+    <main id="content">
+      <WithRdfaPrefixesAndVocab>
+        {{outlet}}
+      </WithRdfaPrefixesAndVocab>
+    </main>
 
     <AuMainFooter>
       <AuHeading @level="3" @skin="4">
