@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@appuniversum/appuniversum": "^0.0.14",
-    "@appuniversum/ember-appuniversum": "0.0.30",
+    "@appuniversum/ember-appuniversum": "0.0.32",
     "@ember/optional-features": "^1.3.0",
     "@glimmer/component": "^1.0.0",
     "@glimmer/tracking": "^1.0.0",
@@ -65,7 +65,7 @@
     "ember-page-title": "^5.0.1",
     "ember-power-select": "^4.0.3",
     "ember-qunit": "^4.6.0",
-    "ember-rdfa-helpers": "0.4.0",
+    "ember-rdfa-helpers": "git://github.com/aatauil/ember-rdfa-helpers",
     "ember-resolver": "^8.0.0",
     "ember-source": "~3.18.0",
     "ember-template-lint": "^2.6.0",
