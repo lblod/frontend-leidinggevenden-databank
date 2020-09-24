@@ -1,6 +1,6 @@
 {
   "name": "frontend-leidinggevenden-databank",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "private": true,
   "description": "The public portal to leidinggevenden roles at the flemish government",
   "repository": {
