@@ -122,7 +122,11 @@
                   <div {{rdfa attributes}}>
                     {{#if adres}}
                       <adres.get @prop="volledigAdres" as |attributes volledigAdres|>
-                        <span {{rdfa attributes}}>{{volledigAdres}}</span>
+                        {{#if volledigAdres}}
+                          <span {{rdfa attributes}}>{{volledigAdres}}</span>
+                        {{else}}
+                          <span class="au-c-info-text">Onbepaald</span>
+                        {{/if}}
                       </adres.get>
                     {{else}}
                       <span class="au-c-info-text">Onbepaald</span>
