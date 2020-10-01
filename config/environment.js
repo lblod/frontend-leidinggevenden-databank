@@ -21,8 +21,8 @@ module.exports = function(environment) {
                        "leidinggevenden.lblod.info",
                        "dev.leidinggevenden.lblod.info",
                        /^localhost:\d+$/,
-                       /^.*$/
-                     ] // TODO: these regexpses with actual allowed domains, this is a major flaw.
+                       "localhost"
+                     ]
     },
     APP: {
       // Here you can pass flags/options to your application instance
