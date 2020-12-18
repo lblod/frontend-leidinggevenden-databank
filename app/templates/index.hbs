@@ -15,7 +15,7 @@
         <SelectBestuurseenheid @value={{this.bestuurseenheidId}} @onSelectionChange={{this.setBestuurseenheidId}} @class="au-u-margin-bottom" />
       </div>
     </div>
-    <LinkTo @route="bestuurseenheid.functionarissen" @model={{this.bestuurseenheidId}} class="au-c-button {{if bestuurseenheidId "" "is-disabled"}}">
+    <LinkTo @route="bestuurseenheid.functionarissen" @model={{this.bestuurseenheidId}} class="au-c-button {{if this.bestuurseenheidId "" "is-disabled"}}">
       Bekijk leidinggevenden in bestuur
     </LinkTo>
   </div>

@@ -4,18 +4,18 @@
     <li class="pager__element u-hidden-mobile">
       <span class="u-visually-hidden">Rij </span><strong>{{this.startItem}} - {{this.endItem}}</strong> van {{@nbOfItems}}
     </li>
-    {{#if hasMultiplePages}}
-      {{#unless isFirstPage}}
+    {{#if @hasMultiplePages}}
+      {{#unless @isFirstPage}}
         <li class="pager__element">
-          <a {{fn this.changePage links.prev}} role="button">
+          <a href="#" {{fn this.changePage @links.prev}} role="button">
             <WuIcon @icon="vi-arrow" @class="vi-u-180deg vi-u-s" /> vorige
             <span class="u-visually-hidden"> {{@pageSize}} rijen</span>
           </a>
         </li>
       {{/unless}}
-      {{#unless isLastPage}}
+      {{#unless @isLastPage}}
         <li class="pager__element">
-          <a {{fn this.changePage links.next}} role="button">
+          <a href="#" {{fn this.changePage @links.next}} role="button">
             volgende
             <span class="u-visually-hidden"> {{@pageSize}} rijen</span>
             <WuIcon @icon="vi-arrow" @class="vi-u-s" />
