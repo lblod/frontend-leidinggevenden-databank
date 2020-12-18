@@ -4,7 +4,7 @@
               @sort={{@sort}}
               @size={{@size}}
               @page={{@page}}
-              @isLoading={{isLoadingModel}} as |t|>
+              @isLoading={{@isLoadingModel}} as |t|>
   <t.content as |c|>
     <c.header>
       <AuDataTableThSortable @label="Functie" @field="bekleedt.rol.label" @currentSorting={{@sort}} @class="data-table__header-title" />
