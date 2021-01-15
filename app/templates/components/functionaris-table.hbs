@@ -1,18 +1,18 @@
-<AuDataTable  @content={{content}}
+<AuDataTable  @content={{@content}}
               @fields="Functionarissen"
               @noDataMessage="Geen functionarissen gevonden."
-              @sort={{sort}}
-              @size={{size}}
-              @page={{page}}
-              @isLoading={{isLoadingModel}} as |t|>
+              @sort={{@sort}}
+              @size={{@size}}
+              @page={{@page}}
+              @isLoading={{@isLoadingModel}} as |t|>
   <t.content as |c|>
     <c.header>
-      <AuDataTableThSortable @label="Functie" @field="bekleedt.rol.label" @currentSorting={{sort}} @class="data-table__header-title" />
-      <AuDataTableThSortable @label="Voornaam" @field="is-bestuurlijke-alias-van.gebruikte-voornaam" @currentSorting={{sort}} @class="data-table__header-title" />
-      <AuDataTableThSortable @label="Familienaam" @field="is-bestuurlijke-alias-van.achternaam" @currentSorting={{sort}} @class="data-table__header-title" />
-      <AuDataTableThSortable @label="Status" @field="status.label" @currentSorting={{sort}} @class="data-table__header-title" />
+      <AuDataTableThSortable @label="Functie" @field="bekleedt.rol.label" @currentSorting={{@sort}} @class="data-table__header-title" />
+      <AuDataTableThSortable @label="Voornaam" @field="is-bestuurlijke-alias-van.gebruikte-voornaam" @currentSorting={{@sort}} @class="data-table__header-title" />
+      <AuDataTableThSortable @label="Familienaam" @field="is-bestuurlijke-alias-van.achternaam" @currentSorting={{@sort}} @class="data-table__header-title" />
+      <AuDataTableThSortable @label="Status" @field="status.label" @currentSorting={{@sort}} @class="data-table__header-title" />
       <th>Contactgegevens</th>
-      <AuDataTableThSortable @label="Adres" @field="bekleedt.contactinfo.adres" @currentSorting={{sort}} @class="data-table__header-title" />
+      <AuDataTableThSortable @label="Adres" @field="bekleedt.contactinfo.adres" @currentSorting={{@sort}} @class="data-table__header-title" />
     </c.header>
     <c.body as |row|>
       <td>

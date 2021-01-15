@@ -1,4 +1,4 @@
-<div class={{this.args.class}}>
+<div class={{@class}}>
   <AuHelpText class="au-u-margin-bottom-small" id="describe-search">
     <strong>Zoek naar een gemeente, disctrict of provincie</strong> (Berchem, Hasselt, Gent, ...),
     <br>
@@ -8,14 +8,13 @@
     @ariaLabel="Zoekbalk"
     @ariaDescribedBy="describe-search"
     @searchEnabled={{true}}
-    @search={{perform search}}
+    @search={{perform this.search}}
     @searchField="naam"
     @searchPlaceholder="Typ om te zoeken..."
     @options={{this.options}}
     @selected={{this.selected}}
-    @onChange={{action "changeSelected"}}
+    @onChange={{this.changeSelected}}
     @noMatchesMessage="Geen resultaten"
-    @searchPlaceholder="Typ om te zoeken"
     @allowClear={{true}}
     as |bestuurseenheid|
   >
