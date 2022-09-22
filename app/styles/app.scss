@@ -86,6 +86,9 @@
 @import 'ember-power-select';
 @import "ember-appuniversum/p-ember-power-select";
 
+// Project styles
+@import 'project/select-infinite-options';
+
 // UTILITIES
 @import "appuniversum/u-align-text";
 @import "appuniversum/u-headings";

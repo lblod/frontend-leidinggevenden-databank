@@ -15,6 +15,14 @@
     @selected={{this.selected}}
     @onChange={{this.changeSelected}}
     @noMatchesMessage="Geen resultaten"
+    @loadingMessage="Aan het laden..."
+    @optionsComponent={{component
+      "select/infinite-options"
+      canLoadMore=this.searchData.canLoadMoreSearchResults
+      loadMore=(perform this.loadMoreSearchResults)
+      isLoadingMore=this.loadMoreSearchResults.isRunning
+    }}
+    @registerAPI={{this.registerAPI}}
     @allowClear={{true}}
     as |bestuurseenheid|
   >
