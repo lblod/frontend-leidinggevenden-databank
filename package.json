@@ -38,7 +38,6 @@
     "@lblod/ember-vo-webuniversum-widget": "^0.1.6",
     "babel-eslint": "^10.1.0",
     "broccoli-asset-rev": "^3.0.0",
-    "ember-auto-focus": "^2.0.4",
     "ember-auto-import": "^2.12.0",
     "ember-basic-dropdown": "^3.0.11",
     "ember-cli": "~3.28.6",
