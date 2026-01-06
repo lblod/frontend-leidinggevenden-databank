@@ -50,7 +50,7 @@ export default class SelectBestuurseenheid extends Component {
     if (this.isSearching) {
       let results = yield this.fetchBestuurseenheden({
         filter: this.searchData.searchTerm,
-        "page[number]": ++this.searchData.currentPage,
+        'page[number]': ++this.searchData.currentPage,
       });
 
       this.searchData.addSearchResults(results.toArray());
@@ -60,7 +60,10 @@ export default class SelectBestuurseenheid extends Component {
   @action
   async updateSelectedValue() {
     if (this.args.value && !this.selected) {
-      this.selected = await this.store.findRecord('bestuurseenheid', this.args.value);
+      this.selected = await this.store.findRecord(
+        'bestuurseenheid',
+        this.args.value
+      );
     } else if (!this.args.value) {
       this.selected = null;
     }
@@ -80,10 +83,10 @@ export default class SelectBestuurseenheid extends Component {
   }
 
   async fetchBestuurseenheden(searchQuery = {}) {
-    return this.store.query("bestuurseenheid", {
-      sort: "naam",
-      include: "classificatie",
-      "page[number]": 0,
+    return this.store.query('bestuurseenheid', {
+      sort: 'naam',
+      include: 'classificatie',
+      'page[number]': 0,
       ...searchQuery,
     });
   }

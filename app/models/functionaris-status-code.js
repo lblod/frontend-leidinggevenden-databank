@@ -10,11 +10,11 @@ export default class FunctionarisStatusCode extends Model {
   @attr label;
   @attr scopeNote;
 
-  get rdfaBindings(){
+  get rdfaBindings() {
     return {
-      class: "lblodlg:FunctionarisStatusCode",
-      label: "skos:prefLabel",
-      scopeNote: "skos:scopeNote"
+      class: 'lblodlg:FunctionarisStatusCode',
+      label: 'skos:prefLabel',
+      scopeNote: 'skos:scopeNote',
     };
   }
 }

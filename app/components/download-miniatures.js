@@ -5,18 +5,17 @@ import { tracked } from '@glimmer/tracking';
 
 export default class DownloadMiniatures extends Component {
   @service store;
-  @service fastboot
+  @service fastboot;
   @tracked ttlFile = undefined;
-  @tracked csvFile = undefined
+  @tracked csvFile = undefined;
 
   constructor() {
     super(...arguments);
     const promises = Promise.all([
       this.fetchMetadata('text/turtle', 'ttlFile'),
-      this.fetchMetadata('text/csv', 'csvFile')
+      this.fetchMetadata('text/csv', 'csvFile'),
     ]);
-    if (this.fastboot.isFastBoot)
-      this.fastboot.deferRendering(promises);
+    if (this.fastboot.isFastBoot) this.fastboot.deferRendering(promises);
   }
 
   async fetchMetadata(mimeType, field) {
@@ -24,11 +23,10 @@ export default class DownloadMiniatures extends Component {
       const files = await this.store.query('export', {
         sort: '-created',
         filter: { format: mimeType },
-        page: { size: 1 }
+        page: { size: 1 },
       });
       this[field] = files.firstObject;
-    }
-    catch(e) {
+    } catch (e) {
       // not handling it at the moment
     }
   }
@@ -43,8 +41,6 @@ export default class DownloadMiniatures extends Component {
 
   @action
   download(file) {
-    if (file)
-      window.location = `/files/${file.filename}`;
+    if (file) window.location = `/files/${file.filename}`;
   }
-
 }

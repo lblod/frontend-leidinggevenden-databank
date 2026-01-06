@@ -4,17 +4,17 @@ import { collect } from '@ember/object/computed';
 export default class BestuurseenheidClassificatieCode extends Model {
   // A string representation of this model, based on its attributes.
   // This is what mu-cl-resources uses to search on, and how the model will be presented while editing relationships.
-  @collect.apply(this,['id', 'label', 'scopeNote']) stringRep;
+  @collect.apply(this, ['id', 'label', 'scopeNote']) stringRep;
 
   @attr uri;
   @attr label;
   @attr scopeNote;
 
-  get rdfaBindings(){
+  get rdfaBindings() {
     return {
-      class: "ext:BestuurseenheidClassificatieCode",
-      label: "skos:prefLabel",
-      scopeNote: "skos:scopeNote"
+      class: 'ext:BestuurseenheidClassificatieCode',
+      label: 'skos:prefLabel',
+      scopeNote: 'skos:scopeNote',
     };
   }
 }

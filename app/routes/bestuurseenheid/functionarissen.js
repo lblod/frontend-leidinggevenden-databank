@@ -21,10 +21,11 @@ export default Route.extend(DataTableRouteMixin, {
           'is-bestuurlijke-alias-van',
           'status',
           'bekleedt.contactinfo.adres',
-          'bekleedt.bevat-in.is-tijdsspecialisatie-van.bestuurseenheid'
+          'bekleedt.bevat-in.is-tijdsspecialisatie-van.bestuurseenheid',
         ].join(','),
-        'filter[bekleedt][bevat-in][is-tijdsspecialisatie-van][bestuurseenheid][:id:]': bestuurseenheid.id,
-        'filter[:lte:start]': midnight
+        'filter[bekleedt][bevat-in][is-tijdsspecialisatie-van][bestuurseenheid][:id:]':
+          bestuurseenheid.id,
+        'filter[:lte:start]': midnight,
       };
     } else {
       return {
@@ -32,10 +33,11 @@ export default Route.extend(DataTableRouteMixin, {
           'bekleedt.rol',
           'is-bestuurlijke-alias-van',
           'status',
-          'bekleedt.contactinfo'
+          'bekleedt.contactinfo',
         ].join(','),
-        'filter[bekleedt][bevat-in][is-tijdsspecialisatie-van][bestuurseenheid][:id:]': bestuurseenheid.id,
-        'filter[:lte:start]': midnight
+        'filter[bekleedt][bevat-in][is-tijdsspecialisatie-van][bestuurseenheid][:id:]':
+          bestuurseenheid.id,
+        'filter[:lte:start]': midnight,
       };
     }
   },
@@ -52,15 +54,16 @@ export default Route.extend(DataTableRouteMixin, {
    *********************************************************************************/
   model(params) {
     const options = {
-        sort: params.sort,
-        page: {
-          number: params.page,
-          size: params.size
-        }
+      sort: params.sort,
+      page: {
+        number: params.page,
+        size: params.size,
+      },
     };
     // TODO: sending an empty filter param to backend returns []
-    if (params.filter) { options['filter'] = params.filter; }
-
+    if (params.filter) {
+      options['filter'] = params.filter;
+    }
 
     //--- FASTBOOT WORKAROUND ---//
 
@@ -71,11 +74,10 @@ export default Route.extend(DataTableRouteMixin, {
     // $.extend is complex, so opted to use lodash
     _.merge(options, this.mergeQueryOptions(params));
 
-
     return this.store.query(this.modelName, options);
-  }
+  },
 
   /*********************************************************************************
    * end workaround
-  *********************************************************************************/
+   *********************************************************************************/
 });

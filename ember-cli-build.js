@@ -2,14 +2,14 @@
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-module.exports = function(defaults) {
+module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     sassOptions: {
       includePaths: [
         'node_modules/@appuniversum/appuniversum',
         'node_modules/@appuniversum/ember-appuniversum/app/styles',
-      ]
-    }
+      ],
+    },
     // Add options here
   });
 

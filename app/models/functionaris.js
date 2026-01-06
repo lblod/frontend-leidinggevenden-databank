@@ -18,15 +18,14 @@ export default class Functionaris extends Model {
     return this.start <= now && (this.einde === undefined || this.einde >= now);
   }
 
-  get rdfaBindings(){
+  get rdfaBindings() {
     return {
-      class: "lblodlg:Functionaris",
-      start: "mandaat:start",
-      einde: "mandaat:einde",
-      bekleedt: "org:holds",
-      status: "mandaat:status",
-      isBestuurlijkeAliasVan: "mandaat:isBestuurlijkeAliasVan"
+      class: 'lblodlg:Functionaris',
+      start: 'mandaat:start',
+      einde: 'mandaat:einde',
+      bekleedt: 'org:holds',
+      status: 'mandaat:status',
+      isBestuurlijkeAliasVan: 'mandaat:isBestuurlijkeAliasVan',
     };
   }
 }
-
