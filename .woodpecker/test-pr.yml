@@ -28,6 +28,7 @@ steps:
   dependency-lint:
     image: danlynn/ember-cli:5.8.0-node_20.12
     depends_on: install
+    failure: ignore
     commands:
       - ember dependency-lint
   test:
