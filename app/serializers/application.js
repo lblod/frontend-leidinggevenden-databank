@@ -1,6 +1,6 @@
-import DS from 'ember-data';
+import JSONAPISerializer from '@ember-data/serializer/json-api';
 
-export default DS.JSONAPISerializer.extend({
+export default class ApplicationSerializer extends JSONAPISerializer {
   /*********************************************************************************
    * Temporary workaround fastboot and ember-data-table/addon/mixins/serializer.js
    * We keep these here, as we want to experiment on how to tackle fastboot issues.
@@ -11,7 +11,7 @@ export default DS.JSONAPISerializer.extend({
       Parse the links in the JSONAPI response and convert to a meta-object
   */
   normalizeQueryResponse(store, clazz, payload) {
-    const result = this._super(...arguments);
+    const result = super.normalizeQueryResponse(...arguments);
     result.meta = result.meta || {};
 
     if (payload.links) {
@@ -22,7 +22,7 @@ export default DS.JSONAPISerializer.extend({
     }
 
     return result;
-  },
+  }
 
   /**
      Transforms link URLs to objects containing metadata
@@ -61,9 +61,9 @@ export default DS.JSONAPISerializer.extend({
     });
 
     return meta;
-  },
+  }
 
   /*********************************************************************************
    * end workaround
    *********************************************************************************/
-});
+}

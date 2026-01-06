@@ -1,22 +1,16 @@
-import DS from 'ember-data';
-import { attr } from '@ember-data/model';
-import { computed } from '@ember/object';
-import _moment from 'ember-moment/computeds/moment';
-import format from 'ember-moment/computeds/format';
+import Model, { attr } from '@ember-data/model';
 
-// Couldn't find a way to upgrade the _moment and format attributes
+export default class ExportModel extends Model {
+  @attr filename;
+  @attr format;
+  @attr filesize;
+  @attr('datetime') created;
 
-export default DS.Model.extend({
-  filename: attr(),
-  format: attr(),
-  filesize: attr(),
-  created: attr('datetime'),
-
-  filesizeMb: computed('filesize', function () {
+  get filesizeMb() {
     return this.filesize
       ? +(Math.round(this.filesize / 1000 / 1000 + 'e+1') + 'e-1')
       : 0;
-  }),
-  createdMoment: _moment('created'),
-  createdFormatted: format('createdMoment', 'DD/MM/YYYY HH:mm'),
-});
+  }
+}
+
+// createdFormatted: format('createdMoment', 'DD/MM/YYYY HH:mm'),
