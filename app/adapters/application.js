@@ -1,5 +1,7 @@
 import DS from 'ember-data';
 const maxRetries = 5;
+
+// TODO: configure the adapter once we converted it to a native class: https://github.com/redpencilio/fastboot-app-server-service?tab=readme-ov-file#configure-the-ember-data-adapter-to-send-requests-to-the-backend
 export default DS.JSONAPIAdapter.extend({
   init() {
     this._super(...arguments);
