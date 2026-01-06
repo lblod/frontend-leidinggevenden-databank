@@ -39,7 +39,7 @@
     "babel-eslint": "^10.1.0",
     "broccoli-asset-rev": "^3.0.0",
     "ember-auto-focus": "^2.0.4",
-    "ember-auto-import": "^1.12.0",
+    "ember-auto-import": "^2.12.0",
     "ember-basic-dropdown": "^3.0.11",
     "ember-cli": "~3.28.6",
     "ember-cli-app-version": "^5.0.0",
@@ -88,7 +88,8 @@
     "qunit-dom": "^1.6.0",
     "release-it": "^15.4.2",
     "sass": "^1.19.0",
-    "svgxuse": "^1.2.6"
+    "svgxuse": "^1.2.6",
+    "webpack": "^5.104.1"
   },
   "engines": {
     "node": "12.* || 14.* || >= 16"
