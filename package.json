@@ -26,6 +26,12 @@
     "test": "npm-run-all lint test:*",
     "test:ember": "ember test"
   },
+  "overrides": {
+    "babel-plugin-ember-template-compilation": "2.2.1"
+  },
+  "overridesComments": {
+    "babel-plugin-ember-template-compilation": "Needed until we update to Appuniversum v3: https://github.com/appuniversum/ember-appuniversum/issues/491"
+  },
   "devDependencies": {
     "@appuniversum/ember-appuniversum": "^2.18.0",
     "@ember/optional-features": "^2.0.0",
