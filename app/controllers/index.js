@@ -1,11 +1,14 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
 export default class Index extends Controller {
   queryParams = ['bestuurseenheidId'];
 
+  @tracked bestuurseenheidId;
+
   @action
   setBestuurseenheidId(value) {
-    this.set('bestuurseenheidId', value && value.id);
+    this.bestuurseenheidId = value?.id;
   }
 }

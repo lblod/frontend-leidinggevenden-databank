@@ -32,15 +32,29 @@ export default class DownloadMiniatures extends Component {
   }
 
   get ttlMetadata() {
-    return `Turtle - ${this.ttlFile.filesizeMb}MB - ${this.ttlFile.createdFormatted}`;
+    return `Turtle - ${this.ttlFile.filesizeMb}MB - ${formatDate(
+      this.ttlFile.created
+    )}`;
   }
 
   get csvMetadata() {
-    return `CSV - ${this.csvFile.filesizeMb}MB - ${this.csvFile.createdFormatted}`;
+    return `CSV - ${this.csvFile.filesizeMb}MB - ${formatDate(
+      this.csvFile.created
+    )}`;
   }
 
   @action
   download(file) {
     if (file) window.location = `/files/${file.filename}`;
   }
+}
+
+function formatDate(date) {
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+
+  return `${day}/${month}/${year} ${hours}:${minutes}`;
 }

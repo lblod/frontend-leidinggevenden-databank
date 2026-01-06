@@ -1,13 +1,20 @@
+import { inject as service } from '@ember/service';
 import Route from '@ember/routing/route';
+// eslint-disable-next-line ember/no-mixins
 import DataTableRouteMixin from 'ember-data-table/mixins/route';
 import _ from 'lodash';
-import { reads } from '@ember/object/computed';
-import { inject as service } from '@ember/service';
 
-export default Route.extend(DataTableRouteMixin, {
-  fastboot: service(),
-  isFastBoot: reads('fastboot.isFastBoot'),
-  modelName: 'functionaris',
+export default class FunctionarissenRoute extends Route.extend(
+  DataTableRouteMixin
+) {
+  @service
+  fastboot;
+
+  get isFastBoot() {
+    return this.fastboot.isFastBoot;
+  }
+
+  modelName = 'functionaris';
 
   mergeQueryOptions() {
     const bestuurseenheid = this.modelFor('bestuurseenheid');
@@ -40,12 +47,12 @@ export default Route.extend(DataTableRouteMixin, {
         'filter[:lte:start]': midnight,
       };
     }
-  },
+  }
 
   setupController(controller, model) {
-    this._super(controller, model);
+    super.setupController(controller, model);
     controller.set('bestuurseenheid', this.modelFor('bestuurseenheid'));
-  },
+  }
 
   /*********************************************************************************
    * Temporary workaround fastboot and ember-data-table/addon/mixins/route.js
@@ -75,9 +82,9 @@ export default Route.extend(DataTableRouteMixin, {
     _.merge(options, this.mergeQueryOptions(params));
 
     return this.store.query(this.modelName, options);
-  },
+  }
 
   /*********************************************************************************
    * end workaround
    *********************************************************************************/
-});
+}
