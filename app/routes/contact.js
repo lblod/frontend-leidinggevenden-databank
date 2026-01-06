@@ -1,5 +1,3 @@
 import Route from '@ember/routing/route';
 
-export default class Contact extends Route {
-
-}
+export default class Contact extends Route {}

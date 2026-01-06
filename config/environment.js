@@ -17,12 +17,13 @@ module.exports = function (environment) {
       },
     },
     fastboot: {
-      hostWhitelist: [ "leidinggevenden.lokaalbestuur.vlaanderen.be",
-                       "leidinggevenden.lblod.info",
-                       "dev.leidinggevenden.lblod.info",
-                       /^localhost:\d+$/,
-                       "localhost"
-                     ]
+      hostWhitelist: [
+        'leidinggevenden.lokaalbestuur.vlaanderen.be',
+        'leidinggevenden.lblod.info',
+        'dev.leidinggevenden.lblod.info',
+        /^localhost:\d+$/,
+        'localhost',
+      ],
     },
     APP: {
       // Here you can pass flags/options to your application instance
@@ -30,9 +31,11 @@ module.exports = function (environment) {
     },
     'vo-webuniversum': {
       version: '2.8.3',
-      header: '//widgets.vlaanderen.be/widget/live/8cb0e2dd9fb843a88da86211c9ade78c',
-      footer: '//widgets.vlaanderen.be/widget/live/278abfe4c19f49daa667c00815f6ab12'
-    }
+      header:
+        '//widgets.vlaanderen.be/widget/live/8cb0e2dd9fb843a88da86211c9ade78c',
+      footer:
+        '//widgets.vlaanderen.be/widget/live/278abfe4c19f49daa667c00815f6ab12',
+    },
   };
 
   if (environment === 'development') {
@@ -56,7 +59,6 @@ module.exports = function (environment) {
   }
 
   if (environment === 'production') {
-
   }
 
   return ENV;

@@ -1,13 +1,11 @@
 import DS from 'ember-data';
 
 export default DS.JSONAPISerializer.extend({
-
-
-   /*********************************************************************************
-    * Temporary workaround fastboot and ember-data-table/addon/mixins/serializer.js
-    * We keep these here, as we want to experiment on how to tackle fastboot issues.
-    * Effective code changes will be preceded by //--- FASTBOOT WORKAROUND ---//
-    *********************************************************************************/
+  /*********************************************************************************
+   * Temporary workaround fastboot and ember-data-table/addon/mixins/serializer.js
+   * We keep these here, as we want to experiment on how to tackle fastboot issues.
+   * Effective code changes will be preceded by //--- FASTBOOT WORKAROUND ---//
+   *********************************************************************************/
 
   /**
       Parse the links in the JSONAPI response and convert to a meta-object
@@ -42,16 +40,16 @@ export default DS.JSONAPISerializer.extend({
      }
    */
   createPageMeta(data) {
-   let meta = {};
+    let meta = {};
 
-    Object.keys(data).forEach(type => {
+    Object.keys(data).forEach((type) => {
       const link = data[type];
       meta[type] = {};
 
       //extracts from '/path?foo=bar?baz=foo' the string: foo=bar?baz=foo
       const query = link.split(/\?(.+)/)[1] || '';
 
-      query.split('&').forEach(pairs => {
+      query.split('&').forEach((pairs) => {
         const [param, value] = pairs.split('=');
 
         if (decodeURIComponent(param) === 'page[number]') {
@@ -59,13 +57,11 @@ export default DS.JSONAPISerializer.extend({
         } else if (decodeURIComponent(param) === 'page[size]') {
           meta[type].size = parseInt(value);
         }
-
       });
-
     });
 
     return meta;
-  }
+  },
 
   /*********************************************************************************
    * end workaround
