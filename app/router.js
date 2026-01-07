@@ -12,7 +12,7 @@ Router.map(function () {
     { path: '/bestuurseenheden/:bestuurseenheid_id' },
     function () {
       this.route('functionarissen');
-    }
+    },
   );
   this.route('legaal', function () {
     this.route('disclaimer');
