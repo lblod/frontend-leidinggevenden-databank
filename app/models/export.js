@@ -12,5 +12,3 @@ export default class ExportModel extends Model {
       : 0;
   }
 }
-
-// createdFormatted: format('createdMoment', 'DD/MM/YYYY HH:mm'),

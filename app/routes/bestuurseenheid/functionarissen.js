@@ -7,8 +7,8 @@ import _ from 'lodash';
 export default class FunctionarissenRoute extends Route.extend(
   DataTableRouteMixin
 ) {
-  @service
-  fastboot;
+  @service fastboot;
+  @service store;
 
   get isFastBoot() {
     return this.fastboot.isFastBoot;

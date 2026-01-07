@@ -8,7 +8,7 @@ export default class ContactPunt extends Model {
   @attr naam;
   @attr website;
   @attr telefoon;
-  @belongsTo('adres', { inverse: null }) adres;
+  @belongsTo('adres', { async: true, inverse: null }) adres;
 
   get rdfaBindings() {
     return {
@@ -22,15 +22,4 @@ export default class ContactPunt extends Model {
       adres: 'locn:address',
     };
   }
-
-  rdfaBindings = Object.freeze({
-    class: 'schema:ContactPoint',
-    aanschrijfprefix: 'vcard:honorific-prefix',
-    email: 'schema:email',
-    fax: 'schema:faxNumber',
-    naam: 'foaf:name',
-    website: 'foaf:page',
-    telefoon: 'schema:telephone',
-    adres: 'locn:address',
-  });
 }

@@ -4,9 +4,9 @@ export default class Functionaris extends Model {
   @attr uri;
   @attr('datetime') start;
   @attr('datetime') einde;
-  @belongsTo('bestuursfunctie', { inverse: null }) bekleedt;
-  @belongsTo('functionaris-status-code', { inverse: null }) status;
-  @belongsTo('persoon', { inverse: null }) isBestuurlijkeAliasVan;
+  @belongsTo('bestuursfunctie', { async: true, inverse: null }) bekleedt;
+  @belongsTo('functionaris-status-code', { async: true, inverse: null }) status;
+  @belongsTo('persoon', { async: true, inverse: null }) isBestuurlijkeAliasVan;
 
   get isOngoing() {
     const now = new Date();
