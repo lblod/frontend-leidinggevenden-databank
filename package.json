@@ -63,7 +63,6 @@
     "ember-fetch": "^8.1.2",
     "ember-load-initializers": "^2.1.2",
     "ember-lodash": "^4.19.4",
-    "ember-moment": "^8.0.0",
     "ember-mu-transform-helpers": "^2.0.0",
     "ember-page-title": "^7.0.0",
     "ember-power-select": "^4.0.3",
