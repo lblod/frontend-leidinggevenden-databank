@@ -1,7 +1,7 @@
 <div class="au-o-grid au-u-margin-bottom">
   {{#if this.csvFile}}
     <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium">
-      <AuCard @flex="true" @divided="true" as |c|>
+      <AuCard @disableAuContent={{true}} @flex="true" @divided="true" as |c|>
         <c.header @badgeSkin="brand" @badgeIcon="download">
           <AuHeading @level="2" @skin="4">
             Download in CSV formaat
@@ -16,7 +16,7 @@
     </div>
   {{else}}
     <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium">
-      <AuCard @flex="true" @divided="true" as |c|>
+      <AuCard @disableAuContent={{true}} @flex="true" @divided="true" as |c|>
         <c.header @badgeSkin="brand" @badgeIcon="download">
           <AuHeading @level="2" @skin="4">
             Download in CSV formaat
@@ -31,7 +31,7 @@
   {{/if}}
   {{#if this.ttlFile}}
     <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium">
-      <AuCard @flex="true" @divided="true" as |c|>
+      <AuCard @disableAuContent={{true}} @flex="true" @divided="true" as |c|>
         <c.header @badgeSkin="brand" @badgeIcon="download">
           <AuHeading @level="2" @skin="4">
             Download in Turtle formaat
@@ -46,7 +46,7 @@
     </div>
   {{else}}
     <div class="au-o-grid__item au-u-1-1 au-u-1-2@medium">
-      <AuCard @flex="true" @divided="true" as |c|>
+      <AuCard @disableAuContent={{true}} @flex="true" @divided="true" as |c|>
         <c.header @badgeSkin="brand" @badgeIcon="download">
           <AuHeading @level="2" @skin="4">
             Download in Turtle formaat
