@@ -1,10 +1,6 @@
 import Controller from '@ember/controller';
-// eslint-disable-next-line ember/no-mixins
-import DefaultQueryParamsMixin from 'ember-data-table/mixins/default-query-params';
 
-export default class FunctionarissenController extends Controller.extend(
-  DefaultQueryParamsMixin
-) {
+export default class FunctionarissenController extends Controller {
   sort = 'is-bestuurlijke-alias-van.achternaam';
   page = 0;
   size = 1000;

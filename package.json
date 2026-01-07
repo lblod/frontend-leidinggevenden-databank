@@ -28,14 +28,8 @@
     "test": "concurrently \"npm:lint\" \"npm:test:*\" --names \"lint,test:\"",
     "test:ember": "ember test"
   },
-  "overrides": {
-    "babel-plugin-ember-template-compilation": "2.2.1"
-  },
-  "overridesComments": {
-    "babel-plugin-ember-template-compilation": "Needed until we update to Appuniversum v3: https://github.com/appuniversum/ember-appuniversum/issues/491"
-  },
   "devDependencies": {
-    "@appuniversum/ember-appuniversum": "^2.18.0",
+    "@appuniversum/ember-appuniversum": "^3.15.0",
     "@babel/eslint-parser": "^7.21.3",
     "@babel/plugin-proposal-decorators": "^7.21.0",
     "@ember/optional-features": "^2.0.0",
@@ -46,6 +40,7 @@
     "broccoli-asset-rev": "^3.0.0",
     "concurrently": "^8.0.1",
     "ember-auto-import": "^2.12.0",
+    "ember-basic-dropdown": "^8.11.0",
     "ember-cli": "~4.12.3",
     "ember-cli-app-version": "^6.0.0",
     "ember-cli-babel": "^7.26.11",
@@ -58,13 +53,14 @@
     "ember-cli-sass": "^10.0.0",
     "ember-cli-sri": "^2.1.1",
     "ember-cli-terser": "^4.0.2",
+    "ember-concurrency": "^5.1.0",
     "ember-data": "~4.12.0",
     "ember-fetch": "^8.1.2",
     "ember-load-initializers": "^2.1.2",
     "ember-lodash": "^4.19.4",
     "ember-mu-transform-helpers": "^2.0.0",
     "ember-page-title": "^7.0.0",
-    "ember-power-select": "^7.0.0",
+    "ember-power-select": "^8.12.1",
     "ember-qunit": "^6.2.0",
     "ember-rdfa-helpers": "^0.7.0",
     "ember-resolver": "^10.0.0",
