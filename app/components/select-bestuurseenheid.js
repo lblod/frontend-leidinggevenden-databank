@@ -58,7 +58,7 @@ export default class SelectBestuurseenheid extends Component {
     if (this.args.value && !this.selected) {
       this.selected = await this.store.findRecord(
         'bestuurseenheid',
-        this.args.value
+        this.args.value,
       );
     } else if (!this.args.value) {
       this.selected = null;
