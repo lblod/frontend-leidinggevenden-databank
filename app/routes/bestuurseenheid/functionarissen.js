@@ -1,14 +1,17 @@
 import { inject as service } from '@ember/service';
 import Route from '@ember/routing/route';
-// eslint-disable-next-line ember/no-mixins
-import DataTableRouteMixin from 'ember-data-table/mixins/route';
 import _ from 'lodash';
 
-export default class FunctionarissenRoute extends Route.extend(
-  DataTableRouteMixin
-) {
+export default class FunctionarissenRoute extends Route {
   @service fastboot;
   @service store;
+
+  queryParams = {
+    filter: { refreshModel: true },
+    page: { refreshModel: true },
+    size: { refreshModel: true },
+    sort: { refreshModel: true },
+  };
 
   get isFastBoot() {
     return this.fastboot.isFastBoot;
