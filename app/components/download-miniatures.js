@@ -25,7 +25,7 @@ export default class DownloadMiniatures extends Component {
         filter: { format: mimeType },
         page: { size: 1 },
       });
-      this[field] = files.firstObject;
+      this[field] = files.at(0);
     } catch (e) {
       // not handling it at the moment
     }

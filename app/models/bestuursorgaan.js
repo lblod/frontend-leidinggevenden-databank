@@ -5,12 +5,22 @@ export default class Bestuurorgaan extends Model {
   @attr naam;
   @attr('date') bindingStart;
   @attr('date') bindingEinde;
-  @belongsTo('bestuurseenheid', { inverse: 'bestuursorganen' }) bestuurseenheid;
-  @belongsTo('bestuursorgaan-classificatie-code', { inverse: null })
+  @belongsTo('bestuurseenheid', { async: true, inverse: 'bestuursorganen' })
+  bestuurseenheid;
+  @belongsTo('bestuursorgaan-classificatie-code', {
+    async: true,
+    inverse: null,
+  })
   classificatie;
-  @belongsTo('bestuursorgaan', { inverse: 'heeftTijdsspecialisaties' })
+  @belongsTo('bestuursorgaan', {
+    async: true,
+    inverse: 'heeftTijdsspecialisaties',
+  })
   isTijdsspecialisatieVan;
-  @hasMany('bestuursorgaan', { inverse: 'isTijdsspecialisatieVan' })
+  @hasMany('bestuursorgaan', {
+    async: true,
+    inverse: 'isTijdsspecialisatieVan',
+  })
   heeftTijdsspecialisaties;
 
   get rdfaBindings() {

@@ -7,8 +7,9 @@ export default class Bestuurseenheid extends Model {
   @attr('boolean') wilMailOntvangen;
   @belongsTo('bestuurseenheid-classificatie-code', { inverse: null })
   classificatie;
-  @hasMany('contact-punt', { inverse: null }) contactinfo;
-  @hasMany('bestuursorgaan', { inverse: 'bestuurseenheid' }) bestuursorganen;
+  @hasMany('contact-punt', { async: true, inverse: null }) contactinfo;
+  @hasMany('bestuursorgaan', { async: true, inverse: 'bestuurseenheid' })
+  bestuursorganen;
 
   get rdfaBindings() {
     return {

@@ -40,7 +40,7 @@ export default class SelectBestuurseenheid extends Component {
     this.searchData = new SearchData({
       totalResultAmount: result.meta.count,
       searchTerm: term,
-      results: result.toArray(),
+      results: result.slice(),
     });
   }
 
@@ -52,7 +52,7 @@ export default class SelectBestuurseenheid extends Component {
         'page[number]': ++this.searchData.currentPage,
       });
 
-      this.searchData.addSearchResults(results.toArray());
+      this.searchData.addSearchResults(results.slice());
     }
   }
 

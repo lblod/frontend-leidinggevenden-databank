@@ -8,7 +8,7 @@ export default class ContactPunt extends Model {
   @attr naam;
   @attr website;
   @attr telefoon;
-  @belongsTo('adres', { inverse: null }) adres;
+  @belongsTo('adres', { async: true, inverse: null }) adres;
 
   get rdfaBindings() {
     return {
