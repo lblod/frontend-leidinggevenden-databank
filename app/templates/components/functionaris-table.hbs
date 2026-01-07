@@ -19,21 +19,21 @@
         <WithRdfaContext @tagName="div" @model={{row}} as |functionaris|>
           <functionaris.get @prop="bekleedt" as |attributes value bestuursfunctie|>
             <div {{rdfa attributes}}>
-              <bestuursfunctie.each @prop="bevatIn" as |attributes value bestuursorgaanInTijd|>
+              <bestuursfunctie.each.get @prop="bevatIn" as |attributes value bestuursorgaanInTijd|>
                 <div {{rdfa attributes}}>
                   <bestuursorgaanInTijd.get @prop="isTijdsspecialisatieVan" as |attributes value bestuursorgaan|>
                     <div {{rdfa attributes}}>
                       <bestuursorgaan.get @prop="bestuurseenheid" as |attributes value bestuurseenheid|>
                         <div {{rdfa attributes}}>
                           <bestuurseenheid.get @prop="naam" as |attributes value|>
-                            <div {{rdfa attributes}} class="u-hidden">{{value}}</div>
+                            <div {{rdfa attributes}} class="au-u-hidden">{{value}}</div>
                           </bestuurseenheid.get>
                         </div>
                       </bestuursorgaan.get>
                     </div>
                   </bestuursorgaanInTijd.get>
                 </div>
-              </bestuursfunctie.each>
+              </bestuursfunctie.each.get>
             </div>
           </functionaris.get>
         </WithRdfaContext>
