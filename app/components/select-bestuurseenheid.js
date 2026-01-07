@@ -23,17 +23,15 @@ export default class SelectBestuurseenheid extends Component {
     return this.isSearching ? this.searchData.results : this.exampleOptions;
   }
 
-  @task
-  *loadData() {
-    this.exampleOptions = yield this.fetchBestuurseenheden();
+  loadData = task(async () => {
+    this.exampleOptions = await this.fetchBestuurseenheden();
     this.updateSelectedValue();
-  }
+  });
 
-  @restartableTask
-  *search(term) {
-    yield timeout(600);
+  search = restartableTask(async (term) => {
+    await timeout(600);
 
-    let result = yield this.fetchBestuurseenheden({
+    let result = await this.fetchBestuurseenheden({
       filter: term,
     });
 
@@ -42,19 +40,18 @@ export default class SelectBestuurseenheid extends Component {
       searchTerm: term,
       results: result.slice(),
     });
-  }
+  });
 
-  @dropTask
-  *loadMoreSearchResults() {
+  loadMoreSearchResults = dropTask(async () => {
     if (this.isSearching) {
-      let results = yield this.fetchBestuurseenheden({
+      let results = await this.fetchBestuurseenheden({
         filter: this.searchData.searchTerm,
         'page[number]': ++this.searchData.currentPage,
       });
 
       this.searchData.addSearchResults(results.slice());
     }
-  }
+  });
 
   @action
   async updateSelectedValue() {
