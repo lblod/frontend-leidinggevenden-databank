@@ -15,9 +15,16 @@
         <SelectBestuurseenheid @value={{this.bestuurseenheidId}} @onSelectionChange={{this.setBestuurseenheidId}} @class="au-u-margin-bottom" />
       </div>
     </div>
-    <LinkTo @route="bestuurseenheid.functionarissen" @model={{this.bestuurseenheidId}} class="au-c-button {{if this.bestuurseenheidId "" "is-disabled"}}">
-      Bekijk leidinggevenden in bestuur
-    </LinkTo>
+
+    {{#if this.bestuurseenheidId}}
+      <AuLink @route="bestuurseenheid.functionarissen" @model={{this.bestuurseenheidId}} @skin="button">
+        Bekijk leidinggevenden in bestuur
+      </AuLink>
+    {{else}}
+      <AuButton @disabled={{true}}>
+        Bekijk leidinggevenden in bestuur
+      </AuButton>
+    {{/if}}
   </div>
 
   <div class="au-o-region-large">
