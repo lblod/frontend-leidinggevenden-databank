@@ -9,6 +9,11 @@ module.exports = function (defaults) {
         require.resolve('ember-concurrency/async-arrow-task-transform'),
       ],
     },
+    emberData: {
+      deprecations: {
+        DEPRECATE_STORE_EXTENDS_EMBER_OBJECT: false,
+      },
+    },
   });
 
   return app.toTree();

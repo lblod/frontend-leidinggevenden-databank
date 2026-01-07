@@ -5,7 +5,10 @@ export default class Bestuurseenheid extends Model {
   @attr naam;
   @attr('string') mailAdres;
   @attr('boolean') wilMailOntvangen;
-  @belongsTo('bestuurseenheid-classificatie-code', { inverse: null })
+  @belongsTo('bestuurseenheid-classificatie-code', {
+    async: true,
+    inverse: null,
+  })
   classificatie;
   @hasMany('contact-punt', { async: true, inverse: null }) contactinfo;
   @hasMany('bestuursorgaan', { async: true, inverse: 'bestuurseenheid' })
