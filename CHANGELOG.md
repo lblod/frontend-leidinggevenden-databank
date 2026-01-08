@@ -1,3 +1,8 @@
+## v0.5.1 (2026-01-08)
+
+#### :bug: Bug Fix
+* [#21](https://github.com/lblod/frontend-leidinggevenden-databank/pull/21) Fix an issue with the built docker image ([@Windvis](https://github.com/Windvis))
+
 ## v0.5.0 (2026-01-07)
 
 #### :rocket: Enhancement
