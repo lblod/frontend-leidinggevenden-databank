@@ -8,6 +8,9 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
+# install fastboot dependencies
+RUN cd dist && npm install
+
 
 FROM redpencil/fastboot-app-server:1.3.0
 
